@@ -12,7 +12,7 @@ function getPartners(t: TFunction) {
       role: t('powerCircle.partners.jazz', 'Consortium Lead'),
       logo: '/partners/jazz.png',
       description: "Pakistan’s leading digital connectivity company, bringing technological expertise, nationwide reach, and enterprise innovation to the WISE Lab consortium.",
-      invert: true,
+      invert: false,
     },
     {
       name: 'Mobilink Bank',
