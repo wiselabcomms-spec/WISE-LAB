@@ -59,7 +59,7 @@ export function Nav() {
         <a
           href="#hero"
           aria-label={t('nav.home')}
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 shrink-0"
         >
           <WiseMark variant={logoVariant} className="h-14 w-auto" />
           <span className="flex flex-col leading-none">
@@ -77,15 +77,15 @@ export function Nav() {
           </span>
         </a>
 
-        {/* Links — moved inward (mx-auto to center them more) and increased font size to text-base */}
-        <div className="order-3 flex w-full flex-wrap items-center justify-center mx-auto gap-x-6 gap-y-2 xl:order-none xl:w-auto xl:gap-x-8">
+        {/* Links — moved inward (mx-auto to center them more) and adjusted size to fit */}
+        <div className="order-3 flex w-full flex-wrap items-center justify-center mx-auto gap-x-3 gap-y-2 lg:order-none lg:w-auto lg:gap-x-4 xl:gap-x-6">
           {NAV_LINKS.map((l) => (
             <a
               key={l.id}
               href={`#${l.id}`}
               data-active={active === l.id}
               className={cn(
-                'link-underline whitespace-nowrap text-base font-medium transition-colors',
+                'link-underline whitespace-nowrap text-[13px] xl:text-sm font-medium transition-colors',
                 lightText
                   ? 'text-white/85 hover:text-white'
                   : 'text-plum/75 hover:text-plum',
@@ -98,7 +98,7 @@ export function Nav() {
           <a
             href="/blog"
             className={cn(
-              'link-underline whitespace-nowrap text-base font-medium transition-colors',
+              'link-underline whitespace-nowrap text-[13px] xl:text-sm font-medium transition-colors',
               lightText
                 ? 'text-white/85 hover:text-white'
                 : 'text-plum/75 hover:text-plum'
@@ -108,7 +108,7 @@ export function Nav() {
           </a>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 shrink-0">
           <div className="flex items-center gap-1 opacity-50 cursor-not-allowed">
             <span className={cn('text-sm font-medium', lightText ? 'text-white' : 'text-plum')}>EN</span>
           </div>
