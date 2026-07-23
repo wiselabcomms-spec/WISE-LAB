@@ -77,8 +77,8 @@ export function Nav() {
           </span>
         </a>
 
-        {/* Links — moved inward (mx-auto to center them more) and adjusted size to fit */}
-        <div className="order-3 flex w-full flex-wrap items-center justify-center mx-auto gap-x-3 gap-y-2 lg:order-none lg:w-auto lg:gap-x-4 xl:gap-x-6">
+        {/* Links + CTA — all on one line */}
+        <div className="order-3 flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:order-none lg:w-auto lg:gap-x-4 xl:gap-x-5">
           {NAV_LINKS.map((l) => (
             <a
               key={l.id}
@@ -106,17 +106,11 @@ export function Nav() {
           >
             {t('nav.links.blog', 'WISE Journal')}
           </a>
-        </div>
-
-        <div className="flex items-center gap-4 shrink-0">
-          <div className="flex items-center gap-1 opacity-50 cursor-not-allowed">
-            <span className={cn('text-sm font-medium', lightText ? 'text-white' : 'text-plum')}>EN</span>
-          </div>
           <MagneticButton strength={0.4}>
             <Button
               asChild
               size="sm"
-              className="h-10 px-5"
+              className="h-9 px-4 shadow-none hover:shadow-none"
               style={{ background: 'var(--track-primary)', color: 'var(--track-ink)' }}
             >
               <a href="#enter-the-lab">{t('nav.cta')}</a>
