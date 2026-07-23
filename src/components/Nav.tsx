@@ -95,6 +95,17 @@ export function Nav() {
               {t(`nav.links.${l.id}`, l.label)}
             </a>
           ))}
+          <a
+            href="/blog"
+            className={cn(
+              'link-underline whitespace-nowrap text-base font-medium transition-colors',
+              lightText
+                ? 'text-white/85 hover:text-white'
+                : 'text-plum/75 hover:text-plum'
+            )}
+          >
+            {t('nav.links.blog', 'WISE Journal')}
+          </a>
         </div>
 
         <div className="flex items-center gap-4">
