@@ -3,6 +3,7 @@ import { ArrowUpRight, Check, Rocket, Sprout } from 'lucide-react'
 import type { TFunction } from 'i18next'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
+import { SectionJournal } from '@/components/SectionJournal'
 import { useTrack, type Track } from '@/lib/useTrackState'
 import { cn } from '@/lib/utils'
 
@@ -188,6 +189,8 @@ export function BuildTracks() {
             )
           })}
         </div>
+
+        <SectionJournal section="build-tracks" />
       </div>
     </section>
   )

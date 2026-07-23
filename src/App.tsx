@@ -1,5 +1,6 @@
 import { MotionConfig } from 'framer-motion'
 import { TrackProvider } from '@/lib/useTrackState'
+import { BlogSectionsProvider } from '@/lib/blog/useSectionPosts'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { Nav } from '@/components/Nav'
 import { PMBanner } from '@/components/PMBanner'
@@ -17,21 +18,23 @@ function App() {
   return (
     <MotionConfig reducedMotion="user">
       <TrackProvider>
-        <SmoothScroll>
-          <Nav />
-          <PMBanner />
-          <main>
-            <Hero />
-            <WiseJourney />
-            <BuildTracks />
-            <EnterTheLab />
-            <PowerCircle />
-            <BehindTheWings />
-            <BecomeAMentor />
-            <WiseConnect />
-          </main>
-          <Footer />
-        </SmoothScroll>
+        <BlogSectionsProvider>
+          <SmoothScroll>
+            <Nav />
+            <PMBanner />
+            <main>
+              <Hero />
+              <WiseJourney />
+              <BuildTracks />
+              <EnterTheLab />
+              <PowerCircle />
+              <BehindTheWings />
+              <BecomeAMentor />
+              <WiseConnect />
+            </main>
+            <Footer />
+          </SmoothScroll>
+        </BlogSectionsProvider>
       </TrackProvider>
     </MotionConfig>
   )

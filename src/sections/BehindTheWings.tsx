@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
+import { SectionJournal } from '@/components/SectionJournal'
 import { LinkedinIcon } from '@/components/BrandIcons'
 
 export function BehindTheWings() {
@@ -134,6 +135,8 @@ export function BehindTheWings() {
             </Reveal>
           ))}
         </div>
+
+        <SectionJournal section="behind-the-wings" />
       </div>
     </section>
   )

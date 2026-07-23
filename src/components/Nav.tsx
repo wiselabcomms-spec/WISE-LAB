@@ -95,17 +95,6 @@ export function Nav() {
               {t(`nav.links.${l.id}`, l.label)}
             </a>
           ))}
-          <a
-            href="/blog"
-            className={cn(
-              'link-underline whitespace-nowrap text-[13px] xl:text-sm font-medium transition-colors',
-              lightText
-                ? 'text-white/85 hover:text-white'
-                : 'text-plum/75 hover:text-plum'
-            )}
-          >
-            {t('nav.links.blog', 'WISE Journal')}
-          </a>
           <MagneticButton strength={0.4}>
             <Button
               asChild

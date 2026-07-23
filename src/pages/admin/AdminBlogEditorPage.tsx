@@ -5,8 +5,16 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { listAllPostsForAdmin, upsertPost } from '@/lib/blog/api'
 import type { BlogPost } from '@/lib/blog/types'
+import { NAV_LINKS } from '@/lib/nav'
 
 function slugify(title: string) {
   return title
@@ -27,6 +35,7 @@ const EMPTY: Omit<BlogPost, 'id'> = {
   publishedAt: null,
   status: 'draft',
   tags: [],
+  section: null,
 }
 
 export function AdminBlogEditorPage() {
@@ -90,6 +99,30 @@ export function AdminBlogEditorPage() {
             value={post.author}
             onChange={(e) => setPost({ ...post, author: e.target.value })}
           />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="section">Homepage section</Label>
+          <Select
+            value={post.section ?? 'none'}
+            onValueChange={(value) =>
+              setPost({ ...post, section: value === 'none' ? null : (value as BlogPost['section']) })
+            }
+          >
+            <SelectTrigger id="section">
+              <SelectValue placeholder="No section (not shown on homepage)" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">No section (not shown on homepage)</SelectItem>
+              {NAV_LINKS.map((l) => (
+                <SelectItem key={l.id} value={l.id}>
+                  {l.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-plum/50">
+            Published posts tagged to a section appear in a "Latest from the Journal" preview there on the live page.
+          </p>
         </div>
         <div className="space-y-2">
           <Label htmlFor="coverImageUrl">Cover image URL</Label>

@@ -47,6 +47,7 @@ export function upsertDemoPost(post: Partial<BlogPost> & { slug: string }) {
         publishedAt: post.status === 'published' ? now : null,
         status: post.status ?? 'draft',
         tags: post.tags ?? [],
+        section: post.section ?? null,
       },
       ...demoPosts,
     ]

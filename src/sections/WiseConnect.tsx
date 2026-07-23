@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2, Globe, Mail, MapPin, Send } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
+import { SectionJournal } from '@/components/SectionJournal'
 import { SOCIAL_LINKS } from '@/lib/social'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -236,6 +237,10 @@ export function WiseConnect() {
             </AnimatePresence>
           </div>
         </Reveal>
+      </div>
+
+      <div className="container-wise relative">
+        <SectionJournal section="wise-connect" />
       </div>
     </section>
   )

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ArrowUpRight, Compass, Handshake, Lightbulb } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal'
+import { SectionJournal } from '@/components/SectionJournal'
 
 const WAYS_TO_HELP = [
   { key: 'share', Icon: Lightbulb },
@@ -79,6 +80,8 @@ export function BecomeAMentor() {
             </RevealGroup>
           </div>
         </div>
+
+        <SectionJournal section="become-a-mentor" />
       </div>
     </section>
   )

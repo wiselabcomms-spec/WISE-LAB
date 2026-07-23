@@ -4,6 +4,7 @@ import { ArrowUpRight, Rocket, Store, Compass, Network } from 'lucide-react'
 import type { TFunction } from 'i18next'
 import { useTranslation } from 'react-i18next'
 import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal'
+import { SectionJournal } from '@/components/SectionJournal'
 
 const MotionLink = motion(Link)
 
@@ -137,6 +138,8 @@ export function EnterTheLab() {
             {t('enterTheLab.closingLine', 'Your next chapter starts inside the Lab.')}
           </p>
         </Reveal>
+
+        <SectionJournal section="enter-the-lab" />
       </div>
     </section>
   )

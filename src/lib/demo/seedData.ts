@@ -209,6 +209,7 @@ export const DEMO_BLOG_POSTS: BlogPost[] = [
     publishedAt: daysAgo(20),
     status: 'published',
     tags: ['announcement'],
+    section: 'wise-journey',
   },
   {
     id: 'demo-post-2',
@@ -221,6 +222,7 @@ export const DEMO_BLOG_POSTS: BlogPost[] = [
     publishedAt: daysAgo(10),
     status: 'published',
     tags: ['cohort', 'applications'],
+    section: 'build-tracks',
   },
   {
     id: 'demo-post-3',
@@ -233,5 +235,6 @@ export const DEMO_BLOG_POSTS: BlogPost[] = [
     publishedAt: null,
     status: 'draft',
     tags: ['mentors'],
+    section: 'become-a-mentor',
   },
 ]

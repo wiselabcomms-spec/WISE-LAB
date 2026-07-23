@@ -35,12 +35,6 @@ export function Footer() {
               </a>
             ))}
             <a
-              href="/blog"
-              className="link-underline text-sm font-medium text-beige/70 transition-colors hover:text-beige"
-            >
-              WISE Journal
-            </a>
-            <a
               href="#careers"
               className="link-underline text-sm font-medium text-beige/70 transition-colors hover:text-beige"
             >
