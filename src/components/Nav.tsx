@@ -78,7 +78,7 @@ export function Nav() {
         </a>
 
         {/* Links — moved inward (mx-auto to center them more) and increased font size to text-base */}
-        <div className="order-3 flex w-full flex-wrap items-center justify-center mx-auto gap-x-6 gap-y-2 lg:order-none lg:w-auto lg:gap-x-10">
+        <div className="order-3 flex w-full flex-wrap items-center justify-center mx-auto gap-x-6 gap-y-2 xl:order-none xl:w-auto xl:gap-x-8">
           {NAV_LINKS.map((l) => (
             <a
               key={l.id}
