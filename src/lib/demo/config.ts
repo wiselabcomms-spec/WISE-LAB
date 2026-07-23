@@ -1,4 +1,3 @@
-import { isSupabaseConfigured } from '@/lib/supabase'
 
 /**
  * Demo mode — lets someone click through the admin portal (login,
