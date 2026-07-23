@@ -14,7 +14,6 @@ export function AdminLoginPage() {
   const { session, signIn, signInDemo } = useAdminAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [code, setCode] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
 
@@ -23,8 +22,12 @@ export function AdminLoginPage() {
   const onSubmitDemo = (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
-    const { error } = signInDemo(code)
-    if (error) setError(error)
+    if (email === 'demo@wiselab.org.pk' && password === 'WiseLabDemo2026!') {
+      const { error } = signInDemo(DEMO_ACCESS_CODE)
+      if (error) setError(error)
+    } else {
+      setError('Invalid login credentials')
+    }
   }
 
   const onSubmitReal = async (e: React.FormEvent) => {
@@ -52,18 +55,28 @@ export function AdminLoginPage() {
               <div className="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-center text-[13px] text-amber-800">
                 <p className="font-semibold uppercase tracking-wide">Demo mode</p>
                 <p className="mt-1">
-                  Access code: <span className="font-semibold">{DEMO_ACCESS_CODE}</span>
+                  Email: <span className="font-semibold">demo@wiselab.org.pk</span><br/>
+                  Password: <span className="font-semibold">WiseLabDemo2026!</span>
                 </p>
               </div>
               <form onSubmit={onSubmitDemo} className="mt-8 space-y-5">
                 <div className="space-y-2">
-                  <Label htmlFor="admin-code">Access code</Label>
+                  <Label htmlFor="admin-email">{t('admin.login.email')}</Label>
                   <Input
-                    id="admin-code"
-                    type="text"
-                    autoComplete="off"
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
+                    id="admin-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="admin-password">{t('admin.login.password')}</Label>
+                  <Input
+                    id="admin-password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
