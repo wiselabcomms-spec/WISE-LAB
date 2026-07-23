@@ -61,20 +61,7 @@ export function Nav() {
           aria-label={t('nav.home')}
           className="flex items-center gap-3 shrink-0"
         >
-          <WiseMark variant={logoVariant} className="h-14 w-auto" />
-          <span className="flex flex-col leading-none">
-            <span
-              className={cn(
-                'font-sans text-lg font-bold tracking-tight transition-colors',
-                lightText ? 'text-white' : 'text-plum'
-              )}
-            >
-              WISE{' '}
-              <span className={lightText ? 'text-white/80' : 'text-coral'}>
-                Lab
-              </span>
-            </span>
-          </span>
+          <WiseMark variant={logoVariant} className="h-20 w-auto" />
         </a>
 
         {/* Links + CTA — all on one line */}

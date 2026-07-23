@@ -59,18 +59,25 @@ export function BehindTheWings() {
                   </p>
                 </div>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/muneaza-durrani-35a85810"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={t(
                     'behindTheWings.team.linkedinLabel',
                     'Muneaza Jamil Durrani on LinkedIn'
                   )}
-                  onClick={(e) => e.preventDefault()}
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-plum/15 text-plum transition-colors hover:border-teal hover:bg-teal hover:text-white"
                 >
                   <LinkedinIcon className="h-5 w-5" />
                 </a>
               </div>
-              <p className="mt-5 leading-relaxed text-plum/70">
+              <p className="mt-4 font-display italic leading-snug text-plum/80">
+                {t(
+                  'behindTheWings.team.tagline',
+                  'A venture builder and ecosystem strategist focused on turning early-stage potential into growth-ready enterprises.'
+                )}
+              </p>
+              <p className="mt-4 leading-relaxed text-plum/70">
                 {t(
                   'behindTheWings.team.bio',
                   "Leads WISE Lab's programme direction — setting the vision, standards, and day-to-day execution that help women entrepreneurs access mentorship, markets, capital readiness, and the right room to grow. She is the founding member of the team building the platform."
@@ -87,26 +94,41 @@ export function BehindTheWings() {
               name: 'Kashmala Shahid',
               role: 'Communications & Partnerships Manager',
               image: '/team/kashmala-shahid.png',
+              tagline:
+                'A strategic communications and partnerships professional who turns messages into momentum and relationships into opportunity.',
+              linkedin: 'https://www.linkedin.com/in/kashmalaskhattak',
             },
             {
               name: 'Fatima Shah',
               role: 'Growth & Monitoring Specialist',
               image: '/team/fatima-shah.png',
+              tagline:
+                'A public-policy and social-impact professional advancing inclusion through evidence, partnerships and purpose-led action.',
+              linkedin: 'https://www.linkedin.com/in/fatima-shah-56540687',
             },
             {
               name: 'Esha Mubashir',
               role: 'Graphics Designer',
               image: '/team/esha-mubashir.jpeg',
+              tagline:
+                'A visual designer building memorable brand experiences through clarity, composition and creative systems.',
+              linkedin: 'https://www.linkedin.com/in/esha-mubashir-444023318',
             },
             {
               name: 'Iqra Shamshad',
               role: 'Finance Manager',
               image: '/team/iqra-shamshad.jpeg',
+              tagline:
+                'A people-and-process professional building the organisational discipline that turns ambitious programmes into sustainable impact.',
+              linkedin: 'https://www.linkedin.com/in/iqra-shamshad-110645165',
             },
             {
               name: 'Abeeha Widad',
               role: 'Video Editor',
               image: '/team/abeeha-widad.png',
+              tagline:
+                'A young creative translating ideas into visual stories, digital conversations and audience engagement.',
+              linkedin: 'https://www.linkedin.com/in/abeeha-widad-793020374',
             },
           ].map((member, i) => (
             <Reveal key={member.name} delay={0.15 + i * 0.05}>
@@ -124,11 +146,27 @@ export function BehindTheWings() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col justify-center bg-white p-6">
-                  <h3 className="font-display text-xl font-bold text-plum">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-[11px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-teal">
-                    {member.role}
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="font-display text-xl font-bold text-plum">
+                        {member.name}
+                      </h3>
+                      <p className="mt-1 text-[11px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-teal">
+                        {member.role}
+                      </p>
+                    </div>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on LinkedIn`}
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-plum/15 text-plum transition-colors hover:border-teal hover:bg-teal hover:text-white"
+                    >
+                      <LinkedinIcon className="h-4 w-4" />
+                    </a>
+                  </div>
+                  <p className="mt-3 text-[13px] leading-relaxed text-plum/65">
+                    {member.tagline}
                   </p>
                 </div>
               </motion.div>
