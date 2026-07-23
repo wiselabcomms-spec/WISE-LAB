@@ -1,4 +1,6 @@
 
+import { isSupabaseConfigured } from '@/lib/supabase'
+
 /**
  * Demo mode — lets someone click through the admin portal (login,
  * dashboard, submissions, blog) with realistic fake data before a real
@@ -18,6 +20,6 @@
  * intentionally a stand-in for real auth, not a real login, so it must
  * never be mistaken for one once real submissions exist.
  */
-export const DEMO_MODE = true // FORCED ON FOR PREVIEW
+export const DEMO_MODE = import.meta.env.VITE_DEMO_MODE === 'true' || !isSupabaseConfigured
 
 export const DEMO_ACCESS_CODE = 'wiselab2026'
