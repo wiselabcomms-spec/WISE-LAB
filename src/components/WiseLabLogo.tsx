@@ -82,8 +82,15 @@ export function WiseMark({ variant = 'color', animateIntro = false, className }:
   const logo = useKeyedLogo()
   const reduce = usePrefersReducedMotion()
 
-  if (logo === undefined || logo === null) {
+  if (logo === null) {
     return <WiseMarkSVG variant={variant} animateIntro={animateIntro} className={className} />
+  }
+
+  if (logo === undefined) {
+    // Still loading — reserve the exact box so nothing shifts, but don't paint
+    // the SVG fallback here: swapping it for the raster mark a beat later is
+    // what causes the visible "flash" (different artwork, different proportions).
+    return <div className={className} style={{ aspectRatio: String(MARK_ASPECT) }} />
   }
 
   const intro =
@@ -129,7 +136,7 @@ export function WiseLabLogo({
   const logo = useKeyedLogo()
   const reduce = usePrefersReducedMotion()
 
-  if (logo === undefined || logo === null) {
+  if (logo === null) {
     return (
       <WiseLabLogoSVG
         variant={variant}
@@ -139,6 +146,12 @@ export function WiseLabLogo({
         className={className}
       />
     )
+  }
+
+  if (logo === undefined) {
+    // Still loading — reserve space without painting the (differently
+    // proportioned) SVG fallback, which is what causes the visible flash.
+    return <div className={cn('w-auto', className)} style={{ height: size }} />
   }
 
   const intro =
