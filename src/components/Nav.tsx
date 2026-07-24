@@ -61,37 +61,43 @@ export function Nav() {
           aria-label={t('nav.home')}
           className="flex items-center gap-3 shrink-0"
         >
-          <WiseMark variant={logoVariant} className="h-20 w-auto" />
+          <WiseMark variant={logoVariant} className="h-20 w-auto sm:h-24 lg:h-28" />
         </a>
 
-        {/* Links + CTA — all on one line */}
-        <div className="order-3 flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:order-none lg:w-auto lg:gap-x-4 xl:gap-x-5">
-          {NAV_LINKS.map((l) => (
-            <a
-              key={l.id}
-              href={`#${l.id}`}
-              data-active={active === l.id}
-              className={cn(
-                'link-underline whitespace-nowrap text-[13px] xl:text-sm font-medium transition-colors',
-                lightText
-                  ? 'text-white/85 hover:text-white'
-                  : 'text-plum/75 hover:text-plum',
-                active === l.id && (lightText ? 'text-white' : 'text-plum')
-              )}
-            >
-              {t(`nav.links.${l.id}`, l.label)}
-            </a>
-          ))}
-          <MagneticButton strength={0.4}>
-            <Button
-              asChild
-              size="sm"
-              className="h-9 px-4 shadow-none hover:shadow-none"
-              style={{ background: 'var(--track-primary)', color: 'var(--track-ink)' }}
-            >
-              <a href="#enter-the-lab">{t('nav.cta')}</a>
-            </Button>
-          </MagneticButton>
+        {/* Links + CTA */}
+        <div className="order-3 flex w-full flex-col items-center gap-4 lg:order-none lg:w-auto lg:flex-row lg:flex-nowrap lg:gap-x-4 xl:gap-x-5">
+          <div className="grid w-full grid-cols-2 gap-x-6 gap-y-3 justify-items-center sm:grid-cols-3 lg:flex lg:w-auto lg:flex-nowrap lg:gap-x-4 xl:gap-x-5">
+            {NAV_LINKS.map((l, i) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                data-active={active === l.id}
+                className={cn(
+                  'link-underline whitespace-nowrap text-[13px] xl:text-sm font-medium transition-colors',
+                  lightText
+                    ? 'text-white/85 hover:text-white'
+                    : 'text-plum/75 hover:text-plum',
+                  active === l.id && (lightText ? 'text-white' : 'text-plum'),
+                  i === NAV_LINKS.length - 1 &&
+                    'col-span-2 sm:col-span-1 sm:col-start-2 lg:col-auto'
+                )}
+              >
+                {t(`nav.links.${l.id}`, l.label)}
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center gap-x-4">
+            <MagneticButton strength={0.4}>
+              <Button
+                asChild
+                size="sm"
+                className="h-9 px-4 shadow-none hover:shadow-none"
+                style={{ background: 'var(--track-primary)', color: 'var(--track-ink)' }}
+              >
+                <a href="#enter-the-lab">{t('nav.cta')}</a>
+              </Button>
+            </MagneticButton>
+          </div>
         </div>
       </nav>
     </motion.header>

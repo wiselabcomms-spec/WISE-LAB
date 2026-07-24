@@ -75,9 +75,8 @@ export default {
         eyebrow: '0.18em',
       },
       boxShadow: {
-        card: '0 1px 2px rgb(74 46 61 / 0.05), 0 12px 28px rgb(74 46 61 / 0.08), 0 28px 56px rgb(74 46 61 / 0.06)',
-        'card-hover':
-          '0 2px 4px rgb(74 46 61 / 0.06), 0 18px 40px rgb(74 46 61 / 0.12), 0 40px 80px rgb(74 46 61 / 0.10)',
+        card: '0 1px 2px rgb(74 46 61 / 0.06), 0 4px 10px rgb(74 46 61 / 0.10)',
+        'card-hover': '0 2px 4px rgb(74 46 61 / 0.08), 0 6px 16px rgb(74 46 61 / 0.14)',
         glow: '0 0 0 1px rgb(255 255 255 / 0.08), 0 20px 60px -20px var(--track-accent)',
       },
       keyframes: {

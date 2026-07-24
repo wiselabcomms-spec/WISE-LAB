@@ -46,19 +46,16 @@ export function Hero() {
       />
       <div className="grain -z-10" />
 
-      {/* 3D figure — occupies the side opposite the text on desktop, full-bleed behind on mobile */}
-      <div className={cn('absolute inset-0', rtl ? 'lg:right-[42%]' : 'lg:left-[42%]')}>
+      {/* 3D figure — occupies the side opposite the text on desktop; hidden on
+          mobile where the particle silhouette killed text contrast */}
+      <div
+        className={cn(
+          'absolute inset-0 hidden lg:block',
+          rtl ? 'lg:right-[42%]' : 'lg:left-[42%]'
+        )}
+      >
         <Hero3D />
       </div>
-      {/* legibility scrim on small screens */}
-      <div
-        className="pointer-events-none absolute inset-0 lg:hidden"
-        style={{
-          background:
-            'linear-gradient(180deg, var(--hero-bg-a) 0%, transparent 30%, transparent 60%, var(--hero-bg-a) 100%)',
-          opacity: 0.55,
-        }}
-      />
 
       <div className="container-wise relative z-10 flex flex-1 flex-col justify-center pt-28 pb-40 md:pt-32 lg:items-start">
         <div className="max-w-xl">

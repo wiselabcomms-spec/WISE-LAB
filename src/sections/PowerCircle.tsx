@@ -13,7 +13,8 @@ function getPartners(t: TFunction) {
       role: t('powerCircle.partners.jazz', 'Consortium Lead'),
       logo: '/partners/jazz.png',
       description: "Pakistan’s leading digital connectivity company, bringing technological expertise, nationwide reach, and enterprise innovation to the WISE Lab consortium.",
-      invert: false,
+      invert: true,
+      chip: false,
     },
     {
       name: 'Mobilink Bank',
@@ -21,6 +22,7 @@ function getPartners(t: TFunction) {
       logo: '/partners/mobilink-mmbl.png',
       description: "Pakistan’s leading digital microfinance bank, advancing financial inclusion, digital banking, and growth opportunities for women entrepreneurs and MSMEs.",
       invert: false,
+      chip: true,
     },
     {
       name: 'Change Mechanics',
@@ -28,6 +30,7 @@ function getPartners(t: TFunction) {
       logo: '/partners/change-mechanics.png',
       description: "An innovation and ecosystem-development organization bringing programme design, entrepreneurship support, and implementation expertise to WISE Lab.",
       invert: true,
+      chip: false,
     },
   ]
 }
@@ -46,7 +49,7 @@ function getFunders(t: TFunction) {
       role: t('powerCircle.funders.ignite', 'Designed & Funded by'),
       logo: '/partners/ignite.png',
       description: "The government-backed funding and innovation agency supporting technology startups, entrepreneurship, research, and incubation ecosystems across Pakistan.",
-      invert: false,
+      invert: true,
     },
   ]
 }
@@ -110,11 +113,11 @@ export function PowerCircle() {
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
                 className="group flex h-full flex-col items-center gap-5 rounded-2xl bg-beige/[0.06] p-6 text-center transition-colors duration-500 hover:bg-beige/10 md:p-8"
               >
-                <div className="flex h-16 w-full items-center justify-center p-2 md:h-20">
+                <div className="flex h-24 w-full items-center justify-center p-2 md:h-32">
                   <img
                     src={p.logo}
                     alt={`${p.name} logo`}
-                    className={cn("max-h-full max-w-[200px] object-contain", p.invert && "invert brightness-0")}
+                    className={cn("max-h-full max-w-[240px] object-contain", p.invert && "invert brightness-0")}
                     loading="lazy"
                   />
                 </div>
@@ -151,13 +154,24 @@ export function PowerCircle() {
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
                 className="group flex h-full flex-col items-center gap-5 rounded-2xl bg-beige/[0.06] p-6 text-center transition-colors duration-500 hover:bg-beige/10 md:p-8"
               >
-                <div className="flex h-16 w-full items-center justify-center p-2 md:h-20">
-                  <img
-                    src={p.logo}
-                    alt={`${p.name} logo`}
-                    className={cn("max-h-full max-w-[200px] object-contain", p.invert && "invert brightness-0")}
-                    loading="lazy"
-                  />
+                <div className="flex h-24 w-full items-center justify-center p-2 md:h-32">
+                  {p.chip ? (
+                    <div className="flex h-full w-full max-w-[240px] items-center justify-center rounded-xl bg-white px-5 py-3">
+                      <img
+                        src={p.logo}
+                        alt={`${p.name} logo`}
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      src={p.logo}
+                      alt={`${p.name} logo`}
+                      className={cn("max-h-full max-w-[240px] object-contain", p.invert && "invert brightness-0")}
+                      loading="lazy"
+                    />
+                  )}
                 </div>
                 <div className="flex flex-col flex-1">
                   <div className="text-[17px] font-bold leading-tight text-beige">
@@ -183,7 +197,7 @@ export function PowerCircle() {
             <p className="max-w-xl font-display text-[clamp(1.4rem,2.6vw,2rem)] font-medium italic leading-snug text-beige">
               {t(
                 'powerCircle.closingLine',
-                'Her idea was never small. The ecosystem around it needed to expand.'
+                'Her idea was never small. The ecosystem needed to expand.'
               )}
             </p>
             <a
