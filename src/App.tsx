@@ -12,6 +12,7 @@ import { PowerCircle } from '@/sections/PowerCircle'
 import { BehindTheWings } from '@/sections/BehindTheWings'
 import { BecomeAMentor } from '@/sections/BecomeAMentor'
 import { WiseConnect } from '@/sections/WiseConnect'
+import { WiseReports } from '@/sections/WiseReports'
 import { Footer } from '@/sections/Footer'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <BehindTheWings />
               <BecomeAMentor />
               <WiseConnect />
+              <WiseReports />
             </main>
             <Footer />
           </SmoothScroll>

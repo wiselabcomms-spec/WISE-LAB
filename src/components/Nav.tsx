@@ -61,7 +61,7 @@ export function Nav() {
           aria-label={t('nav.home')}
           className="flex items-center gap-3 shrink-0"
         >
-          <WiseMark variant={logoVariant} className="h-20 w-auto sm:h-24 lg:h-28" />
+          <WiseMark variant={logoVariant} className="h-24 w-auto sm:h-28 lg:h-32" />
         </a>
 
         {/* Links + CTA */}
@@ -78,7 +78,8 @@ export function Nav() {
                     ? 'text-white/85 hover:text-white'
                     : 'text-plum/75 hover:text-plum',
                   active === l.id && (lightText ? 'text-white' : 'text-plum'),
-                  i === NAV_LINKS.length - 1 &&
+                  NAV_LINKS.length % 2 === 1 &&
+                    i === NAV_LINKS.length - 1 &&
                     'col-span-2 sm:col-span-1 sm:col-start-2 lg:col-auto'
                 )}
               >
