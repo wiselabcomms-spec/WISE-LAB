@@ -7,7 +7,8 @@
       "power-circle": "The Power Circle",
       "behind-the-wings": "Behind the Wings",
       "wise-connect": "WISE Connect",
-      "become-a-mentor": "Become a Mentor"
+      "become-a-mentor": "Become a Mentor",
+      "wise-reports": "WISE Reports"
     },
     "cta": "Enter the Lab",
     "home": "WISE Lab home",
@@ -102,29 +103,31 @@
       "eyebrow": "The Flight Path",
       "title": "Our Vision",
       "body": "To become Pakistan's leading platform exclusively for women-led innovation and enterprise — enabling women across the country to transform ideas into sustainable businesses, access the right spaces, and contribute to inclusive digital and economic growth.",
-      "line": "A future where she doesn't wait for opportunity — she enters the room & builds it."
+      "line": "A future where she doesn't wait for opportunity — she enters the room & builds it.",
+      "readMore": "Read more"
     },
     "mission": {
       "eyebrow": "The WISE Way",
       "title": "Our Mission",
       "body": "To empower women entrepreneurs, startups, and MSMEs with structured incubation, practical business training, mentorship, market linkages, investor readiness, digital tools, and ecosystem access — from the cocoon stage of potential to the flight stage of enterprise.",
-      "line": "Nurture the idea. Expand the room. Launch the enterprise."
+      "line": "Nurture the idea. Expand the room. Launch the enterprise.",
+      "readMore": "Read more"
     }
   },
   "buildTracks": {
     "founder": {
       "kicker": "Startup Incubation",
       "title": "Founder Flightpath",
-      "lead": "For women building scalable startups, tech-enabled ventures, and innovation-driven businesses.",
-      "body": "For women-led startups ready to move from idea, MVP, or early traction into structured growth — with business-model refinement, product validation, mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.",
+      "lead": "A structured six-month programme for women-led, technology-enabled startups ready to validate, strengthen, launch, or scale.",
+      "body": "From an early idea to an investment-ready enterprise — with business-model refinement, product validation, real-time mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.",
       "motto": "From idea to investor-ready — unseen to undeniable.",
       "cta": "Take Flight"
     },
     "enterprise": {
       "kicker": "MSME Training",
       "title": "Enterprise Flightpath",
-      "lead": "For women-led small businesses, home-based entrepreneurs, and micro-enterprises ready to grow.",
-      "body": "For women already building — from home-based setups and craft producers to food, beauty, fashion, education, and digital sellers. Practical skills in business planning, financial literacy, branding, pricing, customer management, digital marketing, and market access.",
+      "lead": "A nationwide capacity-building programme for women running micro, small, home-based, or early-stage businesses.",
+      "body": "Turning skills, home-based work, and small businesses into sustainable enterprises — with business planning, financial literacy, digital tools, branding, pricing, customer management, and market access.",
       "motto": "From skill to income — cocoon to flight.",
       "cta": "Grow Your Enterprise"
     },
@@ -132,16 +135,17 @@
     "subtitle": "Two tracks. One destination: women-led enterprise growth.",
     "hint": "Select a track to preview it in the scene above — the whole page responds to your choice.",
     "previewingAbove": "Previewing above ↑",
-    "selected": "Selected"
+    "selected": "Selected",
+    "readMore": "Read more"
   },
   "enterTheLab": {
     "founder": {
       "title": "Founder Flightpath",
-      "body": "For women founders and startup teams ready for incubation, validation, mentorship, pitch development, and investor readiness."
+      "body": "For women founders ready to move from an early idea to an investment-ready enterprise, through incubation, mentorship, and investor readiness."
     },
     "enterprise": {
       "title": "Enterprise Flightpath",
-      "body": "For women-led small businesses and home-based entrepreneurs seeking business training, digital skills, visibility, and market access."
+      "body": "For women running micro, small, or home-based businesses ready to grow through practical training, digital tools, and market access."
     },
     "mentor": {
       "title": "Guide Her Growth",
@@ -155,7 +159,7 @@
     "title1": "Your idea deserves",
     "title2": "the right room",
     "intro": "Building a startup, growing a small business, mentoring founders, or partnering for impact — your WISE journey starts here. If your idea has felt too early, too quiet, too small, or too unseen, this is your invitation to bring it into the room.",
-    "closingLine": "Your next chapter starts inside the Lab."
+    "closingLine": "YOUR NEXT CHAPTER STARTS INSIDE THE LAB."
   },
   "powerCircle": {
     "partners": {
@@ -191,7 +195,7 @@
     "intro": "WISE Lab is led by a multidisciplinary team across incubation, entrepreneurship development, partnerships, communications, training, technology, and ecosystem engagement — building the space where she can become a founder.",
     "team": {
       "name": "Ms. Muneaza Jamil Durrani",
-      "role": "Programme Director",
+      "role": "Project Director",
       "linkedinLabel": "Muneaza Jamil Durrani on LinkedIn",
       "bio": "Leads WISE Lab's programme direction — setting the vision, standards, and day-to-day execution that help women entrepreneurs access mentorship, markets, capital readiness, and the right room to grow. She is the founding member of the team building the platform."
     },
@@ -229,6 +233,11 @@
       "media": "Media",
       "other": "Other"
     }
+  },
+  "wiseReports": {
+    "title": "Transparency in every stage of growth",
+    "subtitle": "Annual audit reports and programme impact summaries will be published here as they become available, so our partners and community can track progress alongside us.",
+    "empty": "Reports are being prepared and will appear here soon."
   },
   "apply": {
     "backToWiseLab": "Back to WISE Lab"
@@ -659,6 +668,7 @@
       "title": "WISE Lab Admin",
       "dashboard": "Dashboard",
       "submissions": "Submissions",
+      "wiseConnect": "WISE Connect",
       "blog": "Blog"
     },
     "common": {

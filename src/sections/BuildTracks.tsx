@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { ArrowUpRight, Check, Rocket, Sprout } from 'lucide-react'
 import type { TFunction } from 'i18next'
 import { useTranslation } from 'react-i18next'
@@ -16,6 +17,7 @@ interface TrackCard {
   body: string
   motto: string
   cta: string
+  readMoreHref: string
   primary: string
   accent: string
   soft: string
@@ -31,14 +33,15 @@ function getCards(t: TFunction): TrackCard[] {
       title: t('buildTracks.founder.title', 'Founder Flightpath'),
       lead: t(
         'buildTracks.founder.lead',
-        'For women building scalable startups, tech-enabled ventures, and innovation-driven businesses.'
+        'A structured six-month programme for women-led, technology-enabled startups ready to validate, strengthen, launch, or scale.'
       ),
       body: t(
         'buildTracks.founder.body',
-        'For women-led startups ready to move from idea, MVP, or early traction into structured growth — with business-model refinement, product validation, mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.'
+        'From an early idea to an investment-ready enterprise — with business-model refinement, product validation, real-time mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.'
       ),
       motto: t('buildTracks.founder.motto', 'From idea to investor-ready — unseen to undeniable.'),
       cta: t('buildTracks.founder.cta', 'Take Flight'),
+      readMoreHref: '/founder-flightpath',
       primary: '#0F3D3B',
       accent: '#2E7D7B',
       soft: 'rgba(46,125,123,0.10)',
@@ -51,14 +54,15 @@ function getCards(t: TFunction): TrackCard[] {
       title: t('buildTracks.enterprise.title', 'Enterprise Flightpath'),
       lead: t(
         'buildTracks.enterprise.lead',
-        'For women-led small businesses, home-based entrepreneurs, and micro-enterprises ready to grow.'
+        'A nationwide capacity-building programme for women running micro, small, home-based, or early-stage businesses.'
       ),
       body: t(
         'buildTracks.enterprise.body',
-        'For women already building — from home-based setups and craft producers to food, beauty, fashion, education, and digital sellers. Practical skills in business planning, financial literacy, branding, pricing, customer management, digital marketing, and market access.'
+        'Turning skills, home-based work, and small businesses into sustainable enterprises — with business planning, financial literacy, digital tools, branding, pricing, customer management, and market access.'
       ),
       motto: t('buildTracks.enterprise.motto', 'From skill to income — cocoon to flight.'),
       cta: t('buildTracks.enterprise.cta', 'Grow Your Enterprise'),
+      readMoreHref: '/enterprise-flightpath',
       primary: '#B85C1A',
       accent: '#E8823C',
       soft: 'rgba(232,130,60,0.10)',
@@ -166,6 +170,15 @@ export function BuildTracks() {
                   >
                     {c.motto}
                   </p>
+
+                  <Link
+                    to={c.readMoreHref}
+                    onClick={(e) => e.stopPropagation()}
+                    className="link-underline relative mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold"
+                    style={{ color: c.accent }}
+                  >
+                    {t('buildTracks.readMore', 'Read more')}
+                  </Link>
 
                   <div className="relative mt-8 flex items-center justify-between pt-6">
                     <a

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
 import { SectionJournal } from '@/components/SectionJournal'
@@ -27,21 +27,6 @@ export function WiseJourney() {
                   "Pakistan's premier platform, exclusively for women-led ideas — to find the room, the resources, and the recognition to become enterprises."
                 )}
               </p>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <motion.div
-                className="mt-12 hidden lg:block"
-                initial={{ opacity: 0, scale: 0.92, y: 16 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <img
-                  src="/wise-lab-logo.png"
-                  alt="WISE Lab — Her idea. Her enterprise."
-                  className="h-72 w-auto max-w-full object-contain xl:h-80"
-                />
-              </motion.div>
             </Reveal>
           </div>
 
@@ -100,6 +85,12 @@ export function WiseJourney() {
                   "A future where she doesn't wait for opportunity — she enters the room & builds it."
                 )}
               </p>
+              <Link
+                to="/vision"
+                className="link-underline relative mt-5 inline-block text-sm font-semibold text-teal"
+              >
+                {t('wiseJourney.vision.readMore', 'Read more')}
+              </Link>
             </div>
           </Reveal>
 
@@ -124,6 +115,12 @@ export function WiseJourney() {
                   'Nurture the idea. Expand the room. Launch the enterprise.'
                 )}
               </p>
+              <Link
+                to="/mission"
+                className="link-underline relative mt-5 inline-block text-sm font-semibold text-coral"
+              >
+                {t('wiseJourney.mission.readMore', 'Read more')}
+              </Link>
             </div>
           </Reveal>
         </div>

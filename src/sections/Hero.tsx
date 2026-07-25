@@ -70,7 +70,7 @@ export function Hero() {
           </motion.p>
 
           <h1
-            className="mt-5 font-display text-[clamp(2.9rem,7vw,5.5rem)] font-bold leading-[0.98] theme-shift"
+            className="mt-5 font-display text-[clamp(3.4rem,9vw,5.5rem)] font-bold leading-[0.98] theme-shift"
             style={{ color: dark ? 'var(--track-ink)' : '#4A2E3D' }}
           >
             {words.map((w, i) => (

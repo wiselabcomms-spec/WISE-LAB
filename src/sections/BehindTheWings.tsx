@@ -55,7 +55,7 @@ export function BehindTheWings() {
                     {t('behindTheWings.team.name', 'Ms. Muneaza Jamil Durrani')}
                   </h3>
                   <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-teal">
-                    {t('behindTheWings.team.role', 'Programme Director')}
+                    {t('behindTheWings.team.role', 'Project Director')}
                   </p>
                 </div>
                 <a
@@ -107,20 +107,20 @@ export function BehindTheWings() {
               linkedin: 'https://www.linkedin.com/in/fatima-shah-56540687',
             },
             {
-              name: 'Esha Mubashir',
-              role: 'Graphics Designer',
-              image: '/team/esha-mubashir.jpeg',
-              tagline:
-                'A visual designer building memorable brand experiences through clarity, composition and creative systems.',
-              linkedin: 'https://www.linkedin.com/in/esha-mubashir-444023318',
-            },
-            {
               name: 'Iqra Shamshad',
               role: 'Finance Manager',
               image: '/team/iqra-shamshad.jpeg',
               tagline:
                 'A people-and-process professional building the organisational discipline that turns ambitious programmes into sustainable impact.',
               linkedin: 'https://www.linkedin.com/in/iqra-shamshad-110645165',
+            },
+            {
+              name: 'Esha Mubashir',
+              role: 'Graphics Designer',
+              image: '/team/esha-mubashir.jpeg',
+              tagline:
+                'A visual designer building memorable brand experiences through clarity, composition and creative systems.',
+              linkedin: 'https://www.linkedin.com/in/esha-mubashir-444023318',
             },
             {
               name: 'Abeeha Widad',

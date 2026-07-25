@@ -23,7 +23,7 @@ function getPillars(t: TFunction): Pillar[] {
       title: t('enterTheLab.founder.title', 'Founder Flightpath'),
       body: t(
         'enterTheLab.founder.body',
-        'For women founders and startup teams ready for incubation, validation, mentorship, pitch development, and investor readiness.'
+        'For women founders ready to move from an early idea to an investment-ready enterprise, through incubation, mentorship, and investor readiness.'
       ),
       cta: t('buildTracks.founder.cta', 'Take Flight'),
       color: '#2E7D7B',
@@ -34,7 +34,7 @@ function getPillars(t: TFunction): Pillar[] {
       title: t('enterTheLab.enterprise.title', 'Enterprise Flightpath'),
       body: t(
         'enterTheLab.enterprise.body',
-        'For women-led small businesses and home-based entrepreneurs seeking business training, digital skills, visibility, and market access.'
+        'For women running micro, small, or home-based businesses ready to grow through practical training, digital tools, and market access.'
       ),
       cta: t('buildTracks.enterprise.cta', 'Grow Your Enterprise'),
       color: '#E8823C',
@@ -134,8 +134,8 @@ export function EnterTheLab() {
         </RevealGroup>
 
         <Reveal delay={0.1}>
-          <p className="mt-12 text-center font-display text-xl font-medium italic text-plum/70">
-            {t('enterTheLab.closingLine', 'Your next chapter starts inside the Lab.')}
+          <p className="mt-12 text-center font-display text-xl font-medium uppercase italic text-plum/70">
+            {t('enterTheLab.closingLine', 'YOUR NEXT CHAPTER STARTS INSIDE THE LAB.')}
           </p>
         </Reveal>
 
