@@ -4,6 +4,7 @@ import { CheckCircle2, Globe, Mail, MapPin, Send } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
 import { SectionJournal } from '@/components/SectionJournal'
+import { submitWiseConnectInquiry } from '@/lib/forms/submitApplication'
 import { SOCIAL_LINKS } from '@/lib/social'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -41,6 +42,8 @@ export function WiseConnect() {
   const [message, setMessage] = useState('')
   const [errors, setErrors] = useState<Errors>({})
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const validate = () => {
     const e: Errors = {}
@@ -54,9 +57,19 @@ export function WiseConnect() {
     return Object.keys(e).length === 0
   }
 
-  const onSubmit = (ev: React.FormEvent) => {
+  const onSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault()
-    if (validate()) setSent(true)
+    if (!validate()) return
+    setSubmitting(true)
+    setSubmitError(null)
+    try {
+      await submitWiseConnectInquiry({ name, email, inquiryType: inquiry, message })
+      setSent(true)
+    } catch {
+      setSubmitError(t('form.submitError', 'Something went wrong. Please try again.'))
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -223,13 +236,20 @@ export function WiseConnect() {
                     />
                   </Field>
 
+                  {submitError && (
+                    <p className="text-[13px] font-medium text-destructive">{submitError}</p>
+                  )}
+
                   <Button
                     type="submit"
                     size="lg"
                     className="w-full"
+                    disabled={submitting}
                     style={{ background: 'var(--track-primary)', color: 'var(--track-ink)' }}
                   >
-                    {t('wiseConnect.submit', 'Send your inquiry')}
+                    {submitting
+                      ? t('form.sending', 'Sending…')
+                      : t('wiseConnect.submit', 'Send your inquiry')}
                     <Send className="h-4 w-4" />
                   </Button>
                 </motion.form>

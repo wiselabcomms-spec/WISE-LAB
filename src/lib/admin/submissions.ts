@@ -1,7 +1,7 @@
 import { getSupabase } from '@/lib/supabase'
 import { DEMO_MODE } from '@/lib/demo/config'
 import { getDemoSubmissions } from '@/lib/demo/store'
-import type { ApplicationTrack, SubmissionPayload } from '@/lib/forms/types'
+import type { SubmissionPayload, SubmissionTrack } from '@/lib/forms/types'
 
 export interface StoredSubmission extends SubmissionPayload {
   id: string
@@ -9,7 +9,7 @@ export interface StoredSubmission extends SubmissionPayload {
 
 interface DbRow {
   id: string
-  track: ApplicationTrack
+  track: SubmissionTrack
   values: Record<string, unknown>
   analytics: Record<string, string | boolean>
   submitted_at: string

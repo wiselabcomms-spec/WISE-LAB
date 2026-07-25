@@ -1,67 +1,33 @@
 import type { FormSchema } from '../types'
 
 /**
- * Enterprise Flightpath — MSME Training application.
- * No authoritative docx exists for this track (unlike Founder Flightpath),
- * so this schema is drafted from the Website Content Brief's description of
- * the track: "women-led small businesses and home-based entrepreneurs
- * seeking business training, digital skills, visibility, and market access."
- * Mirrors the Founder schema's shape/sections where sensible so the two
- * forms feel like one system.
+ * Enterprise Flightpath — Expression of Interest.
+ * Deliberately short: unlike Founder Flightpath (a full application),
+ * Enterprise Flightpath currently only collects a lightweight expression of
+ * interest — business name, a one-line description, and contact details —
+ * so WISE Lab can follow up directly rather than screening a long form.
  */
 export const enterpriseFormSchema: FormSchema = {
   track: 'enterprise',
-  title: 'Enterprise Flightpath — MSME Training Application',
+  title: 'Enterprise Flightpath — Expression of Interest',
   subtitle:
-    'For women-led small businesses and home-based entrepreneurs seeking business training, digital skills, visibility, and market access.',
+    'For women-led small businesses and home-based entrepreneurs interested in business training, digital skills, visibility, and market access. Share a few details and our team will follow up.',
   themeTrack: 'enterprise',
-  submitLabel: 'Submit application',
+  submitLabel: 'Submit expression of interest',
   successTitle: 'Thank you, {firstName}.',
   successBody:
-    'Your Enterprise Flightpath application is in. Our team will review it and reach out about next steps.',
+    "Your expression of interest is in. Our team will review it and reach out about next steps.",
   sections: [
     {
       id: 'business-basics',
-      title: 'Business basics',
+      title: 'Your business',
       fields: [
         { name: 'businessName', label: 'Business name', type: 'text', required: true },
         {
-          name: 'vertical',
-          label: 'Business vertical',
-          type: 'select',
-          required: true,
-          analytics: { dimension: 'vertical', kind: 'categorical' },
-          options: [
-            { value: 'ecommerce', label: 'E-Commerce / Online Store' },
-            { value: 'fashion-apparel', label: 'Fashion & Apparel' },
-            { value: 'beauty-wellness', label: 'Beauty, Wellness & Personal Care' },
-            { value: 'food-beverages', label: 'Food & Beverages / Home-Based Food Business' },
-            { value: 'handicrafts', label: 'Handicrafts / Artisanal Products' },
-            { value: 'education-training', label: 'Education & Training' },
-            { value: 'health-wellness', label: 'Health & Wellness' },
-            { value: 'creative-industries', label: 'Creative Industries' },
-            { value: 'services', label: 'Services' },
-            { value: 'others', label: 'Others' },
-          ],
-        },
-        {
-          name: 'yearsOperating',
-          label: 'Years in operation',
-          type: 'number',
-          required: true,
-        },
-        {
           name: 'businessDescription',
-          label: 'What does your business do?',
+          label: 'What does your business do? (one or two lines)',
           type: 'textarea',
           required: true,
-        },
-        {
-          name: 'trainingNeeds',
-          label: 'What training or support are you looking for?',
-          type: 'textarea',
-          required: true,
-          helpText: 'Business planning, financial literacy, branding, pricing, digital marketing, e-commerce, etc.',
         },
       ],
     },
@@ -69,7 +35,7 @@ export const enterpriseFormSchema: FormSchema = {
       id: 'contact-information',
       title: 'Contact information',
       fields: [
-        { name: 'primaryContactName', label: 'Primary contact name', type: 'text', required: true },
+        { name: 'primaryContactName', label: 'Contact name', type: 'text', required: true },
         { name: 'contactNumber', label: 'Contact number', type: 'tel', required: true },
         {
           name: 'email',
@@ -85,39 +51,6 @@ export const enterpriseFormSchema: FormSchema = {
           type: 'text',
           required: true,
           analytics: { dimension: 'city', kind: 'categorical' },
-        },
-        {
-          name: 'gender',
-          label: 'Gender',
-          type: 'select',
-          required: true,
-          analytics: { dimension: 'gender', kind: 'categorical' },
-          options: [
-            { value: 'female', label: 'Female' },
-            { value: 'male', label: 'Male' },
-            { value: 'other', label: 'Other' },
-            { value: 'prefer-not-to-say', label: 'Prefer not to say' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'how-did-you-hear',
-      title: 'How did you hear about WISE Lab',
-      fields: [
-        {
-          name: 'referralSource',
-          label: 'How did you hear about WISE Lab?',
-          type: 'select',
-          required: true,
-          analytics: { dimension: 'source', kind: 'categorical' },
-          options: [
-            { value: 'social-media', label: 'Social Media' },
-            { value: 'peer-referral', label: 'Peer Referral' },
-            { value: 'email', label: 'Email' },
-            { value: 'print-electronic-media', label: 'Print / Electronic Media' },
-            { value: 'others', label: 'Others' },
-          ],
         },
       ],
     },

@@ -86,6 +86,14 @@ export interface FormSection {
 
 export type ApplicationTrack = 'founder' | 'enterprise' | 'mentor' | 'partner'
 
+/**
+ * Everything a `submissions` row can be tagged with — the four schema-driven
+ * application tracks plus 'wise-connect' (the homepage contact form, which
+ * has no FormSchema/route of its own but shares the same table/RLS/admin
+ * list pattern — see submitWiseConnectInquiry in submitApplication.ts).
+ */
+export type SubmissionTrack = ApplicationTrack | 'wise-connect'
+
 export interface FormSchema {
   /** application track key, also used as the /apply/:track route param */
   track: ApplicationTrack
@@ -110,7 +118,7 @@ export interface FormSchema {
  * shape to deal with instead of one per track.
  */
 export interface SubmissionPayload {
-  track: ApplicationTrack
+  track: SubmissionTrack
   /** raw field values keyed by FieldDef.name (tables serialize to arrays of row objects) */
   values: Record<string, unknown>
   /** flattened { dimension: value } map built from fields marked `analytics` */

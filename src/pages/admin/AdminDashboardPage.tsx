@@ -4,7 +4,7 @@ import { listSubmissions, aggregateByDimension, type StoredSubmission } from '@/
 
 const TRACK_LABELS: Record<string, string> = {
   founder: 'Founder Flightpath',
-  enterprise: 'Enterprise Flightpath',
+  enterprise: 'Enterprise Flightpath (EOI)',
   mentor: 'Guide Her Growth',
   partner: 'Open the Ecosystem',
 }
@@ -14,8 +14,11 @@ export function AdminDashboardPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // WISE Connect inquiries share the submissions table but aren't
+    // applications — they get their own tab (AdminWiseConnectPage), so
+    // they're excluded from this dashboard's counts/charts.
     listSubmissions().then((s) => {
-      setSubmissions(s)
+      setSubmissions(s.filter((row) => row.track !== 'wise-connect'))
       setLoading(false)
     })
   }, [])

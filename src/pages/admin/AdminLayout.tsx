@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navigate, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { FileText, LayoutDashboard, LogOut, Menu, Newspaper, X } from 'lucide-react'
+import { FileText, LayoutDashboard, LogOut, Menu, MessageCircle, Newspaper, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { WiseMark } from '@/components/WiseLabLogo'
@@ -15,6 +15,7 @@ export function AdminLayout() {
   const nav = [
     { to: '/admin', label: t('admin.nav.dashboard'), Icon: LayoutDashboard, end: true },
     { to: '/admin/submissions', label: t('admin.nav.submissions'), Icon: FileText },
+    { to: '/admin/wise-connect', label: t('admin.nav.wiseConnect', 'WISE Connect'), Icon: MessageCircle },
     { to: '/admin/blog', label: t('admin.nav.blog'), Icon: Newspaper },
   ]
 

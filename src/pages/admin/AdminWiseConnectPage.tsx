@@ -2,62 +2,34 @@ import { useEffect, useState } from 'react'
 import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal'
 import { listSubmissions, type StoredSubmission } from '@/lib/admin/submissions'
 
-const TRACK_LABELS: Record<string, string> = {
-  founder: 'Founder Flightpath',
-  enterprise: 'Enterprise Flightpath (EOI)',
-  mentor: 'Guide Her Growth',
-  partner: 'Open the Ecosystem',
-}
-
-export function AdminSubmissionsPage() {
-  const [submissions, setSubmissions] = useState<StoredSubmission[]>([])
+export function AdminWiseConnectPage() {
+  const [inquiries, setInquiries] = useState<StoredSubmission[]>([])
   const [loading, setLoading] = useState(true)
   const [expanded, setExpanded] = useState<string | null>(null)
-  const [filter, setFilter] = useState<string>('all')
 
   useEffect(() => {
-    // WISE Connect inquiries have their own dedicated admin tab
-    // (AdminWiseConnectPage) rather than appearing in this generic list.
     listSubmissions().then((s) => {
-      setSubmissions(s.filter((row) => row.track !== 'wise-connect'))
+      setInquiries(s.filter((row) => row.track === 'wise-connect'))
       setLoading(false)
     })
   }, [])
 
-  const filtered = filter === 'all' ? submissions : submissions.filter((s) => s.track === filter)
-
   return (
     <div>
       <Reveal>
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="font-display text-2xl font-bold text-plum sm:text-3xl">Submissions</h1>
-            <p className="mt-2 text-plum/60">All application submissions, newest first.</p>
-          </div>
-          <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="h-11 w-full rounded-xl border border-plum/15 bg-white px-3 text-sm sm:w-auto"
-          >
-            <option value="all">All tracks</option>
-            {Object.entries(TRACK_LABELS).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+        <h1 className="font-display text-2xl font-bold text-plum sm:text-3xl">WISE Connect</h1>
+        <p className="mt-2 text-plum/60">Inquiries submitted through the homepage contact form, newest first.</p>
       </Reveal>
 
       {loading ? (
         <p className="mt-8 text-plum/50">Loading…</p>
-      ) : filtered.length === 0 ? (
+      ) : inquiries.length === 0 ? (
         <p className="mt-8 rounded-2xl border border-plum/10 bg-white p-6 text-plum/50">
-          No submissions yet.
+          No inquiries yet.
         </p>
       ) : (
         <RevealGroup className="mt-8 space-y-3" stagger={0.04}>
-          {filtered.map((s) => (
+          {inquiries.map((s) => (
             <RevealItem key={s.id}>
               <div className="rounded-2xl border border-plum/10 bg-white shadow-card transition-shadow duration-300 hover:shadow-card-hover">
                 <button
@@ -67,16 +39,10 @@ export function AdminSubmissionsPage() {
                 >
                   <div className="min-w-0">
                     <p className="truncate font-semibold text-plum">
-                      {String(
-                        s.values.primaryFounderName ??
-                          s.values.primaryContactName ??
-                          s.values.fullName ??
-                          s.values.contactName ??
-                          'Untitled applicant'
-                      )}
+                      {String(s.values.name ?? 'Untitled inquiry')}
                     </p>
                     <p className="mt-1 text-sm text-plum/50">
-                      {TRACK_LABELS[s.track]} · {new Date(s.submittedAt).toLocaleString()}
+                      {String(s.values.inquiryType ?? '')} · {new Date(s.submittedAt).toLocaleString()}
                     </p>
                   </div>
                   <span className="shrink-0 text-sm font-semibold text-teal">

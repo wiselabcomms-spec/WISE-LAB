@@ -43,3 +43,47 @@ export async function submitApplication(payload: SubmissionPayload): Promise<voi
 
   if (error) throw error
 }
+
+interface WiseConnectInquiry extends Record<string, unknown> {
+  name: string
+  email: string
+  inquiryType: string
+  message: string
+}
+
+/**
+ * WISE Connect's contact form isn't a schema-driven /apply/:track
+ * application, so it doesn't go through `submitApplication`/`SubmissionPayload`
+ * — but it reuses the same `submissions` table (track = 'wise-connect', see
+ * supabase/migrations/0004_wise_connect_track.sql) and the same
+ * configured-vs-not fallback behavior.
+ */
+export async function submitWiseConnectInquiry(inquiry: WiseConnectInquiry): Promise<void> {
+  const payload = {
+    track: 'wise-connect' as const,
+    values: inquiry,
+    analytics: { inquiryType: inquiry.inquiryType },
+    submittedAt: new Date().toISOString(),
+    meta: {
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+      locale: typeof navigator !== 'undefined' ? navigator.language : 'en',
+    },
+  }
+
+  const supabase = getSupabase()
+
+  if (!supabase) {
+    queueLocally(payload)
+    return
+  }
+
+  const { error } = await supabase.from('submissions').insert({
+    track: payload.track,
+    values: payload.values,
+    analytics: payload.analytics,
+    submitted_at: payload.submittedAt,
+    meta: payload.meta,
+  })
+
+  if (error) throw error
+}
