@@ -88,7 +88,15 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
     })
 
     const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => {
-      syncSession(s)
+      // Supabase's own guidance: don't call other Supabase methods directly
+      // inside this callback — it runs while the auth lock is held, and
+      // syncSession's admin_profiles query internally calls getSession(),
+      // which can stall waiting on that same lock. Deferring one tick clears it.
+      setTimeout(() => {
+        syncSession(s).catch(() => {
+          if (alive) setIsAdmin(false)
+        })
+      }, 0)
     })
 
     return () => {

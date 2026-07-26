@@ -217,6 +217,7 @@
     "socialAriaLabel": "WISE Lab on {{label}} (opens in a new tab)",
     "thankYou": "Thank you, {{name}}.",
     "inquiryReceived": "Your inquiry is in. We'll be in touch soon.",
+    "submitError": "Something went wrong sending your inquiry. Please try again.",
     "closingLine": "The right conversation can open the next door.",
     "sendAnother": "Send another inquiry",
     "fullName": "Full name",
@@ -238,6 +239,18 @@
     "title": "Transparency in every stage of growth",
     "subtitle": "Annual audit reports and programme impact summaries will be published here as they become available, so our partners and community can track progress alongside us.",
     "empty": "Reports are being prepared and will appear here soon."
+  },
+  "blogPage": {
+    "backToWiseLab": "Back to WISE Lab",
+    "eyebrow": "WISE Journal",
+    "title": "Stories from the Lab",
+    "intro": "Updates, milestones, and stories from the WISE Lab community.",
+    "unconfigured": "The journal isn't connected yet — check back soon.",
+    "empty": "No posts published yet — check back soon.",
+    "readMore": "Read more"
+  },
+  "blogPostPage": {
+    "backToJournal": "Back to the Journal"
   },
   "apply": {
     "backToWiseLab": "Back to WISE Lab"
@@ -431,20 +444,17 @@
       }
     },
     "enterprise": {
-      "title": "Enterprise Flightpath — MSME Training Application",
-      "subtitle": "For women-led small businesses and home-based entrepreneurs seeking business training, digital skills, visibility, and market access.",
-      "submitLabel": "Submit application",
+      "title": "Enterprise Flightpath — Expression of Interest",
+      "subtitle": "For women-led small businesses and home-based entrepreneurs interested in business training, digital skills, visibility, and market access. Share a few details and our team will follow up.",
+      "submitLabel": "Submit expression of interest",
       "successTitle": "Thank you, {firstName}.",
-      "successBody": "Your Enterprise Flightpath application is in. Our team will review it and reach out about next steps.",
+      "successBody": "Your expression of interest is in. Our team will review it and reach out about next steps.",
       "sections": {
         "business-basics": {
-          "title": "Business basics"
+          "title": "Your business"
         },
         "contact-information": {
           "title": "Contact information"
-        },
-        "how-did-you-hear": {
-          "title": "How did you hear about WISE Lab"
         },
         "commitment": {
           "title": "Commitment statement"
@@ -454,33 +464,11 @@
         "businessName": {
           "label": "Business name"
         },
-        "vertical": {
-          "label": "Business vertical",
-          "options": {
-            "ecommerce": "E-Commerce / Online Store",
-            "fashion-apparel": "Fashion & Apparel",
-            "beauty-wellness": "Beauty, Wellness & Personal Care",
-            "food-beverages": "Food & Beverages / Home-Based Food Business",
-            "handicrafts": "Handicrafts / Artisanal Products",
-            "education-training": "Education & Training",
-            "health-wellness": "Health & Wellness",
-            "creative-industries": "Creative Industries",
-            "services": "Services",
-            "others": "Others"
-          }
-        },
-        "yearsOperating": {
-          "label": "Years in operation"
-        },
         "businessDescription": {
-          "label": "What does your business do?"
-        },
-        "trainingNeeds": {
-          "label": "What training or support are you looking for?",
-          "helpText": "Business planning, financial literacy, branding, pricing, digital marketing, e-commerce, etc."
+          "label": "What does your business do? (one or two lines)"
         },
         "primaryContactName": {
-          "label": "Primary contact name"
+          "label": "Contact name"
         },
         "contactNumber": {
           "label": "Contact number"
@@ -491,25 +479,6 @@
         },
         "cityProvince": {
           "label": "City / Province"
-        },
-        "gender": {
-          "label": "Gender",
-          "options": {
-            "female": "Female",
-            "male": "Male",
-            "other": "Other",
-            "prefer-not-to-say": "Prefer not to say"
-          }
-        },
-        "referralSource": {
-          "label": "How did you hear about WISE Lab?",
-          "options": {
-            "social-media": "Social Media",
-            "peer-referral": "Peer Referral",
-            "email": "Email",
-            "print-electronic-media": "Print / Electronic Media",
-            "others": "Others"
-          }
         },
         "commitmentConsent": {
           "label": "I confirm my commitment to actively participate and contribute to the growth of Pakistan’s women entrepreneurship ecosystem."

@@ -31,7 +31,7 @@ const GOAL_DEFAULTS: Record<(typeof GOALS)[number], string> = {
 export function MissionPage() {
   const { t } = useTranslation()
   return (
-    <main className="relative min-h-screen overflow-hidden bg-beige py-16 md:py-24">
+    <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">
       <div className="grain" />
       <div className="container-wise relative max-w-3xl">
         <Reveal>

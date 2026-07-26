@@ -4,7 +4,7 @@ import { Hero3D } from '@/components/Hero3D'
 import { TrackToggle } from '@/components/Hero3D/TrackToggle'
 import { Button } from '@/components/ui/button'
 import { MagneticButton } from '@/components/MagneticButton'
-import { useTrack } from '@/lib/useTrackState'
+import { useTrack, useIsDesktop } from '@/lib/useTrackState'
 import { TRACK_THEME } from '@/lib/theme'
 import { isRtl } from '@/i18n'
 import { cn } from '@/lib/utils'
@@ -13,6 +13,10 @@ export function Hero() {
   const { t, i18n } = useTranslation()
   const { track } = useTrack()
   const dark = track !== 'neutral'
+  // Gate mounting, not just CSS visibility — a `hidden` element still loads
+  // the three.js chunk and runs its render loop off-screen on mobile, which
+  // is exactly the slow-phone loading complaint this was meant to fix.
+  const isDesktop = useIsDesktop()
   // LTR (English): figure right, text left (default reading order).
   // RTL (Urdu/Pashto/Punjabi): mirrored — figure left, text right — so the
   // text sits on the side reading naturally starts from.
@@ -46,16 +50,16 @@ export function Hero() {
       />
       <div className="grain -z-10" />
 
-      {/* 3D figure — occupies the side opposite the text on desktop; hidden on
-          mobile where the particle silhouette killed text contrast */}
-      <div
-        className={cn(
-          'absolute inset-0 hidden lg:block',
-          rtl ? 'lg:right-[42%]' : 'lg:left-[42%]'
-        )}
-      >
-        <Hero3D />
-      </div>
+      {/* 3D figure — occupies the side opposite the text on desktop; not
+          mounted at all on mobile (not just hidden) where the particle
+          silhouette killed text contrast and the render loop wasted battery */}
+      {isDesktop && (
+        <div
+          className={cn('absolute inset-0', rtl ? 'lg:right-[42%]' : 'lg:left-[42%]')}
+        >
+          <Hero3D />
+        </div>
+      )}
 
       <div className="container-wise relative z-10 flex flex-1 flex-col justify-center pt-28 pb-40 md:pt-32 lg:items-start">
         <div className="max-w-xl">

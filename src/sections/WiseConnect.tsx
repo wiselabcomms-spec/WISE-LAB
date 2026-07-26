@@ -66,7 +66,9 @@ export function WiseConnect() {
       await submitWiseConnectInquiry({ name, email, inquiryType: inquiry, message })
       setSent(true)
     } catch {
-      setSubmitError(t('form.submitError', 'Something went wrong. Please try again.'))
+      setSubmitError(
+        t('wiseConnect.submitError', 'Something went wrong sending your inquiry. Please try again.')
+      )
     } finally {
       setSubmitting(false)
     }
@@ -237,7 +239,9 @@ export function WiseConnect() {
                   </Field>
 
                   {submitError && (
-                    <p className="text-[13px] font-medium text-destructive">{submitError}</p>
+                    <p role="alert" className="text-[13px] font-medium text-destructive">
+                      {submitError}
+                    </p>
                   )}
 
                   <Button

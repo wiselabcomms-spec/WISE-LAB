@@ -174,6 +174,7 @@ export function BuildTracks() {
                   <Link
                     to={c.readMoreHref}
                     onClick={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => e.stopPropagation()}
                     className="link-underline relative mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold"
                     style={{ color: c.accent }}
                   >
@@ -184,6 +185,7 @@ export function BuildTracks() {
                     <a
                       href="#enter-the-lab"
                       onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
                       className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
                       style={{ background: c.primary }}
                     >

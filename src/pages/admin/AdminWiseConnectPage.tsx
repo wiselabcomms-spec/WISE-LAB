@@ -35,6 +35,7 @@ export function AdminWiseConnectPage() {
                 <button
                   type="button"
                   onClick={() => setExpanded(expanded === s.id ? null : s.id)}
+                  aria-expanded={expanded === s.id}
                   className="flex w-full items-center justify-between gap-4 p-5 text-left"
                 >
                   <div className="min-w-0">

@@ -69,3 +69,22 @@ export function usePrefersReducedMotion() {
   }, [])
   return reduced
 }
+
+/**
+ * Reactive `(min-width: 1024px)` match — Tailwind's `lg` breakpoint. Use this
+ * (not just a CSS `hidden lg:block` wrapper) to gate mounting anything heavy
+ * like the Hero3D scene on mobile: a CSS-hidden element still mounts, still
+ * lazy-loads its chunk, and still runs its render loop off-screen.
+ */
+export function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const onChange = () => setIsDesktop(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+  return isDesktop
+}
