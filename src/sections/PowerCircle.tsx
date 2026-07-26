@@ -21,8 +21,8 @@ function getPartners(t: TFunction) {
       role: t('powerCircle.partners.mobilink', 'Co-Lead Partner'),
       logo: '/partners/mobilink-mmbl.png',
       description: "Pakistan’s leading digital microfinance bank, advancing financial inclusion, digital banking, and growth opportunities for women entrepreneurs and MSMEs.",
-      invert: false,
-      chip: true,
+      invert: true,
+      chip: false,
     },
     {
       name: 'Change Mechanics',

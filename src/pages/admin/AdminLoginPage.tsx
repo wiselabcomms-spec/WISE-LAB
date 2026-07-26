@@ -11,13 +11,18 @@ import { DEMO_ACCESS_CODE, DEMO_MODE } from '@/lib/demo/config'
 
 export function AdminLoginPage() {
   const { t } = useTranslation()
-  const { session, signIn, signInDemo } = useAdminAuth()
+  const { session, isAdmin, signIn, signInDemo } = useAdminAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
 
-  if (session) return <Navigate to="/admin" replace />
+  // Wait for isAdmin too, not just session — AdminLayout requires both
+  // before it'll show the dashboard (it bounces back here otherwise), and
+  // isAdmin resolves slightly after session via a separate async
+  // admin_profiles lookup. Navigating on session alone caused the two
+  // pages to redirect at each other in that gap.
+  if (session && isAdmin) return <Navigate to="/admin" replace />
 
   const onSubmitDemo = (e: React.FormEvent) => {
     e.preventDefault()

@@ -25,6 +25,9 @@ scripts/run-migration.mjs
 # Supabase CLI temp
 supabase/.temp/
 
+# Playwright MCP session artifacts (screenshots, console logs from testing)
+.playwright-mcp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
