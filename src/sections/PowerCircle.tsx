@@ -31,7 +31,7 @@ function getPartners(t: TFunction) {
       role: t('powerCircle.partners.changeMechanics', 'Managing Partner'),
       logo: '/partners/change-mechanics.png',
       description: "An innovation and ecosystem-development organization bringing programme design, entrepreneurship support, and implementation expertise to WISE Lab.",
-      invert: true,
+      invert: false,
       chip: false,
       // wide horizontal lockup with heavy internal padding — needs the full
       // box height to read at the same optical size as the stacked marks
