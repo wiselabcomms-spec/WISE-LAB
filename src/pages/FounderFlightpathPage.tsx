@@ -2,9 +2,16 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 
 export function FounderFlightpathPage() {
   const { t } = useTranslation()
+  useDocumentMeta({
+    title: 'Founder Flightpath',
+    description:
+      'A structured six-month incubation programme for women-led, technology-enabled startups ready to validate, strengthen, launch, or scale.',
+    path: '/founder-flightpath',
+  })
   return (
     <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">
       <div className="grain" />

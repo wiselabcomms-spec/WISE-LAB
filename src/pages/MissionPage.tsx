@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 
 const GOALS = [
   'missionPage.goals.incubate',
@@ -30,6 +31,12 @@ const GOAL_DEFAULTS: Record<(typeof GOALS)[number], string> = {
 
 export function MissionPage() {
   const { t } = useTranslation()
+  useDocumentMeta({
+    title: 'Our Mission',
+    description:
+      "WISE Lab's mission: empowering women entrepreneurs, startups, and MSMEs with incubation, training, mentorship, and market access.",
+    path: '/mission',
+  })
   return (
     <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">
       <div className="grain" />

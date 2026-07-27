@@ -2,9 +2,16 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 
 export function EnterpriseFlightpathPage() {
   const { t } = useTranslation()
+  useDocumentMeta({
+    title: 'Enterprise Flightpath',
+    description:
+      'A nationwide capacity-building programme for women running micro, small, home-based, or early-stage businesses.',
+    path: '/enterprise-flightpath',
+  })
   return (
     <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">
       <div className="grain" />

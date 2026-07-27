@@ -5,11 +5,17 @@ import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
 import { getPostBySlug } from '@/lib/blog/api'
 import type { BlogPost } from '@/lib/blog/types'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 
 export function BlogPostPage() {
   const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
   const [post, setPost] = useState<BlogPost | null | undefined>(undefined)
+  useDocumentMeta({
+    title: post?.title,
+    description: post?.excerpt,
+    path: `/blog/${slug ?? ''}`,
+  })
 
   useEffect(() => {
     if (!slug) return

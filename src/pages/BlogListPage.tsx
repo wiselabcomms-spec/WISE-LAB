@@ -7,6 +7,7 @@ import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal'
 import { listPublishedPosts } from '@/lib/blog/api'
 import type { BlogPost } from '@/lib/blog/types'
 import { isSupabaseConfigured } from '@/lib/supabase'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 
 const MotionLink = motion(Link)
 
@@ -14,6 +15,12 @@ export function BlogListPage() {
   const { t } = useTranslation()
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
+  useDocumentMeta({
+    title: 'Journal',
+    description:
+      'Stories, updates, and insights from WISE Lab — Women Innovation & Startup Empowerment Lab.',
+    path: '/blog',
+  })
 
   useEffect(() => {
     let alive = true

@@ -1,22 +1,23 @@
 import type { FormSchema } from '../types'
 
 /**
- * Guide Her Growth — Become a Mentor application.
- * Drafted from the Content Brief: "For experts, founders, investors,
- * trainers, and professionals who want to guide women entrepreneurs through
- * practical support." Uses `themeTrack: 'neutral'` since mentor/partner
- * aren't part of the founder/enterprise track-color system.
+ * Guide Her Growth — Expression of Interest.
+ * Deliberately short: like Enterprise Flightpath, mentoring starts as a
+ * lightweight expression of interest — who you are, what you can help with,
+ * and how to reach you — so WISE Lab can follow up directly rather than
+ * screening a long application. Uses `themeTrack: 'neutral'` since
+ * mentor/partner aren't part of the founder/enterprise track-color system.
  */
 export const mentorFormSchema: FormSchema = {
   track: 'mentor',
-  title: 'Guide Her Growth — Become a Mentor',
+  title: 'Guide Her Growth — Expression of Interest',
   subtitle:
-    'For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical support.',
+    'For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical support. Share a few details and our team will follow up.',
   themeTrack: 'neutral',
-  submitLabel: 'Submit mentor application',
+  submitLabel: 'Submit expression of interest',
   successTitle: 'Thank you, {firstName}.',
   successBody:
-    'Your mentor application is in. Our team will review it and reach out about next steps.',
+    'Your expression of interest is in. Our team will review it and reach out about next steps.',
   sections: [
     {
       id: 'mentor-basics',
@@ -43,27 +44,10 @@ export const mentorFormSchema: FormSchema = {
           ],
         },
         {
-          name: 'yearsExperience',
-          label: 'Years of relevant experience',
-          type: 'number',
-          required: true,
-        },
-        {
           name: 'motivation',
-          label: 'Why do you want to mentor with WISE Lab?',
+          label: 'How would you like to support women founders? (one or two lines)',
           type: 'textarea',
           required: true,
-        },
-        {
-          name: 'availability',
-          label: 'Weekly availability',
-          type: 'select',
-          required: true,
-          options: [
-            { value: '1-2-hours', label: '1–2 hours / week' },
-            { value: '3-5-hours', label: '3–5 hours / week' },
-            { value: '5-plus-hours', label: '5+ hours / week' },
-          ],
         },
       ],
     },

@@ -194,9 +194,9 @@
     "title2": "her take flight",
     "intro": "WISE Lab is led by a multidisciplinary team across incubation, entrepreneurship development, partnerships, communications, training, technology, and ecosystem engagement — building the space where she can become a founder.",
     "team": {
-      "name": "Ms. Muneaza Jamil Durrani",
+      "name": "Muneaza Durrani",
       "role": "Project Director",
-      "linkedinLabel": "Muneaza Jamil Durrani on LinkedIn",
+      "linkedinLabel": "Muneaza Durrani on LinkedIn",
       "bio": "Leads WISE Lab's programme direction — setting the vision, standards, and day-to-day execution that help women entrepreneurs access mentorship, markets, capital readiness, and the right room to grow. She is the founding member of the team building the platform."
     },
     "comingSoon": "More of the crew is joining soon. Every flight needs wings — this is the team building them."
@@ -288,7 +288,8 @@
           "title": "How did you hear about WISE Lab"
         },
         "commitment": {
-          "title": "Commitment statement"
+          "title": "Commitment statement",
+          "description": "WISE Lab encourages women founders and co-founders to lead confidently and transform their ideas into sustainable businesses."
         }
       },
       "fields": {
@@ -308,9 +309,11 @@
             "health-wellness": "Health & Wellness (HealthTech, Fitness, Nutrition)",
             "social-enterprise": "Social Enterprise / Community Impact",
             "creative-industries": "Creative Industries (Design, Content, Photography, Crafts)",
-            "services": "Services (Event Management, Marketing, Consultancy)",
             "others": "Others"
           }
+        },
+        "verticalOther": {
+          "label": "Please specify your vertical"
         },
         "stage": {
           "label": "Startup stage",
@@ -318,12 +321,19 @@
             "idea": "Idea",
             "prototype": "Prototype",
             "mvp": "MVP",
-            "established": "Established Product/Service"
+            "established": "Established Product / Services",
+            "others": "Others"
           }
+        },
+        "stageOther": {
+          "label": "Please specify your stage"
         },
         "establishmentYear": {
           "label": "Startup establishment year",
           "placeholder": "e.g. 2023"
+        },
+        "ideaOverview": {
+          "label": "Idea overview"
         },
         "ideaBrief": {
           "label": "Idea brief",
@@ -337,13 +347,12 @@
           "helpText": "What problem are you solving, and how is your solution unique?"
         },
         "targetMarket": {
-          "label": "Target market"
-        },
-        "customers": {
-          "label": "Customers"
+          "label": "Target market",
+          "helpText": "Who will buy your product / service? Your audience."
         },
         "competition": {
-          "label": "Competition"
+          "label": "Competitors",
+          "helpText": "Who are your main local and international competitors, if any?"
         },
         "coreStrength": {
           "label": "Core strength / innovation"
@@ -356,7 +365,8 @@
           "placeholder": "Website / Facebook / Instagram / TikTok / Other"
         },
         "revenueStreams": {
-          "label": "Revenue streams"
+          "label": "Revenue streams",
+          "helpText": "How does your business make money?"
         },
         "team": {
           "label": "Team members",
@@ -387,17 +397,19 @@
           }
         },
         "incubationDetails": {
-          "label": "Incubation / training program details"
+          "label": "Incubation / training program details",
+          "helpText": "Write NA if you would rather not share details."
         },
         "availableFullYear": {
-          "label": "Will you be available for the next full year to incubate your startup at WISE Lab Islamabad?",
+          "label": "Will you be available between October 2026 – March 2027 to incubate your startup at WISE Lab (Islamabad)?",
           "options": {
             "yes": "Yes",
-            "no": "No"
+            "no": "No",
+            "online": "Online (for applicants and business owners outside Islamabad)"
           }
         },
         "hasFunding": {
-          "label": "Have you received funding / investment before?",
+          "label": "Have you received any funding or investment before?",
           "options": {
             "yes": "Yes",
             "no": "No"
@@ -420,13 +432,7 @@
           "label": "City / Province"
         },
         "gender": {
-          "label": "Gender",
-          "options": {
-            "female": "Female",
-            "male": "Male",
-            "other": "Other",
-            "prefer-not-to-say": "Prefer not to say"
-          }
+          "label": "Gender"
         },
         "referralSource": {
           "label": "How did you hear about WISE Lab?",
@@ -439,7 +445,11 @@
           }
         },
         "commitmentConsent": {
-          "label": "I confirm my commitment to actively participate, attend mentoring sessions, and contribute to the growth of Pakistan’s women entrepreneurship ecosystem."
+          "label": "By applying, I confirm my commitment to actively participate in the incubation program, attend mentoring sessions, and contribute to the growth of Pakistan’s women entrepreneurship ecosystem."
+        },
+        "applicantSignature": {
+          "label": "Applicant signature",
+          "helpText": "Type your full name."
         }
       }
     },
@@ -486,11 +496,11 @@
       }
     },
     "mentor": {
-      "title": "Guide Her Growth — Become a Mentor",
-      "subtitle": "For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical support.",
-      "submitLabel": "Submit mentor application",
+      "title": "Guide Her Growth — Expression of Interest",
+      "subtitle": "For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical support. Share a few details and our team will follow up.",
+      "submitLabel": "Submit expression of interest",
       "successTitle": "Thank you, {firstName}.",
-      "successBody": "Your mentor application is in. Our team will review it and reach out about next steps.",
+      "successBody": "Your expression of interest is in. Our team will review it and reach out about next steps.",
       "sections": {
         "mentor-basics": {
           "title": "About you"
@@ -525,19 +535,8 @@
             "other": "Other"
           }
         },
-        "yearsExperience": {
-          "label": "Years of relevant experience"
-        },
         "motivation": {
-          "label": "Why do you want to mentor with WISE Lab?"
-        },
-        "availability": {
-          "label": "Weekly availability",
-          "options": {
-            "1-2-hours": "1–2 hours / week",
-            "3-5-hours": "3–5 hours / week",
-            "5-plus-hours": "5+ hours / week"
-          }
+          "label": "How would you like to support women founders? (one or two lines)"
         },
         "contactNumber": {
           "label": "Contact number"
@@ -559,11 +558,11 @@
       }
     },
     "partner": {
-      "title": "Open the Ecosystem — Partner with WISE",
-      "subtitle": "For organizations ready to collaborate on women-led innovation, enterprise, access, and inclusive growth.",
-      "submitLabel": "Submit partnership inquiry",
+      "title": "Open the Ecosystem — Expression of Interest",
+      "subtitle": "For organizations ready to collaborate on women-led innovation, enterprise, access, and inclusive growth. Share a few details and our team will follow up.",
+      "submitLabel": "Submit expression of interest",
       "successTitle": "Thank you, {firstName}.",
-      "successBody": "Your partnership inquiry is in. Our team will review it and reach out about next steps.",
+      "successBody": "Your expression of interest is in. Our team will review it and reach out about next steps.",
       "sections": {
         "organization-basics": {
           "title": "Organization"
@@ -599,10 +598,7 @@
           "placeholder": "https://…"
         },
         "proposedCollaboration": {
-          "label": "What kind of collaboration are you proposing?"
-        },
-        "contributionAreas": {
-          "label": "Key contribution areas",
+          "label": "What kind of collaboration are you proposing? (one or two lines)",
           "helpText": "Skills, markets, finance, mentorship, ecosystem support, etc."
         },
         "contactName": {

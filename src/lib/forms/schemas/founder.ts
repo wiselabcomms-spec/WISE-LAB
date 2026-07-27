@@ -3,11 +3,14 @@ import type { FormSchema } from '../types'
 /**
  * Founder Flightpath — WISE Lab Incubation Application Form.
  *
- * Field-for-field match to "WISE Incubation Application Form.docx" (the
- * ground-truth schema). Section order and every question follow the docx;
- * nothing added or removed. The "Applicant Signature" commitment is
- * implemented as a required consent checkbox rather than a signature field,
- * since this is a web form (per the master prompt's explicit instruction).
+ * Field-for-field match to the live Google Form ("WISE Lab – Women Innovation
+ * and Startup Empowerment Application Form"), which is the ground truth for
+ * this track. Section order and every question follow it. Two deliberate
+ * web-form adaptations:
+ *  - "Team Details" (asked three times on the Google Form) is one repeatable
+ *    table here, so a team of any size can be captured.
+ *  - The commitment statement is a required consent checkbox, with the
+ *    "Applicant Signature" captured as a typed name below it.
  */
 export const founderFormSchema: FormSchema = {
   track: 'founder',
@@ -28,7 +31,6 @@ export const founderFormSchema: FormSchema = {
           name: 'startupName',
           label: 'Startup name',
           type: 'text',
-          required: true,
           placeholder: 'Your startup or venture name',
         },
         {
@@ -47,9 +49,15 @@ export const founderFormSchema: FormSchema = {
             { value: 'health-wellness', label: 'Health & Wellness (HealthTech, Fitness, Nutrition)' },
             { value: 'social-enterprise', label: 'Social Enterprise / Community Impact' },
             { value: 'creative-industries', label: 'Creative Industries (Design, Content, Photography, Crafts)' },
-            { value: 'services', label: 'Services (Event Management, Marketing, Consultancy)' },
             { value: 'others', label: 'Others' },
           ],
+        },
+        {
+          name: 'verticalOther',
+          label: 'Please specify your vertical',
+          type: 'text',
+          required: true,
+          conditional: { field: 'vertical', equals: 'others' },
         },
         {
           name: 'stage',
@@ -61,8 +69,16 @@ export const founderFormSchema: FormSchema = {
             { value: 'idea', label: 'Idea' },
             { value: 'prototype', label: 'Prototype' },
             { value: 'mvp', label: 'MVP' },
-            { value: 'established', label: 'Established Product/Service' },
+            { value: 'established', label: 'Established Product / Services' },
+            { value: 'others', label: 'Others' },
           ],
+        },
+        {
+          name: 'stageOther',
+          label: 'Please specify your stage',
+          type: 'text',
+          required: true,
+          conditional: { field: 'stage', equals: 'others' },
         },
         {
           name: 'establishmentYear',
@@ -77,6 +93,12 @@ export const founderFormSchema: FormSchema = {
       id: 'idea-overview',
       title: 'Idea overview',
       fields: [
+        {
+          name: 'ideaOverview',
+          label: 'Idea overview',
+          type: 'textarea',
+          required: true,
+        },
         {
           name: 'ideaBrief',
           label: 'Idea brief',
@@ -102,18 +124,14 @@ export const founderFormSchema: FormSchema = {
           label: 'Target market',
           type: 'textarea',
           required: true,
-        },
-        {
-          name: 'customers',
-          label: 'Customers',
-          type: 'textarea',
-          required: true,
+          helpText: 'Who will buy your product / service? Your audience.',
         },
         {
           name: 'competition',
-          label: 'Competition',
+          label: 'Competitors',
           type: 'textarea',
           required: true,
+          helpText: 'Who are your main local and international competitors, if any?',
         },
         {
           name: 'coreStrength',
@@ -131,6 +149,7 @@ export const founderFormSchema: FormSchema = {
           name: 'onlinePresence',
           label: 'Online presence',
           type: 'text',
+          required: true,
           placeholder: 'Website / Facebook / Instagram / TikTok / Other',
         },
         {
@@ -138,6 +157,7 @@ export const founderFormSchema: FormSchema = {
           label: 'Revenue streams',
           type: 'textarea',
           required: true,
+          helpText: 'How does your business make money?',
         },
       ],
     },
@@ -199,6 +219,7 @@ export const founderFormSchema: FormSchema = {
           type: 'textarea',
           conditional: { field: 'hasIncubationExperience', equals: 'yes' },
           required: true,
+          helpText: 'Write NA if you would rather not share details.',
         },
       ],
     },
@@ -207,15 +228,21 @@ export const founderFormSchema: FormSchema = {
       title: 'Availability',
       fields: [
         {
+          // field name kept as-is so previously stored submissions keep the
+          // same key in the `submissions.values` JSON
           name: 'availableFullYear',
           label:
-            'Will you be available for the next full year to incubate your startup at WISE Lab Islamabad?',
+            'Will you be available between October 2026 – March 2027 to incubate your startup at WISE Lab (Islamabad)?',
           type: 'radio',
           required: true,
-          analytics: { dimension: 'availability', kind: 'boolean' },
+          analytics: { dimension: 'availability', kind: 'categorical' },
           options: [
             { value: 'yes', label: 'Yes' },
             { value: 'no', label: 'No' },
+            {
+              value: 'online',
+              label: 'Online (for applicants and business owners outside Islamabad)',
+            },
           ],
         },
       ],
@@ -226,7 +253,7 @@ export const founderFormSchema: FormSchema = {
       fields: [
         {
           name: 'hasFunding',
-          label: 'Have you received funding / investment before?',
+          label: 'Have you received any funding or investment before?',
           type: 'radio',
           required: true,
           analytics: { dimension: 'funded', kind: 'boolean' },
@@ -278,15 +305,8 @@ export const founderFormSchema: FormSchema = {
         {
           name: 'gender',
           label: 'Gender',
-          type: 'select',
+          type: 'text',
           required: true,
-          analytics: { dimension: 'gender', kind: 'categorical' },
-          options: [
-            { value: 'female', label: 'Female' },
-            { value: 'male', label: 'Male' },
-            { value: 'other', label: 'Other' },
-            { value: 'prefer-not-to-say', label: 'Prefer not to say' },
-          ],
         },
       ],
     },
@@ -313,13 +333,21 @@ export const founderFormSchema: FormSchema = {
     {
       id: 'commitment',
       title: 'Commitment statement',
+      description:
+        'WISE Lab encourages women founders and co-founders to lead confidently and transform their ideas into sustainable businesses.',
       fields: [
         {
           name: 'commitmentConsent',
           label:
-            'I confirm my commitment to actively participate, attend mentoring sessions, and contribute to the growth of Pakistan’s women entrepreneurship ecosystem.',
+            'By applying, I confirm my commitment to actively participate in the incubation program, attend mentoring sessions, and contribute to the growth of Pakistan’s women entrepreneurship ecosystem.',
           type: 'consent',
           required: true,
+        },
+        {
+          name: 'applicantSignature',
+          label: 'Applicant signature',
+          type: 'text',
+          helpText: 'Type your full name.',
         },
       ],
     },

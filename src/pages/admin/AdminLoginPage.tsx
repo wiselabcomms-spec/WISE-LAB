@@ -8,10 +8,12 @@ import { Button } from '@/components/ui/button'
 import { WiseMark } from '@/components/WiseLabLogo'
 import { useAdminAuth } from '@/lib/auth/useAdminAuth'
 import { DEMO_ACCESS_CODE, DEMO_MODE } from '@/lib/demo/config'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 
 export function AdminLoginPage() {
   const { t } = useTranslation()
   const { session, isAdmin, signIn, signInDemo } = useAdminAuth()
+  useDocumentMeta({ title: 'Admin sign in', path: '/admin/login', noIndex: true })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)

@@ -5,11 +5,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { WiseMark } from '@/components/WiseLabLogo'
 import { useAdminAuth } from '@/lib/auth/useAdminAuth'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 import { cn } from '@/lib/utils'
 
 export function AdminLayout() {
   const { t } = useTranslation()
   const { session, loading, isAdmin, isDemo, signOut } = useAdminAuth()
+  useDocumentMeta({ title: 'Admin', path: '/admin', noIndex: true })
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const nav = [

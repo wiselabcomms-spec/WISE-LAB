@@ -1,21 +1,23 @@
 import type { FormSchema } from '../types'
 
 /**
- * Open the Ecosystem — Partner with WISE application.
- * Drafted from the Content Brief's Power Circle section: consortium /
- * supporting partner categories (Academic, Corporate, Development,
- * Financial, Media, Investor Networks, Training, Market Access, Community).
+ * Open the Ecosystem — Expression of Interest.
+ * Deliberately short, like Enterprise Flightpath and Guide Her Growth:
+ * organization, category, and what you're proposing, so WISE Lab can follow
+ * up directly. Partner categories come from the Content Brief's Power Circle
+ * section (Academic, Corporate, Development, Financial, Media, Investor
+ * Networks, Training, Market Access, Community).
  */
 export const partnerFormSchema: FormSchema = {
   track: 'partner',
-  title: 'Open the Ecosystem — Partner with WISE',
+  title: 'Open the Ecosystem — Expression of Interest',
   subtitle:
-    'For organizations ready to collaborate on women-led innovation, enterprise, access, and inclusive growth.',
+    'For organizations ready to collaborate on women-led innovation, enterprise, access, and inclusive growth. Share a few details and our team will follow up.',
   themeTrack: 'neutral',
-  submitLabel: 'Submit partnership inquiry',
+  submitLabel: 'Submit expression of interest',
   successTitle: 'Thank you, {firstName}.',
   successBody:
-    'Your partnership inquiry is in. Our team will review it and reach out about next steps.',
+    'Your expression of interest is in. Our team will review it and reach out about next steps.',
   sections: [
     {
       id: 'organization-basics',
@@ -44,13 +46,7 @@ export const partnerFormSchema: FormSchema = {
         { name: 'website', label: 'Website', type: 'url', placeholder: 'https://…' },
         {
           name: 'proposedCollaboration',
-          label: 'What kind of collaboration are you proposing?',
-          type: 'textarea',
-          required: true,
-        },
-        {
-          name: 'contributionAreas',
-          label: 'Key contribution areas',
+          label: 'What kind of collaboration are you proposing? (one or two lines)',
           type: 'textarea',
           required: true,
           helpText: 'Skills, markets, finance, mentorship, ecosystem support, etc.',

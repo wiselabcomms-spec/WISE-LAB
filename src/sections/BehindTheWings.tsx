@@ -42,7 +42,7 @@ export function BehindTheWings() {
             <div className="relative flex min-h-[240px] overflow-hidden bg-plum/5 md:min-h-full">
               <img
                 src="/team/munneaza-durrani.jpeg"
-                alt="Ms. Muneaza Jamil Durrani"
+                alt="Muneaza Durrani"
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
@@ -52,7 +52,7 @@ export function BehindTheWings() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="font-display text-2xl font-bold text-plum">
-                    {t('behindTheWings.team.name', 'Ms. Muneaza Jamil Durrani')}
+                    {t('behindTheWings.team.name', 'Muneaza Durrani')}
                   </h3>
                   <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-teal">
                     {t('behindTheWings.team.role', 'Project Director')}
@@ -64,7 +64,7 @@ export function BehindTheWings() {
                   rel="noopener noreferrer"
                   aria-label={t(
                     'behindTheWings.team.linkedinLabel',
-                    'Muneaza Jamil Durrani on LinkedIn'
+                    'Muneaza Durrani on LinkedIn'
                   )}
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-plum/15 text-plum transition-colors hover:border-teal hover:bg-teal hover:text-white"
                 >

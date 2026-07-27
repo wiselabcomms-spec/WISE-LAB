@@ -7,6 +7,7 @@ import { DynamicForm } from '@/components/DynamicForm'
 import { WiseMark } from '@/components/WiseLabLogo'
 import { getFormSchema } from '@/lib/forms/schemas'
 import { tSubtitle, tTitle } from '@/lib/forms/i18nKeys'
+import { useDocumentMeta } from '@/lib/useDocumentMeta'
 
 /**
  * /apply/:track — dedicated application page for each of the four Enter
@@ -19,6 +20,12 @@ export function ApplyPage() {
   const { t } = useTranslation()
   const { track } = useParams<{ track: string }>()
   const schema = getFormSchema(track)
+
+  useDocumentMeta({
+    title: schema ? tTitle(t, schema) : undefined,
+    description: schema ? tSubtitle(t, schema) : undefined,
+    path: `/apply/${track ?? ''}`,
+  })
 
   useEffect(() => {
     if (!schema) return
