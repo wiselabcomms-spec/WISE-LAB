@@ -15,8 +15,11 @@ type Variant = 'color' | 'white' | 'black'
    ========================================================================== */
 
 const LOGO_SRC = '/wise-lab-logo.png'
-// butterfly mark occupies ~ this fraction of the full lockup height (top-aligned)
-const MARK_ASPECT = 1.35
+// Dedicated tight crop of just the butterfly (no surrounding canvas/wordmark)
+// — using this instead of cropping LOGO_SRC with CSS is what keeps the nav
+// mark from showing a slab of the full lockup's empty margin above the
+// wordmark (that margin was rendering as a big blank gap in the header).
+const MARK_SRC = '/wise-lab-mark.png'
 
 const FILTER: Record<Variant, string | undefined> = {
   color: undefined,
@@ -24,11 +27,18 @@ const FILTER: Record<Variant, string | undefined> = {
   black: 'brightness(0)',
 }
 
-// module-level singleton: load once, key white -> transparent, share the result
-let logoPromise: Promise<string | null> | null = null
-function getKeyedLogo(): Promise<string | null> {
-  if (!logoPromise) {
-    logoPromise = new Promise((resolve) => {
+interface KeyedImage {
+  src: string
+  /** natural width / height, so callers can size a box without guessing */
+  aspect: number
+}
+
+// module-level cache keyed by src: load once per asset, key white -> transparent, share the result
+const keyedImageCache = new Map<string, Promise<KeyedImage | null>>()
+function getKeyedImage(assetSrc: string): Promise<KeyedImage | null> {
+  let promise = keyedImageCache.get(assetSrc)
+  if (!promise) {
+    promise = new Promise((resolve) => {
       const img = new Image()
       img.crossOrigin = 'anonymous'
       img.onload = () => {
@@ -44,31 +54,33 @@ function getKeyedLogo(): Promise<string | null> {
             if (a[i] > 242 && a[i + 1] > 242 && a[i + 2] > 242) a[i + 3] = 0
           }
           g.putImageData(data, 0, 0)
-          resolve(c.toDataURL('image/png'))
+          resolve({ src: c.toDataURL('image/png'), aspect: img.naturalWidth / img.naturalHeight })
         } catch {
           resolve(null)
         }
       }
       img.onerror = () => resolve(null)
-      img.src = LOGO_SRC
+      img.src = assetSrc
     })
+    keyedImageCache.set(assetSrc, promise)
   }
-  return logoPromise
+  return promise
 }
 
-// undefined = loading, null = missing/failed, string = keyed data URL
-function useKeyedLogo(): string | null | undefined {
-  const [src, setSrc] = useState<string | null | undefined>(undefined)
+// undefined = loading, null = missing/failed, KeyedImage = keyed data URL + aspect
+function useKeyedImage(assetSrc: string): KeyedImage | null | undefined {
+  const [result, setResult] = useState<KeyedImage | null | undefined>(undefined)
   useEffect(() => {
     let alive = true
-    getKeyedLogo().then((r) => {
-      if (alive) setSrc(r)
+    setResult(undefined)
+    getKeyedImage(assetSrc).then((r) => {
+      if (alive) setResult(r)
     })
     return () => {
       alive = false
     }
-  }, [])
-  return src
+  }, [assetSrc])
+  return result
 }
 
 interface MarkProps {
@@ -79,18 +91,18 @@ interface MarkProps {
 
 /** Butterfly mark (used in the nav next to an HTML wordmark). */
 export function WiseMark({ variant = 'color', animateIntro = false, className }: MarkProps) {
-  const logo = useKeyedLogo()
+  const mark = useKeyedImage(MARK_SRC)
   const reduce = usePrefersReducedMotion()
 
-  if (logo === null) {
+  if (mark === null) {
     return <WiseMarkSVG variant={variant} animateIntro={animateIntro} className={className} />
   }
 
-  if (logo === undefined) {
-    // Still loading — reserve the exact box so nothing shifts, but don't paint
-    // the SVG fallback here: swapping it for the raster mark a beat later is
-    // what causes the visible "flash" (different artwork, different proportions).
-    return <div className={className} style={{ aspectRatio: String(MARK_ASPECT) }} />
+  if (mark === undefined) {
+    // Still loading — reserve a roughly-square box so nothing shifts, but
+    // don't paint the SVG fallback here: swapping it for the raster mark a
+    // beat later is what causes the visible "flash" (different artwork).
+    return <div className={className} style={{ aspectRatio: '1' }} />
   }
 
   const intro =
@@ -102,13 +114,13 @@ export function WiseMark({ variant = 'color', animateIntro = false, className }:
     <motion.div
       {...intro}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className={cn('overflow-hidden', className)}
-      style={{ aspectRatio: String(MARK_ASPECT) }}
+      className={className}
+      style={{ aspectRatio: String(mark.aspect) }}
     >
       <img
-        src={logo}
+        src={mark.src}
         alt="WISE Lab"
-        className="h-full w-full object-cover object-top"
+        className="h-full w-full object-contain"
         style={{ filter: FILTER[variant] }}
         draggable={false}
       />
@@ -133,7 +145,7 @@ export function WiseLabLogo({
   size = 108,
   className,
 }: LogoProps) {
-  const logo = useKeyedLogo()
+  const logo = useKeyedImage(LOGO_SRC)
   const reduce = usePrefersReducedMotion()
 
   if (logo === null) {
@@ -163,7 +175,7 @@ export function WiseLabLogo({
     <motion.img
       {...intro}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      src={logo}
+      src={logo.src}
       alt="WISE Lab — Her idea. Her enterprise."
       className={cn('w-auto', className)}
       style={{ height: size, filter: FILTER[variant] }}

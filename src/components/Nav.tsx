@@ -85,15 +85,17 @@ export function Nav() {
           : 'border-b border-transparent'
       )}
     >
-      <nav className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-x-4 px-6 py-3 md:px-10 2xl:gap-x-6">
+      <nav className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-x-4 px-6 py-2 md:px-10 xl:py-3 2xl:gap-x-6">
         <a
           href="#hero"
           aria-label={t('nav.home')}
           className="flex items-center gap-3 shrink-0"
         >
-          {/* steps back down at xl so the full link row + CTA fit on one line
-              on a 1280px laptop; the drawer handles everything narrower */}
-          <WiseMark variant={logoVariant} className="h-24 w-auto sm:h-28 xl:h-24 2xl:h-32" />
+          {/* smaller on phones/tablets now that links live in the drawer, not
+              inline — no need to reserve the taller desktop header there.
+              Steps back down at xl so the full link row + CTA fit on one
+              line on a 1280px laptop; the drawer handles everything narrower. */}
+          <WiseMark variant={logoVariant} className="h-14 w-auto sm:h-16 xl:h-24 2xl:h-32" />
         </a>
 
         {/* Desktop links + CTA */}
