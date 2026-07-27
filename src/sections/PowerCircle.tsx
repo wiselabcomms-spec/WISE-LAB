@@ -15,7 +15,7 @@ function getPartners(t: TFunction) {
       description: "Pakistan’s leading digital connectivity company, bringing technological expertise, nationwide reach, and enterprise innovation to the WISE Lab consortium.",
       invert: true,
       chip: false,
-      logoClass: 'max-h-[80%] max-w-[240px]',
+      logoClass: 'h-[60px] md:h-[76px] w-auto object-contain',
     },
     {
       name: 'Mobilink Bank',
@@ -24,7 +24,7 @@ function getPartners(t: TFunction) {
       description: "Pakistan’s leading digital microfinance bank, advancing financial inclusion, digital banking, and growth opportunities for women entrepreneurs and MSMEs.",
       invert: true,
       chip: false,
-      logoClass: 'max-h-[80%] max-w-[240px]',
+      logoClass: 'h-[60px] md:h-[76px] w-auto object-contain',
     },
     {
       name: 'Change Mechanics',
@@ -35,7 +35,7 @@ function getPartners(t: TFunction) {
       chip: false,
       // wide horizontal lockup with heavy internal padding — needs the full
       // box height to read at the same optical size as the stacked marks
-      logoClass: 'max-h-full max-w-[260px]',
+      logoClass: 'h-[44px] md:h-[56px] w-auto object-contain',
     },
   ]
 }

@@ -139,10 +139,10 @@ export function Nav() {
           aria-expanded={menuOpen}
           aria-controls="mobile-nav-drawer"
           className={cn(
-            'flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-colors xl:hidden',
+            'flex h-11 w-11 shrink-0 items-center justify-center transition-colors xl:hidden',
             lightText
-              ? 'border-white/30 text-white hover:bg-white/10'
-              : 'border-plum/15 text-plum hover:bg-plum/5'
+              ? 'text-white'
+              : 'text-plum'
           )}
         >
           <Menu className="h-5 w-5" />
@@ -183,7 +183,7 @@ export function Nav() {
                   type="button"
                   onClick={closeMenu}
                   aria-label={t('nav.closeMenu')}
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-plum/15 text-plum transition-colors hover:bg-plum/5"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center text-plum transition-colors"
                 >
                   <X className="h-5 w-5" />
                 </button>
