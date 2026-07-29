@@ -19,7 +19,7 @@ export interface FigureTargets {
 
 // Drop these two PNGs in /public/figures to drive the hero from real artwork:
 //   founder.png    — the laptop girl (startup / blue)
-//   enterprise.png — the basket girl (business / orange)
+//   enterprise.png — the girl holding a shirt on a hanger (business / orange)
 const FOUNDER_SRC = '/figures/founder.jpeg'
 const ENTERPRISE_SRC = '/figures/enterprise.jpeg'
 

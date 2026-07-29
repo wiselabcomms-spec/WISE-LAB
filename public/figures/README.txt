@@ -1,7 +1,7 @@
 Drop the two hero silhouettes here (exact filenames):
 
-  founder.png     — the girl with the LAPTOP   (Startup / Founder path, blue)
-  enterprise.png  — the girl with the BASKET    (Business / Enterprise path, orange)
+  founder.png     — the girl with the LAPTOP               (Startup / Founder path, blue)
+  enterprise.png  — the girl with the SHIRT ON A HANGER     (Business / Enterprise path, orange)
 
 Notes
 - PNG or JPG both work; a white or transparent background is fine

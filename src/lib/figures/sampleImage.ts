@@ -1,10 +1,10 @@
 /**
  * Sample a silhouette image into a world-space point cloud.
  *
- * The two hero artworks (laptop girl / basket girl) are the same figure in the
- * same stride, so sampling both with an identical normalization keeps their
- * bodies registered — the morph reads as her swapping the object, not two
- * unrelated shapes.
+ * The two hero artworks (laptop girl / girl with a shirt on a hanger) are the
+ * same figure in the same stride, so sampling both with an identical
+ * normalization keeps their bodies registered — the morph reads as her
+ * swapping the object, not two unrelated shapes.
  */
 
 export function loadImage(url: string): Promise<HTMLImageElement> {
