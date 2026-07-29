@@ -46,7 +46,10 @@ export function sampleSilhouette(
   opts: SampleOpts = {}
 ): Float32Array {
   const {
-    maxDim = 280,
+    // Higher than the old 280 so fine geometry (shirt collar notch, cuffs,
+    // laptop screen edge) survives downsampling instead of blurring into a
+    // blob before it ever reaches the point sampler.
+    maxDim = 480,
     targetHeight = 4.5,
     darkThreshold = 0.5,
     alphaThreshold = 40,

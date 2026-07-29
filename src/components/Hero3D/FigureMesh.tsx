@@ -71,7 +71,12 @@ function FigurePoints({ targets }: { targets: FigureTargets }) {
 
   const sizes = useMemo(() => {
     const s = new Float32Array(count)
-    for (let i = 0; i < count; i++) s[i] = 30 + targets.seeds[i] * 16
+    // Smaller than the old 30-46 range: at that size, dots on a small
+    // feature (the enterprise shirt's collar/cuffs) overlap into a solid
+    // blob and lose their edges, even though the same size reads fine on
+    // a large area like the torso. Crisper dots keep small shapes legible
+    // without visibly thinning out the figure's bigger regions.
+    for (let i = 0; i < count; i++) s[i] = 20 + targets.seeds[i] * 11
     return s
   }, [count, targets])
 
