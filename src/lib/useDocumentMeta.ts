@@ -35,6 +35,29 @@ function setCanonical(href: string) {
   el.setAttribute('href', href)
 }
 
+const STRUCTURED_DATA_ID = 'page-structured-data'
+
+/**
+ * Page-specific JSON-LD, separate from the static site-wide Organization
+ * schema already in index.html (that one stays — this is additive, keyed
+ * by its own id so it never collides with or removes that one).
+ */
+function setStructuredData(data: object | object[] | undefined) {
+  const existing = document.getElementById(STRUCTURED_DATA_ID)
+  if (!data) {
+    existing?.remove()
+    return
+  }
+  let el = existing as HTMLScriptElement | null
+  if (!el) {
+    el = document.createElement('script')
+    el.id = STRUCTURED_DATA_ID
+    el.type = 'application/ld+json'
+    document.head.appendChild(el)
+  }
+  el.textContent = JSON.stringify(data)
+}
+
 /**
  * Sets document.title, the meta description, OG/Twitter tags, and a
  * canonical link for the current route. This is a plain CSR SPA (no
@@ -49,6 +72,7 @@ export function useDocumentMeta({
   description = DEFAULT_DESCRIPTION,
   path = '/',
   noIndex = false,
+  structuredData,
 }: {
   title?: string
   description?: string
@@ -56,6 +80,9 @@ export function useDocumentMeta({
   /** admin/auth pages: kept out of robots.txt too, but a noindex meta is the
    *  part that actually stops indexing if a page ever gets linked externally. */
   noIndex?: boolean
+  /** Page-specific JSON-LD (e.g. BreadcrumbList, Course, Article). Omit for
+   *  pages that don't warrant it (forms, admin). */
+  structuredData?: object | object[]
 }) {
   useEffect(() => {
     const fullTitle = title ? `${title} — ${SITE_NAME}` : DEFAULT_TITLE
@@ -70,6 +97,7 @@ export function useDocumentMeta({
     setMetaByName('twitter:title', fullTitle)
     setMetaByName('twitter:description', description)
     setCanonical(url)
+    setStructuredData(structuredData)
 
     return () => {
       // Reset to the site defaults on unmount so a page that doesn't call
@@ -84,6 +112,7 @@ export function useDocumentMeta({
       setMetaByName('twitter:title', DEFAULT_TITLE)
       setMetaByName('twitter:description', DEFAULT_DESCRIPTION)
       setCanonical('https://wiselab.org.pk/')
+      setStructuredData(undefined)
     }
-  }, [title, description, path, noIndex])
+  }, [title, description, path, noIndex, structuredData])
 }

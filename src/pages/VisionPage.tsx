@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
 import { useDocumentMeta } from '@/lib/useDocumentMeta'
+import { breadcrumbSchema } from '@/lib/structuredData'
 
 export function VisionPage() {
   const { t } = useTranslation()
@@ -11,6 +12,10 @@ export function VisionPage() {
     description:
       "WISE Lab's vision: Pakistan's leading platform exclusively for women-led innovation and enterprise.",
     path: '/vision',
+    structuredData: breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Our Vision', path: '/vision' },
+    ]),
   })
   return (
     <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">

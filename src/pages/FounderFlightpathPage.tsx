@@ -3,14 +3,24 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
 import { useDocumentMeta } from '@/lib/useDocumentMeta'
+import { breadcrumbSchema, courseSchema } from '@/lib/structuredData'
+
+const DESCRIPTION =
+  'A structured six-month incubation programme for women-led, technology-enabled startups ready to validate, strengthen, launch, or scale.'
 
 export function FounderFlightpathPage() {
   const { t } = useTranslation()
   useDocumentMeta({
     title: 'Founder Flightpath',
-    description:
-      'A structured six-month incubation programme for women-led, technology-enabled startups ready to validate, strengthen, launch, or scale.',
+    description: DESCRIPTION,
     path: '/founder-flightpath',
+    structuredData: [
+      breadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: 'Founder Flightpath', path: '/founder-flightpath' },
+      ]),
+      courseSchema({ name: 'Founder Flightpath', description: DESCRIPTION, path: '/founder-flightpath' }),
+    ],
   })
   return (
     <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">

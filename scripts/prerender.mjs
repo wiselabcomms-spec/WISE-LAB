@@ -43,7 +43,7 @@ const STATIC_ROUTES = [
   '/blog',
 ]
 
-async function getPublishedBlogSlugs() {
+function getSupabaseConfig() {
   const envPath = join(ROOT, '.env')
   let url, key
   try {
@@ -53,9 +53,16 @@ async function getPublishedBlogSlugs() {
   } catch {
     // .env not present (e.g. CI) — fall through to env vars below
   }
-  url = url || process.env.VITE_SUPABASE_URL
-  key = key || process.env.VITE_SUPABASE_ANON_KEY
+  return {
+    url: url || process.env.VITE_SUPABASE_URL,
+    key: key || process.env.VITE_SUPABASE_ANON_KEY,
+  }
+}
 
+/** Returns published posts as { slug, updatedAt } so both the prerender
+ *  route list and the sitemap's <lastmod> can use real data. */
+async function getPublishedBlogPosts() {
+  const { url, key } = getSupabaseConfig()
   if (!url || !key) {
     console.warn('[prerender] No Supabase config found — skipping blog post routes.')
     return []
@@ -63,17 +70,20 @@ async function getPublishedBlogSlugs() {
 
   try {
     const res = await fetch(
-      `${url}/rest/v1/blog_posts?select=slug&status=eq.published`,
+      `${url}/rest/v1/blog_posts?select=slug,published_at,updated_at&status=eq.published`,
       { headers: { apikey: key, Authorization: `Bearer ${key}` } }
     )
     if (!res.ok) {
-      console.warn(`[prerender] Blog slug fetch failed (${res.status}) — skipping blog post routes.`)
+      console.warn(`[prerender] Blog post fetch failed (${res.status}) — skipping blog post routes.`)
       return []
     }
     const rows = await res.json()
-    return rows.map((r) => `/blog/${r.slug}`)
+    return rows.map((r) => ({
+      slug: r.slug,
+      updatedAt: r.updated_at || r.published_at || new Date().toISOString(),
+    }))
   } catch (err) {
-    console.warn('[prerender] Blog slug fetch errored — skipping blog post routes.', err.message)
+    console.warn('[prerender] Blog post fetch errored — skipping blog post routes.', err.message)
     return []
   }
 }
@@ -83,9 +93,45 @@ function routeToOutputPath(route) {
   return join(DIST, route.replace(/^\//, ''), 'index.html')
 }
 
+const SITE_URL = 'https://wiselab.org.pk'
+const STATIC_SITEMAP_ENTRIES = [
+  { path: '/', changefreq: 'weekly', priority: '1.0' },
+  { path: '/vision', changefreq: 'monthly', priority: '0.6' },
+  { path: '/mission', changefreq: 'monthly', priority: '0.6' },
+  { path: '/founder-flightpath', changefreq: 'monthly', priority: '0.8' },
+  { path: '/enterprise-flightpath', changefreq: 'monthly', priority: '0.8' },
+  { path: '/apply/founder', changefreq: 'monthly', priority: '0.7' },
+  { path: '/apply/enterprise', changefreq: 'monthly', priority: '0.7' },
+  { path: '/apply/mentor', changefreq: 'monthly', priority: '0.6' },
+  { path: '/apply/partner', changefreq: 'monthly', priority: '0.6' },
+  { path: '/blog', changefreq: 'weekly', priority: '0.7' },
+]
+
+/** Regenerates dist/sitemap.xml with real published blog post URLs and
+ *  lastmod dates. public/sitemap.xml (the static baseline, used for local
+ *  dev/preview) is untouched — only the deployed dist/ copy is enriched. */
+function writeSitemap(blogPosts) {
+  const today = new Date().toISOString().slice(0, 10)
+  const entries = [
+    ...STATIC_SITEMAP_ENTRIES.map(
+      (e) => `  <url>\n    <loc>${SITE_URL}${e.path}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`
+    ),
+    ...blogPosts.map(
+      (p) =>
+        `  <url>\n    <loc>${SITE_URL}/blog/${p.slug}</loc>\n    <lastmod>${p.updatedAt.slice(0, 10)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
+    ),
+  ]
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`
+  writeFileSync(join(DIST, 'sitemap.xml'), xml)
+  console.log(`[prerender] ✓ sitemap.xml (${entries.length} URLs, including ${blogPosts.length} blog post(s))`)
+}
+
 async function main() {
-  const blogRoutes = await getPublishedBlogSlugs()
+  const blogPosts = await getPublishedBlogPosts()
+  const blogRoutes = blogPosts.map((p) => `/blog/${p.slug}`)
   const routes = [...STATIC_ROUTES, ...blogRoutes]
+
+  writeSitemap(blogPosts)
 
   console.log(`[prerender] Serving dist/ and prerendering ${routes.length} route(s)...`)
 

@@ -8,6 +8,7 @@ import { listPublishedPosts } from '@/lib/blog/api'
 import type { BlogPost } from '@/lib/blog/types'
 import { isSupabaseConfigured } from '@/lib/supabase'
 import { useDocumentMeta } from '@/lib/useDocumentMeta'
+import { breadcrumbSchema } from '@/lib/structuredData'
 
 const MotionLink = motion(Link)
 
@@ -20,6 +21,10 @@ export function BlogListPage() {
     description:
       'Stories, updates, and insights from WISE Lab — Women Innovation & Startup Empowerment Lab.',
     path: '/blog',
+    structuredData: breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'WISE Journal', path: '/blog' },
+    ]),
   })
 
   useEffect(() => {
@@ -82,7 +87,7 @@ export function BlogListPage() {
                     <div className="aspect-[16/9] w-full overflow-hidden bg-plum/5">
                       <img
                         src={post.coverImageUrl}
-                        alt=""
+                        alt={post.title}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>

@@ -6,6 +6,7 @@ import { Reveal } from '@/components/Reveal'
 import { getPostBySlug } from '@/lib/blog/api'
 import type { BlogPost } from '@/lib/blog/types'
 import { useDocumentMeta } from '@/lib/useDocumentMeta'
+import { articleSchema, breadcrumbSchema } from '@/lib/structuredData'
 
 export function BlogPostPage() {
   const { t } = useTranslation()
@@ -15,6 +16,23 @@ export function BlogPostPage() {
     title: post?.title,
     description: post?.excerpt,
     path: `/blog/${slug ?? ''}`,
+    structuredData: post
+      ? [
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'WISE Journal', path: '/blog' },
+            { name: post.title, path: `/blog/${slug ?? ''}` },
+          ]),
+          articleSchema({
+            title: post.title,
+            description: post.excerpt,
+            path: `/blog/${slug ?? ''}`,
+            image: post.coverImageUrl ?? undefined,
+            author: post.author,
+            datePublished: post.publishedAt ?? undefined,
+          }),
+        ]
+      : undefined,
   })
 
   useEffect(() => {
@@ -56,7 +74,7 @@ export function BlogPostPage() {
               {post.coverImageUrl && (
                 <img
                   src={post.coverImageUrl}
-                  alt=""
+                  alt={post.title}
                   className="mb-8 aspect-[16/9] w-full rounded-3xl object-cover shadow-card"
                 />
               )}

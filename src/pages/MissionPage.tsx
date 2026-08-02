@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
 import { useDocumentMeta } from '@/lib/useDocumentMeta'
+import { breadcrumbSchema } from '@/lib/structuredData'
 
 const GOALS = [
   'missionPage.goals.incubate',
@@ -36,6 +37,10 @@ export function MissionPage() {
     description:
       "WISE Lab's mission: empowering women entrepreneurs, startups, and MSMEs with incubation, training, mentorship, and market access.",
     path: '/mission',
+    structuredData: breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Our Mission', path: '/mission' },
+    ]),
   })
   return (
     <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">
