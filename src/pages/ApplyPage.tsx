@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
 import { DynamicForm } from '@/components/DynamicForm'
@@ -8,6 +8,36 @@ import { WiseMark } from '@/components/WiseLabLogo'
 import { getFormSchema } from '@/lib/forms/schemas'
 import { tSubtitle, tTitle } from '@/lib/forms/i18nKeys'
 import { useDocumentMeta } from '@/lib/useDocumentMeta'
+import { GOOGLE_FORM_URLS } from '@/lib/forms/googleFormLinks'
+import type { ApplicationTrack } from '@/lib/forms/types'
+
+/** Auto-redirects to an external Google Form, with an immediate manual
+ *  fallback in case the redirect is blocked or the user doesn't want to wait. */
+function GoogleFormRedirect({ url }: { url: string }) {
+  const { t } = useTranslation()
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = url
+    }, 1200)
+    return () => clearTimeout(timer)
+  }, [url])
+
+  return (
+    <div className="mt-12 flex flex-col items-center gap-4 rounded-3xl border border-plum/10 bg-white p-10 text-center shadow-card">
+      <p className="text-plum/70">
+        {t('apply.redirecting', "Taking you to our application form — you'll be redirected in a moment.")}
+      </p>
+      <a
+        href={url}
+        className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+        style={{ background: 'var(--track-primary)' }}
+      >
+        {t('apply.continueNow', 'Continue now')}
+        <ArrowUpRight className="h-4 w-4" />
+      </a>
+    </div>
+  )
+}
 
 /**
  * /apply/:track — dedicated application page for each of the four Enter
@@ -36,6 +66,8 @@ export function ApplyPage() {
 
   if (!schema) return <Navigate to="/" replace />
 
+  const googleFormUrl = GOOGLE_FORM_URLS[schema.track as ApplicationTrack]
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-beige py-16 md:py-24">
       <div className="grain" />
@@ -62,9 +94,13 @@ export function ApplyPage() {
           </p>
         </Reveal>
 
-        <div className="mt-12">
-          <DynamicForm schema={schema} />
-        </div>
+        {googleFormUrl ? (
+          <GoogleFormRedirect url={googleFormUrl} />
+        ) : (
+          <div className="mt-12">
+            <DynamicForm schema={schema} />
+          </div>
+        )}
       </div>
     </main>
   )
