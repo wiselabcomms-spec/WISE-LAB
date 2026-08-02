@@ -11,22 +11,19 @@ import { useDocumentMeta } from '@/lib/useDocumentMeta'
 import { GOOGLE_FORM_URLS } from '@/lib/forms/googleFormLinks'
 import type { ApplicationTrack } from '@/lib/forms/types'
 
-/** Auto-redirects to an external Google Form, with an immediate manual
- *  fallback in case the redirect is blocked or the user doesn't want to wait. */
+/** Redirects to an external Google Form immediately on mount — no delay.
+ *  window.location.replace (not href) so the interstitial never enters
+ *  browser history; the manual link is only a fallback in case a popup/
+ *  redirect blocker stops the automatic navigation. */
 function GoogleFormRedirect({ url }: { url: string }) {
   const { t } = useTranslation()
   useEffect(() => {
-    const timer = setTimeout(() => {
-      window.location.href = url
-    }, 1200)
-    return () => clearTimeout(timer)
+    window.location.replace(url)
   }, [url])
 
   return (
     <div className="mt-12 flex flex-col items-center gap-4 rounded-3xl border border-plum/10 bg-white p-10 text-center shadow-card">
-      <p className="text-plum/70">
-        {t('apply.redirecting', "Taking you to our application form — you'll be redirected in a moment.")}
-      </p>
+      <p className="text-plum/70">{t('apply.redirecting', 'Redirecting…')}</p>
       <a
         href={url}
         className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
