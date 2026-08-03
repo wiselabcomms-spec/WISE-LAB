@@ -1,27 +1,34 @@
 /**
- * WISE Lab — Google Form <-> Supabase two-way sync.
- *
- * Two independent things live in this file:
+ * WISE Lab — Google Form <-> Supabase <-> Google Sheet, fully automatic
+ * three-way sync. Once the triggers below are set up, nothing needs to be
+ * clicked ever again — every direction runs on its own trigger.
  *
  * DIRECTION 1 — Google Form -> Supabase (onFormSubmit)
- * Every Form submission already lands in this spreadsheet's "Form
- * Responses 1" tab automatically (that's just how Google Forms works, no
- * script needed for that part). onFormSubmit() additionally POSTs it to
- * Supabase so it shows up in the WISE Lab admin dashboard too.
+ * Fires the instant someone submits the live Form. Google already writes
+ * the response into "Form Responses 1" automatically (that's just how
+ * Forms work) — this additionally POSTs it to Supabase so it shows up on
+ * the WISE Lab admin dashboard, and marks the row "synced" (see Direction
+ * 3) so it's never pushed twice.
  *
- * DIRECTION 2 — Supabase -> Google Sheet (syncSupabaseToSheet)
+ * DIRECTION 2 — Supabase -> Google Sheet (syncSupabaseToSheet, time-driven)
  * The native WISE Lab website has its OWN application form too (used by
  * most real applicants) — those submissions land straight in Supabase and
- * never touch this spreadsheet. syncSupabaseToSheet() pulls EVERY
- * submission from Supabase (both Google-Form-sourced and native-site-
- * sourced, across all 4 tracks — Founder/Enterprise/Mentor/Partner, which
- * all have different fields) and mirrors it into a new tab called
- * "All Submissions (Synced)" in THIS spreadsheet, so the Sheet becomes a
- * complete view of everything, not just Google Form responses.
- * (Native submissions aren't forced into the Form Responses tab's 36
- * Founder-specific columns — Enterprise/Mentor/Partner data wouldn't fit
- * those columns at all. The new tab uses a track-agnostic layout: a few
- * common columns plus the full raw data as JSON in the last column.)
+ * never touch this spreadsheet on their own. Every 15 minutes this pulls
+ * EVERY row from Supabase (native-site across all 4 tracks —
+ * Founder/Enterprise/Mentor/Partner — plus Google-Form-sourced ones) and
+ * mirrors any new ones into a tab called "All Submissions (Synced)",
+ * deduped by Supabase row id. (Native submissions aren't forced into the
+ * Form Responses tab's 36 Founder-specific columns — other tracks'
+ * data wouldn't fit those columns — so this uses its own track-agnostic
+ * tab instead: a few common columns plus the full raw data as JSON.)
+ *
+ * DIRECTION 3 — Google Sheet -> Supabase (syncSheetToSupabase, time-driven)
+ * Catches the one case Direction 1 can't: a row typed directly into "Form
+ * Responses 1" by hand, bypassing the live Form entirely. Every 15 minutes
+ * this scans that tab for rows without the "Synced to Supabase" checkbox
+ * (added automatically as a new last column) and pushes just those.
+ * Rows that came in through the real Form are already marked synced by
+ * onFormSubmit, so this only ever touches genuinely new manual rows.
  *
  * Setup (needs to be done ONCE by whoever has edit access to the Google
  * Form / its linked Sheet — this cannot be deployed remotely, it has to be
@@ -31,25 +38,31 @@
  *   2. Extensions -> Apps Script.
  *   3. Delete anything in the default Code.gs, paste this entire file in.
  *   4. Save (Ctrl+S / floppy-disk icon) — name the project if prompted.
- *   5. Click the clock icon (Triggers) in the left sidebar -> + Add Trigger.
- *      Add TWO triggers:
+ *   5. Function dropdown at the top -> select markExistingRowsAsSynced ->
+ *      Run once. (One-time only: marks every row already in the sheet as
+ *      already-synced so Direction 3 doesn't re-push rows that are
+ *      already in Supabase the first time it runs. Skip this step only if
+ *      "Form Responses 1" is completely empty.)
+ *   6. Click the clock icon (Triggers) in the left sidebar -> + Add Trigger.
+ *      Add THREE triggers:
  *        a) Function: onFormSubmit
  *           Event source: From spreadsheet -> On form submit
  *        b) Function: syncSupabaseToSheet
  *           Event source: Time-driven -> Minutes timer -> Every 15 minutes
- *           (or whatever interval you're comfortable with — this is what
- *           keeps native-site submissions flowing into the Sheet
- *           automatically, ongoing, with no manual action needed)
+ *        c) Function: syncSheetToSupabase
+ *           Event source: Time-driven -> Minutes timer -> Every 15 minutes
  *      Save each — Google will prompt for authorization the first time;
  *      approve it (permissions needed: read/write this spreadsheet, make
  *      outbound HTTP requests — nothing else).
- *   6. Run syncSupabaseToSheet() once manually right after setup (select
- *      it in the function dropdown at the top, click Run) to do the
- *      initial backfill of everything already in Supabase, rather than
+ *   7. Run syncSupabaseToSheet() once manually right after setup (function
+ *      dropdown -> select it -> Run) to do the initial backfill instead of
  *      waiting up to 15 minutes for the first automatic run.
- *   7. Test onFormSubmit: submit the live form once with test data, check
+ *   8. Test onFormSubmit: submit the live form once with test data, check
  *      /admin/wise-connect or the dashboard to confirm the row landed,
  *      then delete the test row from Supabase (SQL editor).
+ *
+ * After setup: nothing needs to be run manually ever again. All three
+ * directions run themselves on their triggers.
  *
  * SECURITY NOTE: syncSupabaseToSheet needs to READ from Supabase (not just
  * insert), which requires admin-level access — the anon key alone can't
@@ -65,7 +78,9 @@
  *
  * Backfilling the existing Form response(s) from before onFormSubmit
  * existed (e.g. the "Zaera" entry): run backfillExistingRows() manually
- * once. It's not duplicate-safe — only run it once.
+ * once. It's not duplicate-safe — only run it once. (If you've already
+ * run this before setting up Direction 3, run markExistingRowsAsSynced()
+ * afterward too, so those rows don't get pushed a second time.)
  */
 
 // Public anon key — same one already embedded in the live site's JS bundle.
@@ -101,6 +116,11 @@ function onFormSubmit(e) {
   }
 
   postToSupabase(values, new Date())
+
+  // Mark this row synced immediately so syncSheetToSupabase's periodic
+  // sweep (which catches rows typed directly into the sheet, bypassing the
+  // Form) doesn't push this same row to Supabase a second time.
+  if (e.range) markRowSynced(e.range.getSheet(), e.range.getRow())
 }
 
 /**
@@ -128,8 +148,98 @@ function backfillExistingRows() {
     }
     var submittedAt = timestampCol >= 0 && row[timestampCol] ? new Date(row[timestampCol]) : new Date()
     postToSupabase(values, submittedAt)
+    markRowSynced(sheet, i + 1)
     Utilities.sleep(250) // stay well under any rate limit
   }
+}
+
+var SYNCED_COLUMN_HEADER = 'Synced to Supabase'
+
+/** Finds the "Synced to Supabase" tracking column on a sheet, adding it as
+ *  a new last column the first time this runs. This column is how
+ *  syncSheetToSupabase() tells "already pushed" rows apart from new ones —
+ *  onFormSubmit marks a row synced the instant it inserts it, so the only
+ *  rows this ever finds un-synced are ones typed directly into the sheet. */
+function getSyncedColumnIndex(sheet) {
+  var lastCol = sheet.getLastColumn()
+  var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0]
+  var idx = headers.indexOf(SYNCED_COLUMN_HEADER)
+  if (idx === -1) {
+    sheet.getRange(1, lastCol + 1).setValue(SYNCED_COLUMN_HEADER)
+    idx = lastCol // 0-based index of the newly added column
+  }
+  return idx
+}
+
+function markRowSynced(sheet, rowNumber) {
+  var syncedCol = getSyncedColumnIndex(sheet)
+  sheet.getRange(rowNumber, syncedCol + 1).setValue(true)
+}
+
+/**
+ * One-time setup function: marks every row currently in "Form Responses 1"
+ * as already synced, WITHOUT pushing them to Supabase.
+ *
+ * Needed once, right after adding syncSheetToSupabase's trigger, because
+ * every row already in the sheet at that point either came in through the
+ * live Form (already pushed by onFormSubmit) or was already sent via
+ * backfillExistingRows — none of them should be pushed again. Run this
+ * once, then syncSheetToSupabase will only ever see genuinely new rows
+ * from then on.
+ */
+function markExistingRowsAsSynced() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Form Responses 1')
+  if (!sheet) {
+    throw new Error('Could not find a sheet named "Form Responses 1".')
+  }
+  var lastRow = sheet.getLastRow()
+  if (lastRow < 2) return
+  var syncedCol = getSyncedColumnIndex(sheet)
+  var values = []
+  for (var i = 0; i < lastRow - 1; i++) values.push([true])
+  sheet.getRange(2, syncedCol + 1, lastRow - 1, 1).setValues(values)
+  console.log('markExistingRowsAsSynced: marked ' + (lastRow - 1) + ' row(s) as already synced.')
+}
+
+/**
+ * DIRECTION 3: Sheet -> Supabase (the missing piece — a genuinely new row
+ * typed straight into "Form Responses 1", bypassing the live Google Form).
+ * Runs on the same kind of time-driven trigger as syncSupabaseToSheet, so
+ * it's fully automatic — nothing to click, ever, once the trigger is set.
+ * Safe to re-run constantly: only rows without the "Synced to Supabase"
+ * checkbox get pushed, and every push immediately sets that checkbox.
+ */
+function syncSheetToSupabase() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Form Responses 1')
+  if (!sheet) {
+    throw new Error('Could not find a sheet named "Form Responses 1".')
+  }
+  var data = sheet.getDataRange().getValues()
+  var headers = data[0]
+  var timestampCol = headers.indexOf('Timestamp')
+  var syncedCol = getSyncedColumnIndex(sheet)
+
+  var pushed = 0
+  for (var i = 1; i < data.length; i++) {
+    var row = data[i]
+    if (row[syncedCol]) continue
+    // A fully blank row (e.g. trailing empty rows in the sheet) has no
+    // timestamp and nothing worth sending — skip without marking it, in
+    // case a real submission lands there later.
+    if (timestampCol >= 0 && !row[timestampCol]) continue
+
+    var values = {}
+    for (var col = 0; col < headers.length; col++) {
+      if (col === timestampCol || col === syncedCol) continue
+      values[headers[col]] = String(row[col] ?? '')
+    }
+    var submittedAt = timestampCol >= 0 && row[timestampCol] ? new Date(row[timestampCol]) : new Date()
+    postToSupabase(values, submittedAt)
+    markRowSynced(sheet, i + 1)
+    pushed++
+    Utilities.sleep(200)
+  }
+  console.log('syncSheetToSupabase: pushed ' + pushed + ' new row(s) to Supabase.')
 }
 
 function postToSupabase(values, submittedAt) {
