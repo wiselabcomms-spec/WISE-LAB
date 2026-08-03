@@ -2,6 +2,7 @@ export const NAV_LINKS = [
   { id: 'wise-journey', label: 'The WISE Journey' },
   { id: 'build-tracks', label: 'Build Tracks' },
   { id: 'enter-the-lab', label: 'Enter the Lab' },
+  { id: 'testimonials', label: 'Founder Stories' },
   { id: 'power-circle', label: 'The Power Circle' },
   { id: 'behind-the-wings', label: 'Behind the Wings' },
   { id: 'become-a-mentor', label: 'Become a Mentor' },

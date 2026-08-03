@@ -4,6 +4,7 @@
       "wise-journey": "The WISE Journey",
       "build-tracks": "Build Tracks",
       "enter-the-lab": "Enter the Lab",
+      "testimonials": "Founder Stories",
       "power-circle": "The Power Circle",
       "behind-the-wings": "Behind the Wings",
       "wise-connect": "WISE Connect",
@@ -139,6 +140,7 @@
     "readMore": "Read more"
   },
   "enterTheLab": {
+    "cohortAnnouncement": "Cohort 1 applications are open — apply now",
     "founder": {
       "title": "Founder Flightpath",
       "body": "For women founders ready to move from an early idea to an investment-ready enterprise, through incubation, mentorship, and investor readiness."
@@ -201,6 +203,16 @@
     },
     "comingSoon": "More of the crew is joining soon. Every flight needs wings — this is the team building them."
   },
+  "newsletter": {
+    "title": "Stay in the loop",
+    "subtitle": "Cohort openings, founder stories, and WISE Lab updates — straight to your inbox, no spam.",
+    "placeholder": "you@example.com",
+    "subscribe": "Subscribe",
+    "submitting": "Subscribing…",
+    "success": "You're subscribed. Welcome to WISE Lab.",
+    "alreadySubscribed": "You're already subscribed — thank you!",
+    "submitError": "Something went wrong. Please try again."
+  },
   "wiseConnect": {
     "errors": {
       "name": "Please enter your name.",
@@ -239,6 +251,11 @@
     "title": "Transparency in every stage of growth",
     "subtitle": "Annual audit reports and programme impact summaries will be published here as they become available, so our partners and community can track progress alongside us.",
     "empty": "Reports are being prepared and will appear here soon."
+  },
+  "testimonials": {
+    "title": "In their own words",
+    "subtitle": "Real founders, real progress — stories from the women building inside WISE Lab.",
+    "empty": "Founder stories are being gathered and will appear here soon."
   },
   "blogPage": {
     "backToWiseLab": "Back to WISE Lab",
