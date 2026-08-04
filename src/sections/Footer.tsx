@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import { NAV_LINKS } from '@/lib/nav'
 
@@ -33,6 +34,12 @@ export function Footer() {
                 {t(`nav.links.${l.id}`, l.label)}
               </a>
             ))}
+            <Link
+              to="/blog"
+              className="link-underline text-sm font-medium text-beige/70 transition-colors hover:text-beige"
+            >
+              {t('nav.blog', 'Blog')}
+            </Link>
             <a
               href="#careers"
               className="link-underline text-sm font-medium text-beige/70 transition-colors hover:text-beige"

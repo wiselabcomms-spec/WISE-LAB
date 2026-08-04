@@ -3,6 +3,7 @@ import { TrackProvider } from '@/lib/useTrackState'
 import { BlogSectionsProvider } from '@/lib/blog/useSectionPosts'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { Nav } from '@/components/Nav'
+import { CohortAnnouncementBar } from '@/components/CohortAnnouncementBar'
 import { PMBanner } from '@/components/PMBanner'
 import { Hero } from '@/sections/Hero'
 import { WiseJourney } from '@/sections/WiseJourney'
@@ -24,6 +25,7 @@ function App() {
         <BlogSectionsProvider>
           <SmoothScroll>
             <Nav />
+            <CohortAnnouncementBar />
             <PMBanner />
             <main>
               <Hero />

@@ -1,4 +1,7 @@
 {
+  "cohortBar": {
+    "text": "Cohort 1 applications are now open — apply to Founder Flightpath"
+  },
   "nav": {
     "links": {
       "wise-journey": "The WISE Journey",
@@ -11,6 +14,7 @@
       "become-a-mentor": "Become a Mentor",
       "wise-reports": "WISE Reports"
     },
+    "blog": "Blog",
     "cta": "Enter the Lab",
     "home": "WISE Lab home",
     "openMenu": "Open menu",

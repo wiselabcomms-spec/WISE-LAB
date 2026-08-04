@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
@@ -117,6 +118,15 @@ export function Nav() {
                 {t(`nav.links.${l.id}`, l.label)}
               </a>
             ))}
+            <Link
+              to="/blog"
+              className={cn(
+                'link-underline whitespace-nowrap text-[13px] 2xl:text-sm font-medium transition-colors',
+                lightText ? 'text-white/85 hover:text-white' : 'text-plum/75 hover:text-plum'
+              )}
+            >
+              {t('nav.blog', 'Blog')}
+            </Link>
           </div>
           <MagneticButton strength={0.4}>
             <Button
@@ -206,6 +216,13 @@ export function Nav() {
                     {t(`nav.links.${l.id}`, l.label)}
                   </a>
                 ))}
+                <Link
+                  to="/blog"
+                  onClick={closeMenu}
+                  className="rounded-xl px-3 py-3 text-[15px] font-medium text-plum/70 transition-colors hover:bg-plum/[0.04] hover:text-plum"
+                >
+                  {t('nav.blog', 'Blog')}
+                </Link>
               </div>
 
               <div className="border-t border-plum/10 px-6 py-5">
