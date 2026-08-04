@@ -24,8 +24,10 @@ function App() {
       <TrackProvider>
         <BlogSectionsProvider>
           <SmoothScroll>
-            <Nav />
-            <CohortAnnouncementBar />
+            <div className="sticky top-0 z-50">
+              <Nav />
+              <CohortAnnouncementBar />
+            </div>
             <PMBanner />
             <main>
               <Hero />

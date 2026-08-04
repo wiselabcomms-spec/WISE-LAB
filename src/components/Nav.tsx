@@ -80,7 +80,7 @@ export function Nav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'sticky top-0 z-50 transition-colors duration-500',
+        'transition-colors duration-500',
         scrolled
           ? 'border-b border-plum/10 bg-beige/80 backdrop-blur-xl'
           : 'border-b border-transparent'
