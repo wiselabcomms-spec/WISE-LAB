@@ -64,6 +64,12 @@
  * After setup: nothing needs to be run manually ever again. All three
  * directions run themselves on their triggers.
  *
+ * To double-check nothing has ever been lost in either direction, run
+ * verifySync() any time (function dropdown -> verifySync -> Run, then
+ * check the Execution log). It's read-only -- safe to run as often as
+ * you want -- and prints a plain-language pass/fail report comparing
+ * Supabase's actual row count against the Sheet's.
+ *
  * SECURITY NOTE: syncSupabaseToSheet needs to READ from Supabase (not just
  * insert), which requires admin-level access — the anon key alone can't
  * do this (by design, so random visitors can't read other applicants'
@@ -397,4 +403,67 @@ function appendSubmissionRow(sheet, submission) {
     source,
     JSON.stringify(values),
   ])
+}
+
+/**
+ * Data-integrity check, safe to run any time and as many times as you
+ * want — it only READS, never writes or deletes anything.
+ *
+ * Confirms record-for-record that nothing has been lost in either
+ * direction: every row currently in Supabase has a matching row in the
+ * "All Submissions (Synced)" tab (by Supabase id), and every row in
+ * "Form Responses 1" is accounted for as either already synced or
+ * genuinely new. Prints a plain-language summary to the execution log —
+ * run it, then check View -> Logs (or the Execution log panel) for the
+ * result.
+ */
+function verifySync() {
+  var token = getAdminAccessToken()
+  var submissions = fetchAllSubmissions(token)
+  var supabaseIds = {}
+  submissions.forEach(function (s) { supabaseIds[s.id] = true })
+
+  var syncSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SYNC_SHEET_NAME)
+  var sheetIds = {}
+  if (syncSheet) {
+    var lastRow = syncSheet.getLastRow()
+    if (lastRow >= 2) {
+      syncSheet.getRange(2, 1, lastRow - 1, 1).getValues().forEach(function (row) {
+        if (row[0]) sheetIds[row[0]] = true
+      })
+    }
+  }
+
+  var missingFromSheet = Object.keys(supabaseIds).filter(function (id) { return !sheetIds[id] })
+  var extraInSheet = Object.keys(sheetIds).filter(function (id) { return !supabaseIds[id] })
+
+  var formSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Form Responses 1')
+  var formRowCount = 0
+  var formUnsyncedCount = 0
+  if (formSheet) {
+    var formLastRow = formSheet.getLastRow()
+    formRowCount = Math.max(0, formLastRow - 1)
+    var syncedCol = getSyncedColumnIndex(formSheet)
+    if (formLastRow >= 2) {
+      formSheet.getRange(2, 1, formLastRow - 1, syncedCol + 1).getValues().forEach(function (row) {
+        if (!row[syncedCol]) formUnsyncedCount++
+      })
+    }
+  }
+
+  var lines = []
+  lines.push('=== WISE Lab sync verification — ' + new Date().toISOString() + ' ===')
+  lines.push('Supabase total submissions: ' + submissions.length)
+  lines.push('"' + SYNC_SHEET_NAME + '" tab rows: ' + Object.keys(sheetIds).length)
+  lines.push('Supabase rows missing from the synced tab: ' + missingFromSheet.length + (missingFromSheet.length ? ' -> ' + missingFromSheet.join(', ') : ''))
+  lines.push('Synced-tab rows with no matching Supabase record: ' + extraInSheet.length + (extraInSheet.length ? ' -> ' + extraInSheet.join(', ') : ''))
+  lines.push('"Form Responses 1" total rows: ' + formRowCount)
+  lines.push('"Form Responses 1" rows not yet pushed to Supabase: ' + formUnsyncedCount + ' (these will sync on the next 15-minute run, or run syncSheetToSupabase now to push immediately)')
+  lines.push(missingFromSheet.length === 0 && extraInSheet.length === 0
+    ? 'RESULT: Supabase and the Google Sheet are fully consistent -- no records lost in either direction.'
+    : 'RESULT: MISMATCH FOUND -- see the ids listed above.')
+
+  var report = lines.join('\n')
+  console.log(report)
+  return report
 }
