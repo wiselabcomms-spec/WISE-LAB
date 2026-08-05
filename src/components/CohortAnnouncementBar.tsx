@@ -19,7 +19,7 @@ export function CohortAnnouncementBar() {
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
       </span>
-      {t('cohortBar.text', 'Cohort 1 applications are now open — apply to Founder Flightpath')}
+      {t('cohortBar.text', 'Cohort 1 – Startup Incubation Applications are now open — Apply to Founder Flightpath')}
       <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </Link>
   )
