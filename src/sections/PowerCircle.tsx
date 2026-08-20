@@ -13,8 +13,6 @@ function getPartners(t: TFunction) {
       role: t('powerCircle.partners.jazz', 'Consortium Lead'),
       logo: '/partners/jazz.png',
       description: "Pakistan’s leading digital connectivity company, bringing technological expertise, nationwide reach, and enterprise innovation to the WISE Lab consortium.",
-      invert: true,
-      chip: false,
       logoClass: 'h-[60px] md:h-[76px] w-auto object-contain',
     },
     {
@@ -22,8 +20,6 @@ function getPartners(t: TFunction) {
       role: t('powerCircle.partners.mobilink', 'Co-Lead Partner'),
       logo: '/partners/mobilink-mmbl.png',
       description: "Pakistan’s leading digital microfinance bank, advancing financial inclusion, digital banking, and growth opportunities for women entrepreneurs and MSMEs.",
-      invert: true,
-      chip: false,
       logoClass: 'h-[60px] md:h-[76px] w-auto object-contain',
     },
     {
@@ -31,8 +27,6 @@ function getPartners(t: TFunction) {
       role: t('powerCircle.partners.changeMechanics', 'Managing Partner'),
       logo: '/partners/change-mechanics.png',
       description: "An innovation and ecosystem-development organization bringing programme design, entrepreneurship support, and implementation expertise to WISE Lab.",
-      invert: false,
-      chip: false,
       // wide horizontal lockup with heavy internal padding — needs the full
       // box height to read at the same optical size as the stacked marks
       logoClass: 'h-[44px] md:h-[56px] w-auto object-contain',
@@ -47,7 +41,6 @@ function getFunders(t: TFunction) {
       role: t('powerCircle.funders.moitt', 'Designed & Funded by'),
       logo: '/partners/moitt.png',
       description: "The Government of Pakistan’s lead ministry for shaping national technology policy, accelerating digital transformation, and enabling inclusive economic development.",
-      invert: true,
       // lead funder — reads larger than Ignite, whose chunky wordmark would
       // otherwise dominate the pair at equal box sizes
       logoClass: 'max-h-full max-w-[280px]',
@@ -57,7 +50,6 @@ function getFunders(t: TFunction) {
       role: t('powerCircle.funders.ignite', 'Designed & Funded by'),
       logo: '/partners/ignite.png',
       description: "The government-backed funding and innovation agency supporting technology startups, entrepreneurship, research, and incubation ecosystems across Pakistan.",
-      invert: true,
       logoClass: 'max-h-[68%] max-w-[200px]',
     },
   ]
@@ -120,28 +112,24 @@ export function PowerCircle() {
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                className="group flex h-full flex-col items-center gap-5 rounded-2xl bg-beige/[0.06] p-6 text-center transition-colors duration-500 hover:bg-beige/10 md:p-8"
+                className="group flex h-full flex-col items-center gap-5 rounded-2xl bg-white p-6 text-center shadow-card transition-shadow duration-500 hover:shadow-card-hover md:p-8"
               >
                 <div className="flex h-28 w-full items-center justify-center p-2 md:h-36">
                   <img
                     src={p.logo}
                     alt={`${p.name} logo`}
-                    className={cn(
-                      'object-contain',
-                      p.logoClass ?? 'max-h-full max-w-[240px]',
-                      p.invert && 'invert brightness-0'
-                    )}
+                    className={cn('object-contain', p.logoClass ?? 'max-h-full max-w-[240px]')}
                     loading="lazy"
                   />
                 </div>
                 <div className="flex flex-col flex-1">
-                  <div className="text-[17px] font-bold leading-tight text-beige">
+                  <div className="text-[17px] font-bold leading-tight text-plum">
                     {p.name}
                   </div>
                   <div className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-coral">
                     {p.role}
                   </div>
-                  <p className="mt-4 text-[15px] leading-relaxed text-beige/80 text-justify">
+                  <p className="mt-4 text-[15px] leading-relaxed text-plum/70 text-justify">
                     {p.description}
                   </p>
                 </div>
@@ -165,39 +153,24 @@ export function PowerCircle() {
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                className="group flex h-full flex-col items-center gap-5 rounded-2xl bg-beige/[0.06] p-6 text-center transition-colors duration-500 hover:bg-beige/10 md:p-8"
+                className="group flex h-full flex-col items-center gap-5 rounded-2xl bg-white p-6 text-center shadow-card transition-shadow duration-500 hover:shadow-card-hover md:p-8"
               >
                 <div className="flex h-28 w-full items-center justify-center p-2 md:h-36">
-                  {p.chip ? (
-                    <div className="flex h-full w-full max-w-[240px] items-center justify-center rounded-xl bg-white px-5 py-3">
-                      <img
-                        src={p.logo}
-                        alt={`${p.name} logo`}
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  ) : (
-                    <img
-                      src={p.logo}
-                      alt={`${p.name} logo`}
-                      className={cn(
-                        'object-contain',
-                        p.logoClass ?? 'max-h-full max-w-[240px]',
-                        p.invert && 'invert brightness-0'
-                      )}
-                      loading="lazy"
-                    />
-                  )}
+                  <img
+                    src={p.logo}
+                    alt={`${p.name} logo`}
+                    className={cn('object-contain', p.logoClass ?? 'max-h-full max-w-[240px]')}
+                    loading="lazy"
+                  />
                 </div>
                 <div className="flex flex-col flex-1">
-                  <div className="text-[17px] font-bold leading-tight text-beige">
+                  <div className="text-[17px] font-bold leading-tight text-plum">
                     {p.name}
                   </div>
                   <div className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-coral">
                     {p.role}
                   </div>
-                  <p className="mt-4 text-[15px] leading-relaxed text-beige/80 text-justify">
+                  <p className="mt-4 text-[15px] leading-relaxed text-plum/70 text-justify">
                     {p.description}
                   </p>
                 </div>
