@@ -7,19 +7,14 @@ export function Footer() {
   const { t } = useTranslation()
   return (
     <footer
-      className="relative overflow-hidden pt-20 pb-28 text-beige"
-      style={{
-        background:
-          'radial-gradient(120% 120% at 20% 0%, #33212b 0%, #241820 60%, #1b1219 100%)',
-      }}
+      className="relative bg-white border-t border-black/10 overflow-hidden pt-20 pb-28 text-black"
     >
-      <div className="grain opacity-[0.06]" />
-      <div className="pointer-events-none absolute bottom-[-20%] right-[-5%] h-80 w-80 rounded-full bg-teal/10 blur-[130px]" />
+      {/* removed grain and ambient glow for pure white bg */}
 
       <div className="container-wise relative">
         <div className="grid gap-12 md:grid-cols-[1.3fr_1fr]">
           <div>
-            <p className="font-display text-2xl font-medium text-beige/90">
+            <p className="font-display text-2xl font-medium text-black">
               {t('footer.tagline')}
             </p>
           </div>
@@ -29,27 +24,27 @@ export function Footer() {
               <a
                 key={l.id}
                 href={`#${l.id}`}
-                className="link-underline text-sm font-medium text-beige/70 transition-colors hover:text-beige"
+                className="link-underline text-sm font-medium text-black/70 transition-colors hover:text-black"
               >
                 {t(`nav.links.${l.id}`, l.label)}
               </a>
             ))}
             <Link
               to="/blog"
-              className="link-underline text-sm font-medium text-beige/70 transition-colors hover:text-beige"
+              className="link-underline text-sm font-medium text-black/70 transition-colors hover:text-black"
             >
               {t('nav.blog', 'Blog')}
             </Link>
             <a
               href="#careers"
-              className="link-underline text-sm font-medium text-beige/70 transition-colors hover:text-beige"
+              className="link-underline text-sm font-medium text-black/70 transition-colors hover:text-black"
             >
               Careers at WISE
             </a>
           </nav>
         </div>
 
-        <div className="mt-16 space-y-1.5 border-t border-beige/10 pt-8 text-sm text-beige/55">
+        <div className="mt-16 space-y-1.5 border-t border-black/10 pt-8 text-sm text-black/55">
           <p>{t('footer.underVision')}</p>
           <p>{t('footer.fundedBy')}</p>
           <p className="pt-1">
@@ -57,16 +52,16 @@ export function Footer() {
               href="https://wiselab.org.pk"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-underline text-coral"
+              className="link-underline text-[#FF8A65]"
             >
               wiselab.org.pk
             </a>
           </p>
         </div>
 
-        <div className="mt-8 flex flex-col items-start justify-between gap-3 text-sm text-beige/45 sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col items-start justify-between gap-3 text-sm text-black/45 sm:flex-row sm:items-center">
           <p>{t('footer.copyright')}</p>
-          <p className="font-display italic text-beige/60">{t('footer.closingLine')}</p>
+          <p className="font-display italic text-black/60">{t('footer.closingLine')}</p>
         </div>
       </div>
     </footer>

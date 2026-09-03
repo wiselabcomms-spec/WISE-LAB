@@ -1,6 +1,6 @@
 import type { NAV_LINKS } from '@/lib/nav'
 
-export type BlogSection = (typeof NAV_LINKS)[number]['id']
+export type BlogSection = (typeof NAV_LINKS)[number]['id'] | 'enter-the-lab' | 'testimonials'
 
 export interface BlogPost {
   id: string

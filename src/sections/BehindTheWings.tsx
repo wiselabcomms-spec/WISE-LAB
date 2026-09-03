@@ -15,7 +15,7 @@ export function BehindTheWings() {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
             <p className="eyebrow">{t('nav.links.behind-the-wings', 'Behind the Wings')}</p>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-plum">
+            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-black">
               {t('behindTheWings.title1', 'The women helping')}
               <br />
               {t('behindTheWings.title2', 'her take flight')}
@@ -41,7 +41,7 @@ export function BehindTheWings() {
             {/* Image panel */}
             <div className="relative flex min-h-[240px] overflow-hidden bg-plum/5 md:min-h-full">
               <img
-                src="/team/munneaza-durrani.jpeg"
+                src="/team/munneaza-durrani-resized.jpeg"
                 alt="Muneaza Durrani"
                 className="absolute inset-0 h-full w-full object-cover"
               />
@@ -109,7 +109,7 @@ export function BehindTheWings() {
             {
               name: 'Iqra Shamshad',
               role: 'Finance Manager',
-              image: '/team/iqra-shamshad.jpeg',
+              image: '/team/iqra-shamshad-resized.jpeg',
               tagline:
                 'A people-and-process professional building the organisational discipline that turns ambitious programmes into sustainable impact.',
               linkedin: 'https://www.linkedin.com/in/iqra-shamshad-110645165',
@@ -117,7 +117,7 @@ export function BehindTheWings() {
             {
               name: 'Esha Mubashir',
               role: 'Graphics Designer',
-              image: '/team/esha-mubashir.jpeg',
+              image: '/team/esha-mubashir-resized.jpeg',
               tagline:
                 'A visual designer building memorable brand experiences through clarity, composition and creative systems.',
               linkedin: 'https://www.linkedin.com/in/esha-mubashir-444023318',

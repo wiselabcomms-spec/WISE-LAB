@@ -7,6 +7,7 @@ import { AdminSubmissionsPage } from './AdminSubmissionsPage'
 import { AdminWiseConnectPage } from './AdminWiseConnectPage'
 import { AdminBlogPage } from './AdminBlogPage'
 import { AdminBlogEditorPage } from './AdminBlogEditorPage'
+import { AdminUsersPage } from './AdminUsersPage'
 
 /**
  * The entire /admin/* subtree as one lazy-loaded chunk (see AppRouter.tsx).
@@ -25,6 +26,7 @@ export function AdminApp() {
           <Route path="wise-connect" element={<AdminWiseConnectPage />} />
           <Route path="blog" element={<AdminBlogPage />} />
           <Route path="blog/:id" element={<AdminBlogEditorPage />} />
+          <Route path="users" element={<AdminUsersPage />} />
         </Route>
       </Routes>
     </AdminAuthProvider>

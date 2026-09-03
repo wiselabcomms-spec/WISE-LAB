@@ -42,7 +42,7 @@ function getCards(t: TFunction): TrackCard[] {
       motto: t('buildTracks.founder.motto', 'From idea to investor-ready — unseen to undeniable.'),
       cta: t('buildTracks.founder.cta', 'Take Flight'),
       readMoreHref: '/founder-flightpath',
-      primary: '#0F3D3B',
+      primary: '#2E8C8A',
       accent: '#2E7D7B',
       soft: 'rgba(46,125,123,0.10)',
       Icon: Rocket,
@@ -63,8 +63,8 @@ function getCards(t: TFunction): TrackCard[] {
       motto: t('buildTracks.enterprise.motto', 'From skill to income — cocoon to flight.'),
       cta: t('buildTracks.enterprise.cta', 'Grow Your Enterprise'),
       readMoreHref: '/enterprise-flightpath',
-      primary: '#B85C1A',
-      accent: '#E8823C',
+      primary: '#FF8A65',
+      accent: '#FF8A65',
       soft: 'rgba(232,130,60,0.10)',
       Icon: Sprout,
     },
@@ -83,8 +83,8 @@ export function BuildTracks() {
     >
       <div className="container-wise relative">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow">{t('nav.links.build-tracks', 'Build Tracks')}</p>
-          <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-plum">
+          <p className="eyebrow">{t('nav.links.build-tracks', 'Flight Path')}</p>
+          <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-black">
             {t('buildTracks.title', 'Choose your flight path')}
           </h2>
           <p className="mt-4 text-lg text-plum/70">
@@ -154,7 +154,7 @@ export function BuildTracks() {
                   >
                     {c.kicker}
                   </p>
-                  <h3 className="relative mt-2 font-display text-3xl font-bold text-plum">
+                  <h3 className="relative mt-2 font-display text-3xl font-bold text-black">
                     {c.title}
                   </h3>
                   <p className="relative mt-3 text-[15px] font-medium text-plum/75">

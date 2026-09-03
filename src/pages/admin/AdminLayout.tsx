@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navigate, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { FileText, LayoutDashboard, LogOut, Menu, MessageCircle, Newspaper, X } from 'lucide-react'
+import { FileText, LayoutDashboard, LogOut, Menu, MessageCircle, Newspaper, Users, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { WiseMark } from '@/components/WiseLabLogo'
@@ -10,15 +10,17 @@ import { cn } from '@/lib/utils'
 
 export function AdminLayout() {
   const { t } = useTranslation()
-  const { session, loading, isAdmin, isDemo, signOut } = useAdminAuth()
+  const { session, loading, isAdmin, role, signOut } = useAdminAuth()
   useDocumentMeta({ title: 'Admin', path: '/admin', noIndex: true })
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const isSuperAdmin = role === 'super_admin'
   const nav = [
     { to: '/admin', label: t('admin.nav.dashboard'), Icon: LayoutDashboard, end: true },
     { to: '/admin/submissions', label: t('admin.nav.submissions'), Icon: FileText },
     { to: '/admin/wise-connect', label: t('admin.nav.wiseConnect', 'WISE Connect'), Icon: MessageCircle },
     { to: '/admin/blog', label: t('admin.nav.blog'), Icon: Newspaper },
+    ...(isSuperAdmin ? [{ to: '/admin/users', label: 'Manage Admins', Icon: Users, end: false }] : []),
   ]
 
   // Close the mobile drawer whenever the route changes.
@@ -57,12 +59,7 @@ export function AdminLayout() {
   )
 
   return (
-    <div className={cn('flex min-h-screen flex-col bg-beige lg:flex-row', isDemo && 'pt-9')}>
-      {isDemo && (
-        <div className="fixed inset-x-0 top-0 z-[70] bg-amber-400 py-2 text-center text-[12px] font-bold uppercase tracking-wide text-amber-950">
-          Demo mode — showing sample data, not real submissions
-        </div>
-      )}
+    <div className="flex min-h-screen flex-col bg-beige lg:flex-row">
       {/* Mobile top bar */}
       <div className="flex items-center justify-between border-b border-plum/10 bg-white p-4 lg:hidden">
         <div className="flex items-center gap-2.5">
@@ -128,7 +125,7 @@ export function AdminLayout() {
       </AnimatePresence>
 
       {/* Desktop sidebar */}
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-plum/10 bg-white p-6 lg:flex">
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-plum/10 bg-white p-6 lg:flex">
         <div className="flex items-center gap-2.5">
           <WiseMark className="h-8 w-auto" />
           <span className="font-display text-lg font-bold text-plum">{t('admin.nav.title')}</span>

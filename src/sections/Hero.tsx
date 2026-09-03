@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 export function Hero() {
   const { t, i18n } = useTranslation()
   const { track } = useTrack()
-  const dark = track !== 'neutral'
+  const dark = false
   // Gate mounting, not just CSS visibility — a `hidden` element still loads
   // the three.js chunk and runs its render loop off-screen on mobile, which
   // is exactly the slow-phone loading complaint this was meant to fix.
@@ -35,20 +35,10 @@ export function Hero() {
       <div
         className="absolute inset-0 -z-10 transition-[background] duration-700"
         style={{
-          background: `radial-gradient(120% 120% at ${rtl ? '28%' : '72%'} 30%, var(--hero-bg-b) 0%, var(--hero-bg-a) 62%)`,
+          background: '#ffffff',
         }}
       />
-      {/* accent glow */}
-      <div
-        className="pointer-events-none absolute -z-10 h-[60vh] w-[60vh] rounded-full blur-[120px] transition-all duration-700"
-        style={{
-          [rtl ? 'left' : 'right']: '14%',
-          top: '18%',
-          background: 'var(--track-glow)',
-          opacity: dark ? 0.7 : 0.35,
-        }}
-      />
-      <div className="grain -z-10" />
+      {/* removed accent glow and grain to keep the background pure white */}
 
       {/* 3D figure — occupies the side opposite the text on desktop; not
           mounted at all on mobile (not just hidden) where the particle
@@ -75,7 +65,7 @@ export function Hero() {
 
           <h1
             className="mt-5 font-display text-[clamp(3.4rem,9vw,5.5rem)] font-bold leading-[0.98] theme-shift"
-            style={{ color: dark ? 'var(--track-ink)' : '#4A2E3D' }}
+            style={{ color: dark ? 'var(--track-ink)' : '#000000' }}
           >
             {words.map((w, i) => (
               <span key={i} className="mr-[0.28em] inline-block overflow-hidden align-bottom">
@@ -100,7 +90,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 max-w-md text-lg leading-relaxed theme-shift"
-            style={{ color: dark ? 'rgba(255,255,255,0.78)' : 'rgba(74,46,61,0.72)' }}
+            style={{ color: dark ? 'rgba(255,255,255,0.78)' : '#000000' }}
           >
             {t(
               'hero.subheadline',

@@ -66,8 +66,7 @@ export function ApplyPage() {
   const googleFormUrl = GOOGLE_FORM_URLS[schema.track as ApplicationTrack]
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-beige py-16 md:py-24">
-      <div className="grain" />
+    <main className="relative min-h-screen overflow-hidden bg-white py-16 md:py-24">
       <div className="container-wise relative max-w-2xl">
         <Reveal>
           <Link
@@ -83,7 +82,7 @@ export function ApplyPage() {
           </div>
 
           <p className="eyebrow mt-8">{t('nav.links.enter-the-lab', 'Enter the Lab')}</p>
-          <h1 className="mt-3 font-display text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.05] text-plum">
+          <h1 className="mt-3 font-display text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.05] text-black">
             {tTitle(t, schema)}
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-plum/70">

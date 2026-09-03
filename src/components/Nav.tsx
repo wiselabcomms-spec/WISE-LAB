@@ -5,8 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { WiseMark } from './WiseLabLogo'
-import { Button } from './ui/button'
-import { MagneticButton } from './MagneticButton'
+
 import { NAV_LINKS } from '@/lib/nav'
 import { useTrack } from '@/lib/useTrackState'
 import { cn } from '@/lib/utils'
@@ -82,81 +81,81 @@ export function Nav() {
       className={cn(
         'transition-colors duration-500',
         scrolled
-          ? 'border-b border-plum/10 bg-beige/80 backdrop-blur-xl'
+          ? 'border-b border-plum/10 bg-white/80 backdrop-blur-xl'
           : 'border-b border-transparent'
       )}
     >
-      <nav className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-x-4 px-6 py-2 md:px-10 xl:py-3 2xl:gap-x-6">
-        <a
-          href="#hero"
-          aria-label={t('nav.home')}
-          className="flex items-center gap-3 shrink-0"
-        >
-          {/* smaller on phones/tablets now that links live in the drawer, not
-              inline — no need to reserve the taller desktop header there.
-              Steps back down at xl so the full link row + CTA fit on one
-              line on a 1280px laptop; the drawer handles everything narrower. */}
-          <WiseMark variant={logoVariant} className="h-14 w-auto sm:h-16 xl:h-24 2xl:h-32" />
-        </a>
-
-        {/* Desktop links + CTA */}
-        <div className="hidden xl:flex xl:items-center xl:flex-nowrap xl:gap-x-4 2xl:gap-x-5">
-          <div className="flex flex-nowrap gap-x-4 2xl:gap-x-5">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.id}
-                href={`#${l.id}`}
-                data-active={active === l.id}
+      <nav className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-x-4 px-6 py-2 md:px-10 xl:py-2 2xl:gap-x-6">
+        <div className="flex items-center gap-6 xl:gap-10">
+          <a
+            href="#hero"
+            aria-label={t('nav.home')}
+            className="flex items-center gap-3 shrink-0"
+          >
+            {/* smaller on phones/tablets now that links live in the drawer, not
+                inline — no need to reserve the taller desktop header there.
+                Steps back down at xl so the full link row + CTA fit on one
+                line on a 1280px laptop; the drawer handles everything narrower. */}
+            <WiseMark variant={logoVariant} className="h-9 w-auto sm:h-11 xl:h-14 2xl:h-16 scale-[1.35] transform-gpu origin-left" />
+          </a>
+  
+          {/* Desktop links */}
+          <div className="hidden xl:flex xl:items-center xl:flex-nowrap xl:gap-x-4 2xl:gap-x-5 mt-4">
+            <div className="flex flex-nowrap gap-x-4 2xl:gap-x-5">
+              {NAV_LINKS.map((l) => (
+                <a
+                  key={l.id}
+                  href={`#${l.id}`}
+                  data-active={active === l.id}
+                  className={cn(
+                    'link-underline whitespace-nowrap text-[13px] 2xl:text-sm font-medium transition-colors',
+                    lightText
+                      ? 'text-white/85 hover:text-white'
+                      : 'text-plum/75 hover:text-plum',
+                    active === l.id && (lightText ? 'text-white' : 'text-plum')
+                  )}
+                >
+                  {t(`nav.links.${l.id}`, l.label)}
+                </a>
+              ))}
+              <Link
+                to="/blog"
                 className={cn(
                   'link-underline whitespace-nowrap text-[13px] 2xl:text-sm font-medium transition-colors',
-                  lightText
-                    ? 'text-white/85 hover:text-white'
-                    : 'text-plum/75 hover:text-plum',
-                  active === l.id && (lightText ? 'text-white' : 'text-plum')
+                  lightText ? 'text-white/85 hover:text-white' : 'text-plum/75 hover:text-plum'
                 )}
               >
-                {t(`nav.links.${l.id}`, l.label)}
-              </a>
-            ))}
-            <Link
-              to="/blog"
-              className={cn(
-                'link-underline whitespace-nowrap text-[13px] 2xl:text-sm font-medium transition-colors',
-                lightText ? 'text-white/85 hover:text-white' : 'text-plum/75 hover:text-plum'
-              )}
-            >
-              {t('nav.blog', 'Blog')}
-            </Link>
+                {t('nav.blog', 'Blog')}
+              </Link>
+            </div>
           </div>
-          <MagneticButton strength={0.4}>
-            <Button
-              asChild
-              size="sm"
-              className="h-9 px-4 shadow-none hover:shadow-none"
-              style={{ background: 'var(--track-primary)', color: 'var(--track-ink)' }}
-            >
-              <a href="#enter-the-lab">{t('nav.cta')}</a>
-            </Button>
-          </MagneticButton>
         </div>
 
-        {/* Mobile / tablet menu trigger */}
-        <button
-          ref={menuButtonRef}
-          type="button"
-          onClick={() => setMenuOpen(true)}
-          aria-label={t('nav.openMenu')}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav-drawer"
-          className={cn(
-            'flex h-11 w-11 shrink-0 items-center justify-center transition-colors xl:hidden',
-            lightText
-              ? 'text-white'
-              : 'text-plum'
-          )}
-        >
-          <Menu className="h-5 w-5" />
-        </button>
+        {/* Right side: Logos + Mobile / tablet menu trigger */}
+        <div className="flex items-center gap-3 sm:gap-4 xl:gap-6">
+          <div className="flex items-center gap-8 sm:gap-10 xl:gap-12">
+            <img src="/Ministry-03.png" alt="Ministry" className="h-9 sm:h-11 xl:h-12 2xl:h-14 w-auto object-contain scale-[2.8] transform-gpu origin-center" />
+            <div className={cn("w-[1.5px] h-5 sm:h-7 xl:h-9 rounded-full transition-colors", lightText ? "bg-white/30" : "bg-plum/20")} />
+            <img src="/Ignite-06.png" alt="Ignite" className="h-9 sm:h-11 xl:h-12 2xl:h-14 w-auto object-contain scale-[2.2] transform-gpu origin-center" />
+          </div>
+
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => setMenuOpen(true)}
+            aria-label={t('nav.openMenu')}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-drawer"
+            className={cn(
+              'flex h-11 w-11 shrink-0 items-center justify-center transition-colors xl:hidden',
+              lightText
+                ? 'text-white'
+                : 'text-plum'
+            )}
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile drawer — portalled to <body> so it can't inherit the header's
@@ -184,7 +183,7 @@ export function Nav() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 320, damping: 34 }}
-              className="fixed right-0 top-0 z-[70] flex h-[100dvh] w-[84%] max-w-sm flex-col border-l border-plum/10 bg-beige shadow-2xl"
+              className="fixed right-0 top-0 z-[70] flex h-[100dvh] w-[84%] max-w-sm flex-col border-l border-plum/10 bg-white shadow-2xl"
             >
               <div className="flex items-center justify-between px-6 py-4">
                 <WiseMark variant="color" className="h-16 w-auto" />
@@ -225,18 +224,6 @@ export function Nav() {
                 </Link>
               </div>
 
-              <div className="border-t border-plum/10 px-6 py-5">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full shadow-none hover:shadow-none"
-                  style={{ background: 'var(--track-primary)', color: 'var(--track-ink)' }}
-                >
-                  <a href="#enter-the-lab" onClick={closeMenu}>
-                    {t('nav.cta')}
-                  </a>
-                </Button>
-              </div>
             </motion.div>
             </div>
           )}

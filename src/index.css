@@ -5,10 +5,14 @@
 @layer base {
   :root {
     /* ---- Track theming vars (default = neutral brand palette) ---- */
-    --track-primary: #4a2e3d; /* plum */
-    --track-accent: #2c7a70; /* teal */
-    --track-accent-2: #e38470; /* coral */
-    --track-ink: #ffffff; /* text on primary fills */
+    --track-primary: #FF8A65;
+    /* plum */
+    --track-accent: #2c7a70;
+    /* teal */
+    --track-accent-2: #e38470;
+    /* coral */
+    --track-ink: #ffffff;
+    /* text on primary fills */
     --track-soft: rgba(44, 122, 112, 0.1);
     --track-glow: rgba(74, 46, 61, 0.25);
 
@@ -18,7 +22,7 @@
     --hero-fog: rgba(74, 46, 61, 0.12);
 
     /* ---- shadcn / radix tokens (beige + plum system) ---- */
-    --background: 31 49% 89%;
+    --background: 0 0% 100%;
     --foreground: 328 23% 24%;
     --card: 0 0% 100%;
     --card-foreground: 328 23% 24%;
@@ -95,9 +99,11 @@
   html.lenis body {
     height: auto;
   }
+
   .lenis.lenis-smooth {
     scroll-behavior: auto !important;
   }
+
   .lenis.lenis-stopped {
     overflow: hidden;
   }
@@ -146,6 +152,7 @@
   .link-underline {
     position: relative;
   }
+
   .link-underline::after {
     content: '';
     position: absolute;
@@ -158,6 +165,7 @@
     transform-origin: right;
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
+
   .link-underline:hover::after,
   .link-underline[data-active='true']::after {
     transform: scaleX(1);
@@ -185,9 +193,11 @@
   .text-balance {
     text-wrap: balance;
   }
+
   .text-pretty {
     text-wrap: pretty;
   }
+
   .track-accent-text {
     color: var(--track-accent);
   }
@@ -195,6 +205,7 @@
 
 /* Reduced motion: strip the expensive stuff */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

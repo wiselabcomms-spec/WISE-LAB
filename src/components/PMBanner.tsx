@@ -12,9 +12,9 @@ import { useTranslation } from 'react-i18next'
 export function PMBanner() {
   const { t } = useTranslation()
   return (
-    <div className="relative w-full overflow-hidden border-b border-plum/10 bg-beige">
+    <div className="relative w-full overflow-hidden border-b border-plum/10 bg-white">
       <img
-        src="/pm-banner.jpg"
+        src="/pm-banner1.jpg"
         alt={t('pmBanner.text')}
         className="block w-full h-auto"
       />

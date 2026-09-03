@@ -43,8 +43,7 @@ export function MissionPage() {
     ]),
   })
   return (
-    <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">
-      <div className="grain" />
+    <main className="relative min-h-screen overflow-hidden bg-white py-16 pb-32 md:py-24 md:pb-32">
       <div className="container-wise relative max-w-3xl">
         <Reveal>
           <Link
@@ -61,7 +60,7 @@ export function MissionPage() {
             <p className="eyebrow" style={{ color: '#E38470' }}>
               {t('missionPage.eyebrow', 'The WISE Way')}
             </p>
-            <h1 className="mt-3 font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-bold leading-[1.05] text-plum">
+            <h1 className="mt-3 font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-bold leading-[1.05] text-black">
               {t('missionPage.title', 'Our Mission')}
             </h1>
 
@@ -72,7 +71,7 @@ export function MissionPage() {
                   "WISE Lab's mission is to identify, incubate, train, and empower women entrepreneurs through structured business development, technology enablement, mentorship, investment readiness, and access-to-market opportunities."
                 )}
               </p>
-              <p className="font-semibold text-plum">
+              <p className="font-semibold text-black">
                 {t('missionPage.mandateIntro', "Across its five-year mandate, WISE Lab will:")}
               </p>
               <ul className="list-disc space-y-3 pl-5 marker:text-coral">

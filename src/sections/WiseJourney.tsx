@@ -6,15 +6,15 @@ import { SectionJournal } from '@/components/SectionJournal'
 export function WiseJourney() {
   const { t } = useTranslation()
   return (
-    <section id="wise-journey" className="relative overflow-hidden py-28 md:py-36">
-      <div className="grain" />
+    <section id="wise-journey" className="relative bg-white overflow-hidden py-28 md:py-36">
+      {/* removed grain to keep background purely white */}
       <div className="container-wise relative">
         {/* Intro */}
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Reveal>
-              <p className="eyebrow">{t('wiseJourney.eyebrow', 'The WISE Journey')}</p>
-              <h2 className="mt-4 font-display text-[clamp(2.4rem,5vw,4rem)] font-bold leading-[1.02] text-plum">
+              <p className="eyebrow">{t('wiseJourney.eyebrow', 'Journey')}</p>
+              <h2 className="mt-4 font-display text-[clamp(2.4rem,5vw,4rem)] font-bold leading-[1.02] text-black">
                 {t('wiseJourney.title1', 'From Cocoon')}
                 <br />
                 {t('wiseJourney.title2', 'to Flight')}
@@ -43,10 +43,10 @@ export function WiseJourney() {
             {/* Signature line */}
             <Reveal delay={0.15}>
               <blockquote className="my-12 border-l-2 border-coral pl-6">
-                <p className="font-display text-[clamp(1.6rem,3vw,2.4rem)] font-medium italic leading-snug text-plum">
+                <p className="font-display text-[clamp(1.6rem,3vw,2.4rem)] font-medium italic leading-snug text-black">
                   {t('wiseJourney.quoteLine1', 'Because her idea was never small.')}
                   <br />
-                  <span className="text-coral">{t('wiseJourney.quoteLine2', 'The room was.')}</span>
+                  <span className="text-[#FF8A65]">{t('wiseJourney.quoteLine2', 'The room was.')}</span>
                 </p>
               </blockquote>
             </Reveal>
@@ -65,12 +65,12 @@ export function WiseJourney() {
         {/* Vision + Mission */}
         <div className="mt-24 grid gap-6 md:grid-cols-2">
           <Reveal>
-            <div className="group relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-card transition-all duration-500 hover:shadow-card-hover md:p-10">
+            <div className="group relative h-full overflow-hidden rounded-3xl bg-[#FAFAFA] border border-black/5 p-8 shadow-card transition-all duration-500 hover:shadow-card-hover md:p-10">
               <div className="absolute right-0 top-0 h-32 w-32 -translate-y-10 translate-x-10 rounded-full bg-teal/10 blur-2xl transition-transform duration-700 group-hover:translate-x-6" />
               <p className="eyebrow" style={{ color: '#2C7A70' }}>
                 {t('wiseJourney.vision.eyebrow', 'The Flight Path')}
               </p>
-              <h3 className="mt-3 font-display text-2xl font-semibold text-plum">
+              <h3 className="mt-3 font-display text-2xl font-semibold text-black">
                 {t('wiseJourney.vision.title', 'Our Vision')}
               </h3>
               <p className="mt-4 leading-relaxed text-plum/75">
@@ -95,12 +95,12 @@ export function WiseJourney() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="group relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-card transition-all duration-500 hover:shadow-card-hover md:p-10">
+            <div className="group relative h-full overflow-hidden rounded-3xl bg-[#FAFAFA] border border-black/5 p-8 shadow-card transition-all duration-500 hover:shadow-card-hover md:p-10">
               <div className="absolute right-0 top-0 h-32 w-32 -translate-y-10 translate-x-10 rounded-full bg-coral/10 blur-2xl transition-transform duration-700 group-hover:translate-x-6" />
-              <p className="eyebrow" style={{ color: '#E38470' }}>
+              <p className="eyebrow" style={{ color: '#FF8A65' }}>
                 {t('wiseJourney.mission.eyebrow', 'The WISE Way')}
               </p>
-              <h3 className="mt-3 font-display text-2xl font-semibold text-plum">
+              <h3 className="mt-3 font-display text-2xl font-semibold text-black">
                 {t('wiseJourney.mission.title', 'Our Mission')}
               </h3>
               <p className="mt-4 leading-relaxed text-plum/75">
@@ -109,7 +109,7 @@ export function WiseJourney() {
                   'To empower women entrepreneurs, startups, and MSMEs with structured incubation, practical business training, mentorship, market linkages, investor readiness, digital tools, and ecosystem access — from the cocoon stage of potential to the flight stage of enterprise.'
                 )}
               </p>
-              <p className="mt-5 font-display text-lg font-medium italic text-coral">
+              <p className="mt-5 font-display text-lg font-medium italic text-[#FF8A65]">
                 {t(
                   'wiseJourney.mission.line',
                   'Nurture the idea. Expand the room. Launch the enterprise.'
@@ -117,7 +117,7 @@ export function WiseJourney() {
               </p>
               <Link
                 to="/mission"
-                className="link-underline relative mt-5 inline-block text-sm font-semibold text-coral"
+                className="link-underline relative mt-5 inline-block text-sm font-semibold text-[#FF8A65]"
               >
                 {t('wiseJourney.mission.readMore', 'Read more')}
               </Link>

@@ -15,7 +15,7 @@ export interface Partner {
  * touching any component. See TODO_FOR_HUMAN.md item 11.
  */
 export const CONSORTIUM_PARTNERS: Partner[] = [
-  { name: 'JazzWorld', role: 'Consortium Lead', logoUrl: null },
+  { name: 'JazzWorld World', role: 'Consortium Lead', logoUrl: null },
   { name: 'Mobilink Microfinance Bank', role: 'Co-Lead Partner', logoUrl: null },
   { name: 'Change Mechanics', role: 'Managing Partner', logoUrl: null },
 ]

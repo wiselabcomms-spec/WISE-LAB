@@ -75,14 +75,14 @@ export function WiseConnect() {
   }
 
   return (
-    <section id="wise-connect" className="relative overflow-hidden py-28 md:py-36">
-      <div className="grain" />
+    <section id="wise-connect" className="relative bg-white overflow-hidden py-28 md:py-36">
+      {/* removed grain for pure white bg */}
       <div className="container-wise relative grid gap-14 lg:grid-cols-2 lg:gap-20">
         {/* Left: heading + contact info */}
         <div>
           <Reveal>
-            <p className="eyebrow">{t('nav.links.wise-connect', 'WISE Connect')}</p>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-plum">
+            <p className="eyebrow">{t('nav.links.wise-connect', 'Connect')}</p>
+            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-black">
               {t('wiseConnect.title', 'Start the conversation')}
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-plum/70">
@@ -130,7 +130,7 @@ export function WiseConnect() {
 
         {/* Right: form card */}
         <Reveal delay={0.1}>
-          <div className="relative rounded-3xl border border-plum/10 bg-white p-7 shadow-card md:p-9">
+          <div className="relative rounded-3xl border border-black/5 bg-[#FAFAFA] p-7 shadow-card md:p-9">
             <AnimatePresence mode="wait">
               {sent ? (
                 <motion.div
@@ -149,7 +149,7 @@ export function WiseConnect() {
                   >
                     <CheckCircle2 className="h-10 w-10 text-teal" />
                   </motion.div>
-                  <h3 className="mt-6 font-display text-2xl font-bold text-plum">
+                  <h3 className="mt-6 font-display text-2xl font-bold text-black">
                     {t('wiseConnect.thankYou', 'Thank you, {{name}}.', {
                       name: name.split(' ')[0] || t('form.successFallbackName', 'friend'),
                     })}
@@ -249,7 +249,7 @@ export function WiseConnect() {
                     size="lg"
                     className="w-full"
                     disabled={submitting}
-                    style={{ background: 'var(--track-primary)', color: 'var(--track-ink)' }}
+                    style={{ background: '#FF8A65', color: 'white' }}
                   >
                     {submitting
                       ? t('form.sending', 'Sending…')

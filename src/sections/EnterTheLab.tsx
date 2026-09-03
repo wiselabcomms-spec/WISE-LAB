@@ -26,7 +26,7 @@ function getPillars(t: TFunction): Pillar[] {
         'For women founders ready to move from an early idea to an investment-ready enterprise, through incubation, mentorship, and investor readiness.'
       ),
       cta: t('buildTracks.founder.cta', 'Take Flight'),
-      color: '#2E7D7B',
+      color: '#2E8C8A',
       href: '/apply/founder',
       Icon: Rocket,
     },
@@ -37,7 +37,7 @@ function getPillars(t: TFunction): Pillar[] {
         'For women running micro, small, or home-based businesses ready to grow through practical training, digital tools, and market access.'
       ),
       cta: t('buildTracks.enterprise.cta', 'Grow Your Enterprise'),
-      color: '#E8823C',
+      color: '#FF8A65',
       href: '/apply/enterprise',
       Icon: Store,
     },
@@ -48,7 +48,7 @@ function getPillars(t: TFunction): Pillar[] {
         'For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical support.'
       ),
       cta: t('mentorSection.cta', 'Become a Mentor'),
-      color: '#2C7A70',
+      color: '#2E8C8A',
       href: '/apply/mentor',
       Icon: Compass,
     },
@@ -59,7 +59,7 @@ function getPillars(t: TFunction): Pillar[] {
         'For organizations ready to collaborate on women-led innovation, enterprise, access, and inclusive growth.'
       ),
       cta: t('enterTheLab.partner.cta', 'Partner with WISE'),
-      color: '#E38470',
+      color: '#FF8A65',
       href: '/apply/partner',
       Icon: Network,
     },
@@ -71,8 +71,8 @@ export function EnterTheLab() {
   const PILLARS = getPillars(t)
 
   return (
-    <section id="enter-the-lab" className="relative overflow-hidden py-28 md:py-36">
-      <div className="grain" />
+    <section id="enter-the-lab" className="relative bg-white overflow-hidden py-28 md:py-36">
+      {/* removed grain to keep background purely white */}
       <div className="container-wise relative">
         <Reveal>
           <Link
@@ -89,7 +89,7 @@ export function EnterTheLab() {
         <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
             <p className="eyebrow">{t('nav.links.enter-the-lab', 'Enter the Lab')}</p>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-plum">
+            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-black">
               {t('enterTheLab.title1', 'Your idea deserves')}
               <br />
               {t('enterTheLab.title2', 'the right room')}
@@ -112,7 +112,7 @@ export function EnterTheLab() {
                 to={p.href}
                 whileHover={{ y: -5 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-plum/10 bg-white p-8 shadow-card transition-shadow duration-500 hover:shadow-card-hover md:p-9"
+                className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/5 bg-[#FAFAFA] p-8 shadow-card transition-shadow duration-500 hover:shadow-card-hover md:p-9"
               >
                 {/* top accent rail */}
                 <span
@@ -127,7 +127,7 @@ export function EnterTheLab() {
                     <p.Icon className="h-7 w-7" strokeWidth={1.4} />
                   </span>
                 </div>
-                <h3 className="mt-6 font-display text-2xl font-semibold text-plum">
+                <h3 className="mt-6 font-display text-2xl font-semibold text-black">
                   {p.title}
                 </h3>
                 <p className="mt-3 flex-1 text-[15px] leading-relaxed text-plum/65">
@@ -146,7 +146,7 @@ export function EnterTheLab() {
         </RevealGroup>
 
         <Reveal delay={0.1}>
-          <p className="mt-12 text-center font-display text-xl font-medium uppercase italic text-plum/70">
+          <p className="mt-12 text-center font-display text-xl font-medium uppercase italic text-black">
             {t('enterTheLab.closingLine', 'YOUR NEXT CHAPTER STARTS INSIDE THE LAB.')}
           </p>
         </Reveal>

@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-route
 import App from './App'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { ApplyNowButton } from '@/components/ApplyNowButton'
+import { FloatingTimer } from '@/components/FloatingTimer'
 
 /**
  * Everything except the landing page ("/") is lazy-loaded: most visits land
@@ -59,6 +60,7 @@ function GlobalChrome() {
   return (
     <>
       {!pathname.startsWith('/apply') && <ApplyNowButton />}
+      <FloatingTimer />
       <WhatsAppButton />
     </>
   )

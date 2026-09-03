@@ -41,15 +41,15 @@ export function Newsletter() {
   }
 
   return (
-    <section id="newsletter" className="relative overflow-hidden py-20 md:py-28">
-      <div className="grain" />
+    <section id="newsletter" className="relative bg-white overflow-hidden py-20 md:py-28">
+      {/* removed grain for pure white bg */}
       <div className="container-wise relative">
         <Reveal>
-          <div className="mx-auto max-w-2xl rounded-3xl border border-plum/10 bg-white p-10 text-center shadow-card md:p-14">
+          <div className="mx-auto max-w-2xl rounded-3xl border border-black/5 bg-[#FAFAFA] p-10 text-center shadow-card md:p-14">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-teal/10 text-teal">
               <Mail className="h-5 w-5" />
             </div>
-            <h2 className="mt-6 font-display text-[clamp(1.8rem,3.5vw,2.6rem)] font-bold leading-[1.05] text-plum">
+            <h2 className="mt-6 font-display text-[clamp(1.8rem,3.5vw,2.6rem)] font-bold leading-[1.05] text-black">
               {t('newsletter.title', 'Stay in the loop')}
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-plum/70">
@@ -80,7 +80,7 @@ export function Newsletter() {
                   />
                   {error && <p className="mt-2 text-left text-sm text-red-600">{error}</p>}
                 </div>
-                <Button type="submit" disabled={submitting} className="shrink-0">
+                <Button type="submit" disabled={submitting} className="shrink-0" style={{ background: '#FF8A65', color: 'white' }}>
                   {submitting
                     ? t('newsletter.submitting', 'Subscribing…')
                     : t('newsletter.subscribe', 'Subscribe')}

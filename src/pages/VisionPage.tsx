@@ -18,8 +18,7 @@ export function VisionPage() {
     ]),
   })
   return (
-    <main className="relative min-h-screen overflow-hidden bg-beige py-16 pb-32 md:py-24 md:pb-32">
-      <div className="grain" />
+    <main className="relative min-h-screen overflow-hidden bg-white py-16 pb-32 md:py-24 md:pb-32">
       <div className="container-wise relative max-w-3xl">
         <Reveal>
           <Link
@@ -36,7 +35,7 @@ export function VisionPage() {
             <p className="eyebrow" style={{ color: '#2C7A70' }}>
               {t('visionPage.eyebrow', 'The Flight Path')}
             </p>
-            <h1 className="mt-3 font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-bold leading-[1.05] text-plum">
+            <h1 className="mt-3 font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-bold leading-[1.05] text-black">
               {t('visionPage.title', 'Our Vision')}
             </h1>
 
@@ -59,7 +58,7 @@ export function VisionPage() {
                   'Our vision goes beyond training women to start businesses. It is about building the right rooms, opening the right doors, and creating long-term pathways from ideas to enterprise, from local markets to national visibility, and from early traction to investment.'
                 )}
               </p>
-              <blockquote className="border-l-2 border-coral pl-6 font-display text-2xl font-medium italic text-plum">
+              <blockquote className="border-l-2 border-coral pl-6 font-display text-2xl font-medium italic text-black">
                 {t('visionPage.closingLine', 'Her idea was never small. The room was.')}
               </blockquote>
             </div>

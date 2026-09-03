@@ -4,13 +4,13 @@
   },
   "nav": {
     "links": {
-      "wise-journey": "The WISE Journey",
-      "build-tracks": "Build Tracks",
+      "wise-journey": "Journey",
+      "build-tracks": "Flight Path",
       "enter-the-lab": "Enter the Lab",
       "testimonials": "Founder Stories",
-      "power-circle": "The Power Circle",
+      "power-circle": "Power Circle",
       "behind-the-wings": "Behind the Wings",
-      "wise-connect": "WISE Connect",
+      "wise-connect": "Connect",
       "become-a-mentor": "Become a Mentor",
       "wise-reports": "WISE Reports"
     },
@@ -96,7 +96,7 @@
     "trustedBy": "Trusted by"
   },
   "wiseJourney": {
-    "eyebrow": "The WISE Journey",
+    "eyebrow": "Journey",
     "title1": "From Cocoon",
     "title2": "to Flight",
     "intro": "Pakistan's premier platform, exclusively for women-led ideas — to find the room, the resources, and the recognition to become enterprises.",
@@ -189,8 +189,8 @@
     "consortiumLabel": "Built by a consortium of change-makers",
     "designedFundedBy": "Designed & funded by",
     "funders": {
-      "moitt": "Designed & Funded by",
-      "ignite": "Designed & Funded by"
+      "moitt": "Initiated by",
+      "ignite": "Funded by"
     },
     "closingLine": "Her idea was never small. The ecosystem needed to expand.",
     "cta": "Join the Power Circle"
@@ -263,7 +263,7 @@
   },
   "blogPage": {
     "backToWiseLab": "Back to WISE Lab",
-    "eyebrow": "WISE Journal",
+    "eyebrow": "Journal",
     "title": "Stories from the Lab",
     "intro": "Updates, milestones, and stories from the WISE Lab community.",
     "unconfigured": "The journal isn't connected yet — check back soon.",

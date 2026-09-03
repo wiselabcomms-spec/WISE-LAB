@@ -41,8 +41,7 @@ export function BlogListPage() {
   }, [])
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-beige py-16 md:py-24">
-      <div className="grain" />
+    <main className="relative min-h-screen overflow-hidden bg-white py-16 md:py-24">
       <div className="container-wise relative">
         <Reveal>
           <Link
@@ -53,7 +52,7 @@ export function BlogListPage() {
             {t('blogPage.backToWiseLab')}
           </Link>
           <p className="eyebrow mt-8">{t('blogPage.eyebrow')}</p>
-          <h1 className="mt-3 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-plum">
+          <h1 className="mt-3 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-black">
             {t('blogPage.title')}
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-plum/70">
