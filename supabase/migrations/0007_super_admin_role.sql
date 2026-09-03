@@ -29,6 +29,7 @@ AS $$
 $$;
 
 -- 3. Super admins can read ALL admin profiles (needed for the Users management page)
+DROP POLICY IF EXISTS "admin_profiles: super_admin read all" ON public.admin_profiles;
 CREATE POLICY "admin_profiles: super_admin read all"
   ON public.admin_profiles FOR SELECT
   TO authenticated
@@ -36,18 +37,21 @@ CREATE POLICY "admin_profiles: super_admin read all"
 
 -- 4. Super admins can insert new admin profiles (after creating the auth user
 --    via the manage-admins edge function which uses the service role key)
+DROP POLICY IF EXISTS "admin_profiles: super_admin insert" ON public.admin_profiles;
 CREATE POLICY "admin_profiles: super_admin insert"
   ON public.admin_profiles FOR INSERT
   TO authenticated
   WITH CHECK (public.is_super_admin());
 
 -- 5. Super admins can delete any admin profile
+DROP POLICY IF EXISTS "admin_profiles: super_admin delete" ON public.admin_profiles;
 CREATE POLICY "admin_profiles: super_admin delete"
   ON public.admin_profiles FOR DELETE
   TO authenticated
   USING (public.is_super_admin());
 
 -- 6. Super admins can update any admin profile (e.g. role changes)
+DROP POLICY IF EXISTS "admin_profiles: super_admin update" ON public.admin_profiles;
 CREATE POLICY "admin_profiles: super_admin update"
   ON public.admin_profiles FOR UPDATE
   TO authenticated
