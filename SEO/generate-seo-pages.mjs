@@ -43,7 +43,7 @@ const STATIC_ROUTES = [
   '/apply/enterprise',
   '/apply/mentor',
   '/apply/partner',
-  '/blog',
+  '/happenings',
 ]
 
 function getSupabaseConfig() {
@@ -106,7 +106,7 @@ const STATIC_SITEMAP_ENTRIES = [
   { path: '/apply/enterprise', changefreq: 'monthly', priority: '0.7' },
   { path: '/apply/mentor', changefreq: 'monthly', priority: '0.6' },
   { path: '/apply/partner', changefreq: 'monthly', priority: '0.6' },
-  { path: '/blog', changefreq: 'weekly', priority: '0.7' },
+  { path: '/happenings', changefreq: 'weekly', priority: '0.7' },
 ]
 
 /** Regenerates dist/sitemap.xml with real published blog post URLs and
@@ -120,7 +120,7 @@ function writeSitemap(blogPosts) {
     ),
     ...blogPosts.map(
       (p) =>
-        `  <url>\n    <loc>${SITE_URL}/blog/${p.slug}</loc>\n    <lastmod>${p.updatedAt.slice(0, 10)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
+        `  <url>\n    <loc>${SITE_URL}/happenings/${p.slug}</loc>\n    <lastmod>${p.updatedAt.slice(0, 10)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
     ),
   ]
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`
@@ -130,7 +130,7 @@ function writeSitemap(blogPosts) {
 
 async function main() {
   const blogPosts = await getPublishedBlogPosts()
-  const blogRoutes = blogPosts.map((p) => `/blog/${p.slug}`)
+  const blogRoutes = blogPosts.map((p) => `/happenings/${p.slug}`)
   const routes = [...STATIC_ROUTES, ...blogRoutes]
 
   writeSitemap(blogPosts)
