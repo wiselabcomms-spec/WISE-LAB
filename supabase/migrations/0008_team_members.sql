@@ -23,18 +23,21 @@ create index if not exists team_members_sort_idx on public.team_members (sort_or
 alter table public.team_members enable row level security;
 
 -- Public: anyone can read visible members
+drop policy if exists "team_members: public read visible" on public.team_members;
 create policy "team_members: public read visible"
   on public.team_members for select
   to anon, authenticated
   using (is_visible = true);
 
 -- Admins: read all (including hidden)
+drop policy if exists "team_members: admin read all" on public.team_members;
 create policy "team_members: admin read all"
   on public.team_members for select
   to authenticated
   using (exists (select 1 from public.admin_profiles where id = auth.uid()));
 
 -- Admins: full write access
+drop policy if exists "team_members: admin write" on public.team_members;
 create policy "team_members: admin write"
   on public.team_members for all
   to authenticated

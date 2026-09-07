@@ -6,12 +6,14 @@ values ('team-images', 'team-images', true)
 on conflict (id) do nothing;
 
 -- Allow anyone to read (view) images (public bucket)
+drop policy if exists "team-images: public read" on storage.objects;
 create policy "team-images: public read"
   on storage.objects for select
   to anon, authenticated
   using (bucket_id = 'team-images');
 
 -- Allow admins to upload / delete
+drop policy if exists "team-images: admin write" on storage.objects;
 create policy "team-images: admin write"
   on storage.objects for insert
   to authenticated
@@ -20,6 +22,7 @@ create policy "team-images: admin write"
     and exists (select 1 from public.admin_profiles where id = auth.uid())
   );
 
+drop policy if exists "team-images: admin delete" on storage.objects;
 create policy "team-images: admin delete"
   on storage.objects for delete
   to authenticated
