@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
-import { SectionJournal } from '@/components/SectionJournal'
 
 export function WiseJourney() {
   const { t } = useTranslation()
@@ -125,7 +124,6 @@ export function WiseJourney() {
           </Reveal>
         </div>
 
-        <SectionJournal section="wise-journey" />
       </div>
     </section>
   )

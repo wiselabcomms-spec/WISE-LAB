@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2, Globe, Mail, MapPin, Send } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
-import { SectionJournal } from '@/components/SectionJournal'
 import { submitWiseConnectInquiry } from '@/lib/forms/submitApplication'
 import { SOCIAL_LINKS } from '@/lib/social'
 import { Button } from '@/components/ui/button'
@@ -99,8 +98,8 @@ export function WiseConnect() {
                 AIOU, Sector H-8, Islamabad
               </ContactRow>
               <ContactRow Icon={Mail} label={t('wiseConnect.email', 'Email')}>
-                <a className="link-underline" href="mailto:hello@wiselab.org.pk">
-                  hello@wiselab.org.pk
+                <a className="link-underline" href="mailto:mahnoor.fatima@changemechanics.pk">
+                  mahnoor.fatima@changemechanics.pk
                 </a>
               </ContactRow>
               <ContactRow Icon={Globe} label={t('wiseConnect.web', 'Web')}>
@@ -264,7 +263,6 @@ export function WiseConnect() {
       </div>
 
       <div className="container-wise relative">
-        <SectionJournal section="wise-connect" />
       </div>
     </section>
   )

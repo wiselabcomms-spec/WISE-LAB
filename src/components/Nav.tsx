@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
@@ -27,7 +26,7 @@ export function Nav() {
   }, [])
 
   useEffect(() => {
-    const ids = ['hero', ...NAV_LINKS.map((l) => l.id)]
+    const ids = ['hero', 'faqs', 'newsletter', ...NAV_LINKS.map((l) => l.id)]
     const els = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[]
@@ -118,15 +117,6 @@ export function Nav() {
                   {t(`nav.links.${l.id}`, l.label)}
                 </a>
               ))}
-              <Link
-                to="/blog"
-                className={cn(
-                  'link-underline whitespace-nowrap text-[13px] 2xl:text-sm font-medium transition-colors',
-                  lightText ? 'text-white/85 hover:text-white' : 'text-plum/75 hover:text-plum'
-                )}
-              >
-                {t('nav.blog', 'Blog')}
-              </Link>
             </div>
           </div>
         </div>
@@ -215,13 +205,6 @@ export function Nav() {
                     {t(`nav.links.${l.id}`, l.label)}
                   </a>
                 ))}
-                <Link
-                  to="/blog"
-                  onClick={closeMenu}
-                  className="rounded-xl px-3 py-3 text-[15px] font-medium text-plum/70 transition-colors hover:bg-plum/[0.04] hover:text-plum"
-                >
-                  {t('nav.blog', 'Blog')}
-                </Link>
               </div>
 
             </motion.div>

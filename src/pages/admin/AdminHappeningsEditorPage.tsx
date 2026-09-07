@@ -12,8 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { listAllPostsForAdmin, upsertPost } from '@/lib/blog/api'
-import type { BlogPost } from '@/lib/blog/types'
+import { listAllPostsForAdmin, upsertPost } from '@/lib/happenings/api'
+import type { HappeningsPost } from '@/lib/happenings/types'
 import { NAV_LINKS } from '@/lib/nav'
 
 function slugify(title: string) {
@@ -25,7 +25,7 @@ function slugify(title: string) {
     .replace(/-+/g, '-')
 }
 
-const EMPTY: Omit<BlogPost, 'id'> = {
+const EMPTY: Omit<HappeningsPost, 'id'> = {
   slug: '',
   title: '',
   excerpt: '',
@@ -38,11 +38,11 @@ const EMPTY: Omit<BlogPost, 'id'> = {
   section: null,
 }
 
-export function AdminBlogEditorPage() {
+export function AdminHappeningsEditorPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const isNew = id === 'new'
-  const [post, setPost] = useState<Omit<BlogPost, 'id'> & { id?: string }>(EMPTY)
+  const [post, setPost] = useState<Omit<HappeningsPost, 'id'> & { id?: string }>(EMPTY)
   const [saving, setSaving] = useState(false)
   const [loading, setLoading] = useState(!isNew)
 
@@ -60,7 +60,7 @@ export function AdminBlogEditorPage() {
     try {
       const slug = post.slug || slugify(post.title)
       await upsertPost({ ...post, slug, status })
-      navigate('/admin/blog')
+      navigate('/admin/happenings')
     } finally {
       setSaving(false)
     }
@@ -105,7 +105,7 @@ export function AdminBlogEditorPage() {
           <Select
             value={post.section ?? 'none'}
             onValueChange={(value) =>
-              setPost({ ...post, section: value === 'none' ? null : (value as BlogPost['section']) })
+              setPost({ ...post, section: value === 'none' ? null : (value as HappeningsPost['section']) })
             }
           >
             <SelectTrigger id="section">
@@ -121,7 +121,7 @@ export function AdminBlogEditorPage() {
             </SelectContent>
           </Select>
           <p className="text-xs text-plum/50">
-            Published posts tagged to a section appear in a "Latest from the Journal" preview there on the live page.
+            Published posts tagged to a section appear in a "Happenings" preview there on the live page.
           </p>
         </div>
         <div className="space-y-2">

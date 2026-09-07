@@ -1,8 +1,8 @@
 import type { NAV_LINKS } from '@/lib/nav'
 
-export type BlogSection = (typeof NAV_LINKS)[number]['id'] | 'enter-the-lab' | 'testimonials'
+export type HappeningsSection = (typeof NAV_LINKS)[number]['id'] | 'enter-the-lab' | 'testimonials'
 
-export interface BlogPost {
+export interface HappeningsPost {
   id: string
   slug: string
   title: string
@@ -13,5 +13,5 @@ export interface BlogPost {
   publishedAt: string | null
   status: 'draft' | 'published'
   tags: string[]
-  section: BlogSection | null
+  section: HappeningsSection | null
 }

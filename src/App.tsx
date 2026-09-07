@@ -1,6 +1,6 @@
 import { MotionConfig } from 'framer-motion'
 import { TrackProvider } from '@/lib/useTrackState'
-import { BlogSectionsProvider } from '@/lib/blog/useSectionPosts'
+import { HappeningsSectionsProvider } from '@/lib/happenings/useSectionPosts'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { Nav } from '@/components/Nav'
 import { CohortAnnouncementBar } from '@/components/CohortAnnouncementBar'
@@ -17,13 +17,15 @@ import { BecomeAMentor } from '@/sections/BecomeAMentor'
 import { WiseConnect } from '@/sections/WiseConnect'
 //import { WiseReports } from '@/sections/WiseReports'
 import { Newsletter } from '@/sections/Newsletter'
+import { GlobalHappenings } from '@/sections/GlobalHappenings'
+import { FAQSection } from '@/sections/FAQSection'
 import { Footer } from '@/sections/Footer'
 
 function App() {
   return (
     <MotionConfig reducedMotion="user">
       <TrackProvider>
-        <BlogSectionsProvider>
+        <HappeningsSectionsProvider>
           <SmoothScroll>
             <div className="sticky top-0 z-50">
               <Nav />
@@ -42,11 +44,13 @@ function App() {
               <BecomeAMentor />
               <WiseConnect />
               {/* <WiseReports /> */}
+              <GlobalHappenings />
+              <FAQSection />
               <Newsletter />
             </main>
             <Footer />
           </SmoothScroll>
-        </BlogSectionsProvider>
+        </HappeningsSectionsProvider>
       </TrackProvider>
     </MotionConfig>
   )

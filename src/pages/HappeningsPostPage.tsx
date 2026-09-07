@@ -3,30 +3,30 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/Reveal'
-import { getPostBySlug } from '@/lib/blog/api'
-import type { BlogPost } from '@/lib/blog/types'
+import { getPostBySlug } from '@/lib/happenings/api'
+import type { HappeningsPost } from '@/lib/happenings/types'
 import { useDocumentMeta } from '@/lib/useDocumentMeta'
 import { articleSchema, breadcrumbSchema } from '@/lib/structuredData'
 
-export function BlogPostPage() {
+export function HappeningsPostPage() {
   const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
-  const [post, setPost] = useState<BlogPost | null | undefined>(undefined)
+  const [post, setPost] = useState<HappeningsPost | null | undefined>(undefined)
   useDocumentMeta({
     title: post?.title,
     description: post?.excerpt,
-    path: `/blog/${slug ?? ''}`,
+    path: `/happenings/${slug ?? ''}`,
     structuredData: post
       ? [
           breadcrumbSchema([
             { name: 'Home', path: '/' },
-            { name: 'WISE Journal', path: '/blog' },
-            { name: post.title, path: `/blog/${slug ?? ''}` },
+            { name: 'WISE Happenings', path: '/happenings' },
+            { name: post.title, path: `/happenings/${slug ?? ''}` },
           ]),
           articleSchema({
             title: post.title,
             description: post.excerpt,
-            path: `/blog/${slug ?? ''}`,
+            path: `/happenings/${slug ?? ''}`,
             image: post.coverImageUrl ?? undefined,
             author: post.author,
             datePublished: post.publishedAt ?? undefined,
@@ -46,18 +46,18 @@ export function BlogPostPage() {
     }
   }, [slug])
 
-  if (post === null) return <Navigate to="/blog" replace />
+  if (post === null) return <Navigate to="/happenings" replace />
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-white py-16 md:py-24">
       <div className="container-wise relative max-w-3xl">
         <Reveal>
           <Link
-            to="/blog"
+            to="/happenings"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-plum/60 transition-colors hover:text-plum"
           >
             <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-            {t('blogPostPage.backToJournal')}
+            {t('happeningsPostPage.backToJournal')}
           </Link>
         </Reveal>
 

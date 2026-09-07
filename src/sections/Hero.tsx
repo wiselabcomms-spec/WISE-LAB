@@ -6,21 +6,17 @@ import { Button } from '@/components/ui/button'
 import { MagneticButton } from '@/components/MagneticButton'
 import { useTrack, useIsDesktop } from '@/lib/useTrackState'
 import { TRACK_THEME } from '@/lib/theme'
-import { isRtl } from '@/i18n'
 import { cn } from '@/lib/utils'
-
 export function Hero() {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { track } = useTrack()
   const dark = false
   // Gate mounting, not just CSS visibility — a `hidden` element still loads
   // the three.js chunk and runs its render loop off-screen on mobile, which
   // is exactly the slow-phone loading complaint this was meant to fix.
   const isDesktop = useIsDesktop()
-  // LTR (English): figure right, text left (default reading order).
-  // RTL (Urdu/Pashto/Punjabi): mirrored — figure left, text right — so the
-  // text sits on the side reading naturally starts from.
-  const rtl = isRtl(i18n.language)
+  // English-only: figure always on the right, text on the left.
+  const rtl = false
 
   // Split on spaces so the line-reveal animation works for any translated
   // headline, not just the hardcoded English word count.

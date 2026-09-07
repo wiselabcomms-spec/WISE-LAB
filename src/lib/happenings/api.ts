@@ -1,5 +1,5 @@
 import { getSupabase } from '@/lib/supabase'
-import type { BlogPost } from './types'
+import type { HappeningsPost } from './types'
 
 interface DbRow {
   id: string
@@ -12,10 +12,10 @@ interface DbRow {
   published_at: string | null
   status: 'draft' | 'published'
   tags: string[] | null
-  section: BlogPost['section'] | undefined
+  section: HappeningsPost['section'] | undefined
 }
 
-function fromRow(row: DbRow): BlogPost {
+function fromRow(row: DbRow): HappeningsPost {
   return {
     id: row.id,
     slug: row.slug,
@@ -32,7 +32,7 @@ function fromRow(row: DbRow): BlogPost {
 }
 
 /** Published posts, newest first. Returns [] (never throws) when Supabase isn't configured. */
-export async function listPublishedPosts(): Promise<BlogPost[]> {
+export async function listPublishedPosts(): Promise<HappeningsPost[]> {
   const supabase = getSupabase()
   if (!supabase) return []
 
@@ -46,7 +46,7 @@ export async function listPublishedPosts(): Promise<BlogPost[]> {
   return (data as DbRow[]).map(fromRow)
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getPostBySlug(slug: string): Promise<HappeningsPost | null> {
   const supabase = getSupabase()
   if (!supabase) return null
 
@@ -62,7 +62,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 }
 
 /** All posts including drafts — admin only, relies on RLS to restrict access. */
-export async function listAllPostsForAdmin(): Promise<BlogPost[]> {
+export async function listAllPostsForAdmin(): Promise<HappeningsPost[]> {
   const supabase = getSupabase()
   if (!supabase) return []
 
@@ -75,7 +75,7 @@ export async function listAllPostsForAdmin(): Promise<BlogPost[]> {
   return (data as DbRow[]).map(fromRow)
 }
 
-export async function upsertPost(post: Partial<BlogPost> & { slug: string }): Promise<void> {
+export async function upsertPost(post: Partial<HappeningsPost> & { slug: string }): Promise<void> {
   const supabase = getSupabase()
   if (!supabase) throw new Error('Supabase is not configured.')
 

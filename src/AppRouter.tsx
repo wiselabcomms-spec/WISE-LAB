@@ -13,11 +13,11 @@ import { FloatingTimer } from '@/components/FloatingTimer'
  * a slow connection has to download before the homepage is interactive.
  */
 const ApplyPage = lazy(() => import('@/pages/ApplyPage').then((m) => ({ default: m.ApplyPage })))
-const BlogListPage = lazy(() =>
-  import('@/pages/BlogListPage').then((m) => ({ default: m.BlogListPage }))
+const HappeningsListPage = lazy(() =>
+  import('@/pages/HappeningsListPage').then((m) => ({ default: m.HappeningsListPage }))
 )
-const BlogPostPage = lazy(() =>
-  import('@/pages/BlogPostPage').then((m) => ({ default: m.BlogPostPage }))
+const HappeningsPostPage = lazy(() =>
+  import('@/pages/HappeningsPostPage').then((m) => ({ default: m.HappeningsPostPage }))
 )
 const VisionPage = lazy(() =>
   import('@/pages/VisionPage').then((m) => ({ default: m.VisionPage }))
@@ -32,6 +32,9 @@ const EnterpriseFlightpathPage = lazy(() =>
   import('@/pages/EnterpriseFlightpathPage').then((m) => ({
     default: m.EnterpriseFlightpathPage,
   }))
+)
+const FAQPage = lazy(() =>
+  import('@/pages/FAQPage').then((m) => ({ default: m.FAQPage }))
 )
 /** Whole /admin/* subtree — auth provider, layout, and every admin page —
  *  as one chunk; see AdminApp.tsx for why AdminAuthProvider lives there. */
@@ -80,12 +83,13 @@ export function AppRouter() {
           <Route path="/" element={<App />} />
           <Route path="/apply" element={<Navigate to="/" replace />} />
           <Route path="/apply/:track" element={<ApplyPage />} />
-          <Route path="/blog" element={<BlogListPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/happenings" element={<HappeningsListPage />} />
+          <Route path="/happenings/:slug" element={<HappeningsPostPage />} />
           <Route path="/vision" element={<VisionPage />} />
           <Route path="/mission" element={<MissionPage />} />
           <Route path="/founder-flightpath" element={<FounderFlightpathPage />} />
           <Route path="/enterprise-flightpath" element={<EnterpriseFlightpathPage />} />
+          <Route path="/faqs" element={<FAQPage />} />
           <Route path="/admin/*" element={<AdminApp />} />
         </Routes>
       </Suspense>

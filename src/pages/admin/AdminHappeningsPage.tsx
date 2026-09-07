@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Plus } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal'
-import { deletePost, listAllPostsForAdmin } from '@/lib/blog/api'
-import type { BlogPost } from '@/lib/blog/types'
+import { deletePost, listAllPostsForAdmin } from '@/lib/happenings/api'
+import type { HappeningsPost } from '@/lib/happenings/types'
 import { Button } from '@/components/ui/button'
 
-export function AdminBlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([])
+export function AdminHappeningsPage() {
+  const [posts, setPosts] = useState<HappeningsPost[]>([])
   const [loading, setLoading] = useState(true)
 
   const reload = () => {
@@ -31,11 +31,11 @@ export function AdminBlogPage() {
       <Reveal>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="font-display text-2xl font-bold text-plum sm:text-3xl">Blog</h1>
-            <p className="mt-2 text-plum/60">Manage WISE Lab Journal posts.</p>
+            <h1 className="font-display text-2xl font-bold text-plum sm:text-3xl">Happenings</h1>
+            <p className="mt-2 text-plum/60">Manage WISE Lab Happenings posts.</p>
           </div>
           <Button asChild size="sm">
-            <Link to="/admin/blog/new">
+            <Link to="/admin/happenings/new">
               <Plus className="h-4 w-4" /> New post
             </Link>
           </Button>
@@ -62,7 +62,7 @@ export function AdminBlogPage() {
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
                   <Link
-                    to={`/admin/blog/${post.id}`}
+                    to={`/admin/happenings/${post.id}`}
                     className="text-sm font-semibold text-teal hover:underline"
                   >
                     Edit

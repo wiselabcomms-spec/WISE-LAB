@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal'
-import { useSectionPosts } from '@/lib/blog/useSectionPosts'
-import type { BlogSection } from '@/lib/blog/types'
+import { useSectionPosts } from '@/lib/happenings/useSectionPosts'
+import type { HappeningsSection } from '@/lib/happenings/types'
 import { cn } from '@/lib/utils'
 
 export function SectionJournal({
   section,
   variant = 'light',
 }: {
-  section: BlogSection
+  section: HappeningsSection
   variant?: 'light' | 'dark'
 }) {
   const { t } = useTranslation()
@@ -33,13 +33,13 @@ export function SectionJournal({
             dark ? 'text-beige/45' : 'text-plum/45'
           )}
         >
-          {t('journal.latestFrom', 'Latest from the Journal')}
+          {t('journal.latestFrom', 'Happenings')}
         </p>
         <RevealGroup className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
           {posts.slice(0, 3).map((post) => (
             <RevealItem key={post.id}>
               <Link
-                to={`/blog/${post.slug}`}
+                to={`/happenings/${post.slug}`}
                 className={cn(
                   'group block h-full rounded-2xl border p-5 transition-colors',
                   dark

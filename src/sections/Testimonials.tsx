@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight, Quote } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal'
-import { useSectionPosts } from '@/lib/blog/useSectionPosts'
+import { useSectionPosts } from '@/lib/happenings/useSectionPosts'
 
 /**
- * Founder stories / testimonials, sourced from the same admin Blog editor
- * as every other section's "Latest from the Journal" strip (tag a post's
+ * Founder stories / testimonials, sourced from the same admin Happenings editor
+ * as every other section's "Happenings" strip (tag a post's
  * Homepage section to "testimonials") — rather than inventing quotes here,
  * this only ever shows real published content.
  */
@@ -46,7 +46,7 @@ export function Testimonials() {
             {posts.slice(0, 6).map((post) => (
               <RevealItem key={post.id}>
                 <Link
-                  to={`/blog/${post.slug}`}
+                  to={`/happenings/${post.slug}`}
                   className="group flex h-full flex-col rounded-3xl border border-plum/10 bg-white p-7 shadow-card transition-shadow duration-300 hover:shadow-card-hover"
                 >
                   <Quote className="h-6 w-6 text-teal" strokeWidth={1.6} />

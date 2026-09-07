@@ -5,9 +5,10 @@ import { AdminLayout } from './AdminLayout'
 import { AdminDashboardPage } from './AdminDashboardPage'
 import { AdminSubmissionsPage } from './AdminSubmissionsPage'
 import { AdminWiseConnectPage } from './AdminWiseConnectPage'
-import { AdminBlogPage } from './AdminBlogPage'
-import { AdminBlogEditorPage } from './AdminBlogEditorPage'
+import { AdminHappeningsPage } from './AdminHappeningsPage'
+import { AdminHappeningsEditorPage } from './AdminHappeningsEditorPage'
 import { AdminUsersPage } from './AdminUsersPage'
+import { AdminTeamPage } from './AdminTeamPage'
 
 /**
  * The entire /admin/* subtree as one lazy-loaded chunk (see AppRouter.tsx).
@@ -24,9 +25,10 @@ export function AdminApp() {
           <Route index element={<AdminDashboardPage />} />
           <Route path="submissions" element={<AdminSubmissionsPage />} />
           <Route path="wise-connect" element={<AdminWiseConnectPage />} />
-          <Route path="blog" element={<AdminBlogPage />} />
-          <Route path="blog/:id" element={<AdminBlogEditorPage />} />
+          <Route path="happenings" element={<AdminHappeningsPage />} />
+          <Route path="happenings/:id" element={<AdminHappeningsEditorPage />} />
           <Route path="users" element={<AdminUsersPage />} />
+          <Route path="team" element={<AdminTeamPage />} />
         </Route>
       </Routes>
     </AdminAuthProvider>

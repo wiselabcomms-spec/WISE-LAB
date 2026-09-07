@@ -14,7 +14,7 @@ export function PMBanner() {
   return (
     <div className="relative w-full overflow-hidden border-b border-plum/10 bg-white">
       <img
-        src="/pm-banner1.jpg"
+        src="/pm-banner.webp"
         alt={t('pmBanner.text')}
         className="block w-full h-auto"
       />

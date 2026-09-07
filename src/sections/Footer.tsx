@@ -30,10 +30,16 @@ export function Footer() {
               </a>
             ))}
             <Link
-              to="/blog"
+              to="/happenings"
               className="link-underline text-sm font-medium text-black/70 transition-colors hover:text-black"
             >
-              {t('nav.blog', 'Blog')}
+              {t('nav.blog', 'Happenings')}
+            </Link>
+            <Link
+              to="/faqs"
+              className="link-underline text-sm font-medium text-black/70 transition-colors hover:text-black"
+            >
+              FAQs
             </Link>
             <a
               href="#careers"

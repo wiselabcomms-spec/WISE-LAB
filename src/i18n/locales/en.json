@@ -14,19 +14,13 @@
       "become-a-mentor": "Become a Mentor",
       "wise-reports": "WISE Reports"
     },
-    "blog": "Blog",
+    "blog": "Happenings",
     "cta": "Enter the Lab",
     "home": "WISE Lab home",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
-  "language": {
-    "label": "Language",
-    "en": "English",
-    "ur": "اردو",
-    "ps": "پښتو",
-    "pa": "پنجابی"
-  },
+
   "mentorSection": {
     "eyebrow": "Guide Her Growth",
     "title1": "Become a mentor.",
@@ -261,17 +255,17 @@
     "subtitle": "Real founders, real progress — stories from the women building inside WISE Lab.",
     "empty": "Founder stories are being gathered and will appear here soon."
   },
-  "blogPage": {
+  "happeningsPage": {
     "backToWiseLab": "Back to WISE Lab",
-    "eyebrow": "Journal",
+    "eyebrow": "Happenings",
     "title": "Stories from the Lab",
     "intro": "Updates, milestones, and stories from the WISE Lab community.",
     "unconfigured": "The journal isn't connected yet — check back soon.",
     "empty": "No posts published yet — check back soon.",
     "readMore": "Read more"
   },
-  "blogPostPage": {
-    "backToJournal": "Back to the Journal"
+  "happeningsPostPage": {
+    "backToJournal": "Back"
   },
   "apply": {
     "backToWiseLab": "Back to WISE Lab"
@@ -655,7 +649,7 @@
       "dashboard": "Dashboard",
       "submissions": "Submissions",
       "wiseConnect": "WISE Connect",
-      "blog": "Blog"
+      "happenings": "Happenings"
     },
     "common": {
       "signOut": "Sign out",
