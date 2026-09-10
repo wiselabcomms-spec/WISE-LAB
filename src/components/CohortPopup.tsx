@@ -125,7 +125,7 @@ export function CohortPopup() {
                 >
                   <CheckCircle2 size={15} className="mt-0.5 shrink-0" style={{ color: '#f59e0b' }} />
                   <span className="text-amber-800">
-                    <strong>Priority Seats:</strong> Don't wait — applications for Cohort 1 are
+                    <strong>Priority Seats:</strong> Don't wait applications for Cohort 1 are
                     reviewed on a rolling basis.
                   </span>
                 </div>

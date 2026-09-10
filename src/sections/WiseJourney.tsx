@@ -23,7 +23,7 @@ export function WiseJourney() {
               <p className="mt-6 max-w-md text-lg leading-relaxed text-plum/70">
                 {t(
                   'wiseJourney.intro',
-                  "Pakistan's premier platform, exclusively for women-led ideas — to find the room, the resources, and the recognition to become enterprises."
+                  "Pakistan's premier platform, exclusively for women-led ideas to find the room, the resources, and the recognition to become enterprises."
                 )}
               </p>
             </Reveal>
@@ -34,7 +34,7 @@ export function WiseJourney() {
               <p className="text-pretty text-lg leading-relaxed text-plum/80">
                 {t(
                   'wiseJourney.body1',
-                  'WISE Lab — Women Innovation and Startup Empowerment Lab — is a national flagship platform supporting women-led startups, entrepreneurs, and MSMEs across Pakistan. Built around the philosophy of transformation, it supports women at the most critical stages of their journey — when ideas are still forming, businesses are still finding direction, and founders are ready to move from hidden potential to visible impact.'
+                  'WISE Lab Women Innovation and Startup Empowerment Lab is a national flagship platform supporting women-led startups, entrepreneurs, and MSMEs across Pakistan. Built around the philosophy of transformation, it supports women at the most critical stages of their journey when ideas are still forming, businesses are still finding direction, and founders are ready to move from hidden potential to visible impact.'
                 )}
               </p>
             </Reveal>
@@ -54,7 +54,7 @@ export function WiseJourney() {
               <p className="text-pretty text-lg leading-relaxed text-plum/80">
                 {t(
                   'wiseJourney.body2',
-                  'Through incubation, MSME training, mentorship, market access, investor readiness, digital enablement, and ecosystem partnerships, WISE Lab helps women transform their ideas into sustainable businesses — and their ambition into enterprise.'
+                  'Through incubation, MSME training, mentorship, market access, investor readiness, digital enablement, and ecosystem partnerships, WISE Lab helps women transform their ideas into sustainable businesses and their ambition into enterprise.'
                 )}
               </p>
             </Reveal>
@@ -75,13 +75,13 @@ export function WiseJourney() {
               <p className="mt-4 leading-relaxed text-plum/75">
                 {t(
                   'wiseJourney.vision.body',
-                  "To become Pakistan's leading platform exclusively for women-led innovation and enterprise — enabling women across the country to transform ideas into sustainable businesses, access the right spaces, and contribute to inclusive digital and economic growth."
+                  "To become Pakistan's leading platform exclusively for women-led innovation and enterprise enabling women across the country to transform ideas into sustainable businesses, access the right spaces, and contribute to inclusive digital and economic growth."
                 )}
               </p>
               <p className="mt-5 font-display text-lg font-medium italic text-teal">
                 {t(
                   'wiseJourney.vision.line',
-                  "A future where she doesn't wait for opportunity — she enters the room & builds it."
+                  "A future where she doesn't wait for opportunity she enters the room & builds it."
                 )}
               </p>
               <Link
@@ -105,7 +105,7 @@ export function WiseJourney() {
               <p className="mt-4 leading-relaxed text-plum/75">
                 {t(
                   'wiseJourney.mission.body',
-                  'To empower women entrepreneurs, startups, and MSMEs with structured incubation, practical business training, mentorship, market linkages, investor readiness, digital tools, and ecosystem access — from the cocoon stage of potential to the flight stage of enterprise.'
+                  'To empower women entrepreneurs, startups, and MSMEs with structured incubation, practical business training, mentorship, market linkages, investor readiness, digital tools, and ecosystem access from the cocoon stage of potential to the flight stage of enterprise.'
                 )}
               </p>
               <p className="mt-5 font-display text-lg font-medium italic text-[#FF8A65]">

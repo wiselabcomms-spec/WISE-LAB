@@ -10,7 +10,7 @@ import type { FormSchema } from '../types'
  */
 export const partnerFormSchema: FormSchema = {
   track: 'partner',
-  title: 'Open the Ecosystem — Expression of Interest',
+  title: 'Open the Ecosystem Expression of Interest',
   subtitle:
     'For organizations ready to collaborate on women-led innovation, enterprise, access, and inclusive growth. Share a few details and our team will follow up.',
   themeTrack: 'neutral',

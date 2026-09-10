@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 
 const SITE_NAME = 'WISE Lab'
-const DEFAULT_TITLE = 'WISE Lab — Her idea. Her enterprise.'
+const DEFAULT_TITLE = 'WISE Lab Her idea. Her enterprise.'
 const DEFAULT_DESCRIPTION =
-  "WISE Lab — Women Innovation & Startup Empowerment Lab. Pakistan's national flagship platform where women-led ideas move from quiet potential to visible enterprise."
+  "WISE Lab Women Innovation & Startup Empowerment Lab. Pakistan's national flagship platform where women-led ideas move from quiet potential to visible enterprise."
 
 function setMetaByName(name: string, content: string) {
   let el = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`)
@@ -85,7 +85,7 @@ export function useDocumentMeta({
   structuredData?: object | object[]
 }) {
   useEffect(() => {
-    const fullTitle = title ? `${title} — ${SITE_NAME}` : DEFAULT_TITLE
+    const fullTitle = title ? `${title} ${SITE_NAME}` : DEFAULT_TITLE
     const url = `https://wiselab.org.pk${path}`
 
     document.title = fullTitle

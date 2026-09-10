@@ -155,8 +155,8 @@ function CreateAdminModal({
             onChange={(e) => setRole(e.target.value as 'admin' | 'editor')}
             className="h-11 w-full rounded-xl border border-plum/15 bg-white px-3 text-sm text-plum focus:outline-none focus:ring-2 focus:ring-teal/40"
           >
-            <option value="admin">Admin — full access</option>
-            <option value="editor">Editor — blog only</option>
+            <option value="admin">Admin full access</option>
+            <option value="editor">Editor blog only</option>
           </select>
         </div>
         {error && (
@@ -216,7 +216,7 @@ function ResetPasswordModal({
   }
 
   return (
-    <Modal title={`Reset Password — ${admin.full_name}`} onClose={onClose}>
+    <Modal title={`Reset Password ${admin.full_name}`} onClose={onClose}>
       {success ? (
         <div className="rounded-xl border border-teal/20 bg-teal/5 px-4 py-4 text-center text-sm font-medium text-teal">
           ✓ Password updated successfully!

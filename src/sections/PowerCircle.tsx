@@ -88,7 +88,7 @@ export function PowerCircle() {
             <p className="mt-6 text-lg leading-relaxed text-black/70">
               {t(
                 'powerCircle.intro',
-                "A premier alliance committed to women-led innovation, access, enterprise, and inclusive growth — because when the right rooms open, women-led businesses don't just enter them. They transform them."
+                "A premier alliance committed to women-led innovation, access, enterprise, and inclusive growth because when the right rooms open, women-led businesses don't just enter them. They transform them."
               )}
             </p>
           </Reveal>

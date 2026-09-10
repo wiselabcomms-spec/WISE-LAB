@@ -43,7 +43,7 @@ export function VisionPage() {
               <p>
                 {t(
                   'visionPage.p1',
-                  "To build Pakistan's leading platform for women-led innovation and enterprise — where ambitious ideas gain the skills, networks, capital, confidence, and market access needed to become sustainable businesses."
+                  "To build Pakistan's leading platform for women-led innovation and enterprise where ambitious ideas gain the skills, networks, capital, confidence, and market access needed to become sustainable businesses."
                 )}
               </p>
               <p>

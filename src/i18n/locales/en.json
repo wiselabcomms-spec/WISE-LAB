@@ -1,6 +1,6 @@
 {
   "cohortBar": {
-    "text": "Cohort 1 – Startup Incubation Applications are now open — Apply to Founder Flightpath"
+    "text": "Cohort 1 – Startup Incubation Applications are now open Apply to Founder Flightpath"
   },
   "nav": {
     "links": {
@@ -25,7 +25,7 @@
     "eyebrow": "Guide Her Growth",
     "title1": "Become a mentor.",
     "title2": "Help her take flight.",
-    "body": "For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical, hands-on support — from first idea to investor-ready enterprise.",
+    "body": "For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical, hands-on support from first idea to investor-ready enterprise.",
     "cta": "Become a Mentor",
     "ways": {
       "share": {
@@ -38,15 +38,15 @@
       },
       "shape": {
         "title": "Shape the ecosystem",
-        "body": "Help set the standard for what women-led enterprise support looks like in Pakistan — one founder relationship at a time."
+        "body": "Help set the standard for what women-led enterprise support looks like in Pakistan one founder relationship at a time."
       }
     }
   },
   "footer": {
     "tagline": "Her idea. Her enterprise. Her flight.",
     "underVision": "Under the vision of the Prime Minister of Pakistan.",
-    "fundedBy": "Designed & funded by the Ministry of IT & Telecom and Ignite — National Technology Fund.",
-    "copyright": "© 2026 WISE Lab — Women Innovation and Startup Empowerment Lab.",
+    "fundedBy": "Designed & funded by the Ministry of IT & Telecom and Ignite National Technology Fund.",
+    "copyright": "© 2026 WISE Lab Women Innovation and Startup Empowerment Lab.",
     "closingLine": "From cocoon to flight."
   },
   "whatsapp": {
@@ -93,22 +93,22 @@
     "eyebrow": "Journey",
     "title1": "From Cocoon",
     "title2": "to Flight",
-    "intro": "Pakistan's premier platform, exclusively for women-led ideas — to find the room, the resources, and the recognition to become enterprises.",
-    "body1": "WISE Lab — Women Innovation and Startup Empowerment Lab — is a national flagship platform supporting women-led startups, entrepreneurs, and MSMEs across Pakistan. Built around the philosophy of transformation, it supports women at the most critical stages of their journey — when ideas are still forming, businesses are still finding direction, and founders are ready to move from hidden potential to visible impact.",
+    "intro": "Pakistan's premier platform, exclusively for women-led ideas to find the room, the resources, and the recognition to become enterprises.",
+    "body1": "WISE Lab Women Innovation and Startup Empowerment Lab is a national flagship platform supporting women-led startups, entrepreneurs, and MSMEs across Pakistan. Built around the philosophy of transformation, it supports women at the most critical stages of their journey when ideas are still forming, businesses are still finding direction, and founders are ready to move from hidden potential to visible impact.",
     "quoteLine1": "Because her idea was never small.",
     "quoteLine2": "The room was.",
-    "body2": "Through incubation, MSME training, mentorship, market access, investor readiness, digital enablement, and ecosystem partnerships, WISE Lab helps women transform their ideas into sustainable businesses — and their ambition into enterprise.",
+    "body2": "Through incubation, MSME training, mentorship, market access, investor readiness, digital enablement, and ecosystem partnerships, WISE Lab helps women transform their ideas into sustainable businesses and their ambition into enterprise.",
     "vision": {
       "eyebrow": "The Flight Path",
       "title": "Our Vision",
-      "body": "To become Pakistan's leading platform exclusively for women-led innovation and enterprise — enabling women across the country to transform ideas into sustainable businesses, access the right spaces, and contribute to inclusive digital and economic growth.",
-      "line": "A future where she doesn't wait for opportunity — she enters the room & builds it.",
+      "body": "To become Pakistan's leading platform exclusively for women-led innovation and enterprise enabling women across the country to transform ideas into sustainable businesses, access the right spaces, and contribute to inclusive digital and economic growth.",
+      "line": "A future where she doesn't wait for opportunity she enters the room & builds it.",
       "readMore": "Read more"
     },
     "mission": {
       "eyebrow": "The WISE Way",
       "title": "Our Mission",
-      "body": "To empower women entrepreneurs, startups, and MSMEs with structured incubation, practical business training, mentorship, market linkages, investor readiness, digital tools, and ecosystem access — from the cocoon stage of potential to the flight stage of enterprise.",
+      "body": "To empower women entrepreneurs, startups, and MSMEs with structured incubation, practical business training, mentorship, market linkages, investor readiness, digital tools, and ecosystem access from the cocoon stage of potential to the flight stage of enterprise.",
       "line": "Nurture the idea. Expand the room. Launch the enterprise.",
       "readMore": "Read more"
     }
@@ -118,27 +118,27 @@
       "kicker": "Startup Incubation",
       "title": "Founder Flightpath",
       "lead": "A structured six-month programme for women-led, technology-enabled startups ready to validate, strengthen, launch, or scale.",
-      "body": "From an early idea to an investment-ready enterprise — with business-model refinement, product validation, real-time mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.",
-      "motto": "From idea to investor-ready — unseen to undeniable.",
+      "body": "From an early idea to an investment-ready enterprise with business-model refinement, product validation, real-time mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.",
+      "motto": "From idea to investor-ready unseen to undeniable.",
       "cta": "Take Flight"
     },
     "enterprise": {
       "kicker": "MSME Training",
       "title": "Enterprise Flightpath",
       "lead": "A nationwide capacity-building programme for women running micro, small, home-based, or early-stage businesses.",
-      "body": "Turning skills, home-based work, and small businesses into sustainable enterprises — with business planning, financial literacy, digital tools, branding, pricing, customer management, and market access.",
-      "motto": "From skill to income — cocoon to flight.",
+      "body": "Turning skills, home-based work, and small businesses into sustainable enterprises with business planning, financial literacy, digital tools, branding, pricing, customer management, and market access.",
+      "motto": "From skill to income cocoon to flight.",
       "cta": "Grow Your Enterprise"
     },
     "title": "Choose your flight path",
     "subtitle": "Two tracks. One destination: women-led enterprise growth.",
-    "hint": "Select a track to preview it in the scene above — the whole page responds to your choice.",
+    "hint": "Select a track to preview it in the scene above the whole page responds to your choice.",
     "previewingAbove": "Previewing above ↑",
     "selected": "Selected",
     "readMore": "Read more"
   },
   "enterTheLab": {
-    "cohortAnnouncement": "Cohort 1 applications are open — apply now",
+    "cohortAnnouncement": "Cohort 1 applications are open apply now",
     "founder": {
       "title": "Founder Flightpath",
       "body": "For women founders ready to move from an early idea to an investment-ready enterprise, through incubation, mentorship, and investor readiness."
@@ -158,7 +158,7 @@
     },
     "title1": "Your idea deserves",
     "title2": "the right room",
-    "intro": "Building a startup, growing a small business, mentoring founders, or partnering for impact — your WISE journey starts here. If your idea has felt too early, too quiet, too small, or too unseen, this is your invitation to bring it into the room.",
+    "intro": "Building a startup, growing a small business, mentoring founders, or partnering for impact your WISE journey starts here. If your idea has felt too early, too quiet, too small, or too unseen, this is your invitation to bring it into the room.",
     "closingLine": "YOUR NEXT CHAPTER STARTS INSIDE THE LAB."
   },
   "powerCircle": {
@@ -179,7 +179,7 @@
       "community": "Community"
     },
     "title": "The ecosystem behind her enterprise",
-    "intro": "A premier alliance committed to women-led innovation, access, enterprise, and inclusive growth — because when the right rooms open, women-led businesses don't just enter them. They transform them.",
+    "intro": "A premier alliance committed to women-led innovation, access, enterprise, and inclusive growth because when the right rooms open, women-led businesses don't just enter them. They transform them.",
     "consortiumLabel": "Built by a consortium of change-makers",
     "designedFundedBy": "Designed & funded by",
     "funders": {
@@ -190,25 +190,25 @@
     "cta": "Join the Power Circle"
   },
   "behindTheWings": {
-    "title1": "The women helping",
+    "title1": "The team helping",
     "title2": "her take flight",
-    "intro": "WISE Lab is led by a multidisciplinary team across incubation, entrepreneurship development, partnerships, communications, training, technology, and ecosystem engagement — building the space where she can become a founder.",
+    "intro": "WISE Lab is led by a multidisciplinary team across incubation, entrepreneurship development, partnerships, communications, training, technology, and ecosystem engagement building the space where she can become a founder.",
     "team": {
       "name": "Muneaza Durrani",
       "role": "Project Director",
       "linkedinLabel": "Muneaza Durrani on LinkedIn",
-      "bio": "Leads WISE Lab's programme direction — setting the vision, standards, and day-to-day execution that help women entrepreneurs access mentorship, markets, capital readiness, and the right room to grow. She is the founding member of the team building the platform."
+      "bio": "Leads WISE Lab's programme direction setting the vision, standards, and day-to-day execution that help women entrepreneurs access mentorship, markets, capital readiness, and the right room to grow. She is the founding member of the team building the platform."
     },
-    "comingSoon": "More of the crew is joining soon. Every flight needs wings — this is the team building them."
+    "comingSoon": "More of the crew is joining soon. Every flight needs wings this is the team building them."
   },
   "newsletter": {
     "title": "Stay in the loop",
-    "subtitle": "Cohort openings, founder stories, and WISE Lab updates — straight to your inbox, no spam.",
+    "subtitle": "Cohort openings, founder stories, and WISE Lab updates straight to your inbox, no spam.",
     "placeholder": "you@example.com",
     "subscribe": "Subscribe",
     "submitting": "Subscribing…",
     "success": "You're subscribed. Welcome to WISE Lab.",
-    "alreadySubscribed": "You're already subscribed — thank you!",
+    "alreadySubscribed": "You're already subscribed thank you!",
     "submitError": "Something went wrong. Please try again."
   },
   "wiseConnect": {
@@ -252,7 +252,7 @@
   },
   "testimonials": {
     "title": "In their own words",
-    "subtitle": "Real founders, real progress — stories from the women building inside WISE Lab.",
+    "subtitle": "Real founders, real progress stories from the women building inside WISE Lab.",
     "empty": "Founder stories are being gathered and will appear here soon."
   },
   "happeningsPage": {
@@ -260,8 +260,8 @@
     "eyebrow": "Happenings",
     "title": "Stories from the Lab",
     "intro": "Updates, milestones, and stories from the WISE Lab community.",
-    "unconfigured": "The journal isn't connected yet — check back soon.",
-    "empty": "No posts published yet — check back soon.",
+    "unconfigured": "The journal isn't connected yet check back soon.",
+    "empty": "No posts published yet check back soon.",
     "readMore": "Read more"
   },
   "happeningsPostPage": {
@@ -469,7 +469,7 @@
       }
     },
     "enterprise": {
-      "title": "Enterprise Flightpath — Expression of Interest",
+      "title": "Enterprise Flightpath Expression of Interest",
       "subtitle": "For women-led small businesses and home-based entrepreneurs interested in business training, digital skills, visibility, and market access. Share a few details and our team will follow up.",
       "submitLabel": "Submit expression of interest",
       "successTitle": "Thank you, {firstName}.",
@@ -511,7 +511,7 @@
       }
     },
     "mentor": {
-      "title": "Guide Her Growth — Expression of Interest",
+      "title": "Guide Her Growth Expression of Interest",
       "subtitle": "For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical support. Share a few details and our team will follow up.",
       "submitLabel": "Submit expression of interest",
       "successTitle": "Thank you, {firstName}.",
@@ -573,7 +573,7 @@
       }
     },
     "partner": {
-      "title": "Open the Ecosystem — Expression of Interest",
+      "title": "Open the Ecosystem Expression of Interest",
       "subtitle": "For organizations ready to collaborate on women-led innovation, enterprise, access, and inclusive growth. Share a few details and our team will follow up.",
       "submitLabel": "Submit expression of interest",
       "successTitle": "Thank you, {firstName}.",

@@ -19,7 +19,7 @@ export function HappeningsListPage() {
   useDocumentMeta({
     title: 'Happenings',
     description:
-      'Stories, updates, and insights from WISE Lab — Women Innovation & Startup Empowerment Lab.',
+      'Stories, updates, and insights from WISE Lab Women Innovation & Startup Empowerment Lab.',
     path: '/happenings',
     structuredData: breadcrumbSchema([
       { name: 'Home', path: '/' },

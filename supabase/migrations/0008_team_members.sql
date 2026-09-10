@@ -19,6 +19,7 @@ create table if not exists public.team_members (
 );
 
 create index if not exists team_members_sort_idx on public.team_members (sort_order asc);
+create unique index if not exists team_members_name_idx on public.team_members (name);
 
 alter table public.team_members enable row level security;
 
@@ -122,4 +123,4 @@ values
     5,
     true
   )
-on conflict do nothing;
+on conflict (name) do nothing;

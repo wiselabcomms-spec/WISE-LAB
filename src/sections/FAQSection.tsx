@@ -126,7 +126,7 @@ export function FAQSection() {
                 <span className="text-teal">Questions</span>
               </h2>
               <p className="mt-4 max-w-lg text-[17px] leading-relaxed text-plum/65">
-                Everything you need to know about WISE Lab — from eligibility to grants to how to apply.
+                Everything you need to know about WISE Lab from eligibility to grants to how to apply.
               </p>
             </div>
 

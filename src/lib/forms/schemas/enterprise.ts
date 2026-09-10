@@ -9,7 +9,7 @@ import type { FormSchema } from '../types'
  */
 export const enterpriseFormSchema: FormSchema = {
   track: 'enterprise',
-  title: 'Enterprise Flightpath — Expression of Interest',
+  title: 'Enterprise Flightpath Expression of Interest',
   subtitle:
     'For women-led small businesses and home-based entrepreneurs interested in business training, digital skills, visibility, and market access. Share a few details and our team will follow up.',
   themeTrack: 'enterprise',

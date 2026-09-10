@@ -175,7 +175,7 @@ export function AdminTeamPage() {
           <div className="mt-8 rounded-3xl border border-plum/10 bg-white p-6 shadow-card">
             <div className="mb-5 flex items-center justify-between">
               <h2 className="font-display text-lg font-semibold text-plum">
-                {isNew ? 'Add New Member' : `Edit — ${editing.name}`}
+                {isNew ? 'Add New Member' : `Edit ${editing.name}`}
               </h2>
               <button
                 type="button"
@@ -241,7 +241,7 @@ export function AdminTeamPage() {
                 <label className="mb-1.5 block text-sm font-medium text-plum">
                   Photo
                   <span className="ml-2 text-xs font-normal text-plum/50">
-                    (JPG, PNG, WebP — saved to /public/team/)
+                    (JPG, PNG, WebP saved to /public/team/)
                   </span>
                 </label>
 
@@ -396,7 +396,7 @@ export function AdminTeamPage() {
                       )}
                     </div>
                     <p className="mt-0.5 truncate text-sm text-plum/55">
-                      {member.role || '—'} · Order: {member.sortOrder}
+                      {member.role || '-'} · Order: {member.sortOrder}
                     </p>
                   </div>
                 </div>

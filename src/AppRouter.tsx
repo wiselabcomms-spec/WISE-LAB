@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import App from './App'
-import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { ApplyNowButton } from '@/components/ApplyNowButton'
 import { FloatingTimer } from '@/components/FloatingTimer'
 
@@ -64,7 +63,6 @@ function GlobalChrome() {
     <>
       {!pathname.startsWith('/apply') && <ApplyNowButton />}
       <FloatingTimer />
-      <WhatsAppButton />
     </>
   )
 }

@@ -10,7 +10,7 @@ import type { FormSchema } from '../types'
  */
 export const mentorFormSchema: FormSchema = {
   track: 'mentor',
-  title: 'Guide Her Growth — Expression of Interest',
+  title: 'Guide Her Growth Expression of Interest',
   subtitle:
     'For experts, founders, investors, trainers, and professionals who want to guide women entrepreneurs through practical support. Share a few details and our team will follow up.',
   themeTrack: 'neutral',

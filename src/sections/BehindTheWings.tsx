@@ -14,7 +14,7 @@ const FALLBACK_MEMBERS: TeamMember[] = [
     role: 'Project Director',
     tagline:
       'A venture builder and ecosystem strategist focused on turning early-stage potential into growth-ready enterprises.',
-    bio: "Leads WISE Lab's programme direction — setting the vision, standards, and day-to-day execution that help women entrepreneurs access mentorship, markets, capital readiness, and the right room to grow. She is the founding member of the team building the platform.",
+    bio: "Leads WISE Lab's programme direction setting the vision, standards, and day-to-day execution that help women entrepreneurs access mentorship, markets, capital readiness, and the right room to grow. She is the founding member of the team building the platform.",
     imageUrl: '/team/munneaza-durrani-resized.jpeg',
     linkedinUrl: 'https://www.linkedin.com/in/muneaza-durrani-35a85810',
     isFeatured: true,
@@ -111,7 +111,7 @@ export function BehindTheWings() {
           <Reveal className="lg:col-span-7">
             <p className="eyebrow">{t('nav.links.behind-the-wings', 'Behind the Wings')}</p>
             <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.03] text-black">
-              {t('behindTheWings.title1', 'The women helping')}
+              {t('behindTheWings.title1', 'The team helping')}
               <br />
               {t('behindTheWings.title2', 'her take flight')}
             </h2>
@@ -120,7 +120,7 @@ export function BehindTheWings() {
             <p className="text-pretty leading-relaxed text-plum/70">
               {t(
                 'behindTheWings.intro',
-                'WISE Lab is led by a multidisciplinary team across incubation, entrepreneurship development, partnerships, communications, training, technology, and ecosystem engagement — building the space where she can become a founder.'
+                'WISE Lab is led by a multidisciplinary team across incubation, entrepreneurship development, partnerships, communications, training, technology, and ecosystem engagement building the space where she can become a founder.'
               )}
             </p>
           </Reveal>
@@ -181,7 +181,7 @@ export function BehindTheWings() {
         {grid.length > 0 && (
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {grid.map((member, i) => (
-              <Reveal key={member.id} delay={0.15 + i * 0.05}>
+              <Reveal key={member.id} delay={0.15 + i * 0.05} className="h-full">
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 26 }}
@@ -195,11 +195,11 @@ export function BehindTheWings() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col justify-center bg-white p-6">
+                  <div className="flex flex-1 flex-col bg-white p-6">
                     <div className="flex items-start justify-between gap-3">
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <h3 className="font-display text-xl font-bold text-plum">{member.name}</h3>
-                        <p className="mt-1 text-[11px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-teal">
+                        <p className="mt-1 min-h-[2.25rem] text-[11px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-teal">
                           {member.role}
                         </p>
                       </div>

@@ -32,7 +32,7 @@ export function Newsletter() {
     } catch (err) {
       setError(
         err instanceof AlreadySubscribedError
-          ? t('newsletter.alreadySubscribed', "You're already subscribed — thank you!")
+          ? t('newsletter.alreadySubscribed', "You're already subscribed thank you!")
           : t('newsletter.submitError', 'Something went wrong. Please try again.')
       )
     } finally {
@@ -55,7 +55,7 @@ export function Newsletter() {
             <p className="mt-4 text-lg leading-relaxed text-plum/70">
               {t(
                 'newsletter.subtitle',
-                'Cohort openings, founder stories, and WISE Lab updates — straight to your inbox, no spam.'
+                'Cohort openings, founder stories, and WISE Lab updates straight to your inbox, no spam.'
               )}
             </p>
 

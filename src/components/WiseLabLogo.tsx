@@ -176,7 +176,7 @@ export function WiseLabLogo({
       {...intro}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       src={logo.src}
-      alt="WISE Lab — Her idea. Her enterprise."
+      alt="WISE Lab Her idea. Her enterprise."
       className={cn('w-auto', className)}
       style={{ height: size, filter: FILTER[variant] }}
       draggable={false}

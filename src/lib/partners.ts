@@ -22,5 +22,5 @@ export const CONSORTIUM_PARTNERS: Partner[] = [
 
 export const FUNDING_PARTNERS: Partner[] = [
   { name: 'Ministry of IT & Telecom', role: 'Funder', logoUrl: null },
-  { name: 'Ignite — National Technology Fund', role: 'Funder', logoUrl: null },
+  { name: 'Ignite National Technology Fund', role: 'Funder', logoUrl: null },
 ]

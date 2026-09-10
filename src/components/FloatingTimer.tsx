@@ -52,7 +52,7 @@ export function FloatingTimer() {
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: 50, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.5 }}
-        className="fixed bottom-24 right-4 z-40 flex flex-col items-center rounded-xl bg-[#2E8C8A] p-2 shadow-[0_4px_20px_-4px_rgba(46,140,138,0.5)]"
+        className="fixed bottom-6 right-6 z-40 flex flex-col items-center rounded-xl bg-[#2E8C8A] p-2 shadow-[0_4px_20px_-4px_rgba(46,140,138,0.5)]"
       >
         <button
           onClick={() => setIsVisible(false)}

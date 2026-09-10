@@ -25,7 +25,7 @@ export function Testimonials() {
           <p className="mt-4 text-lg leading-relaxed text-plum/70">
             {t(
               'testimonials.subtitle',
-              'Real founders, real progress — stories from the women building inside WISE Lab.'
+              'Real founders, real progress stories from the women building inside WISE Lab.'
             )}
           </p>
         </Reveal>

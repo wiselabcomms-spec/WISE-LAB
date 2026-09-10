@@ -226,7 +226,7 @@ export function FounderFlightpathPage() {
               </p>
 
               <blockquote className="border-l-2 border-teal pl-6 font-display text-xl font-medium italic text-plum">
-                {t('founderFlightpathPage.closingLine', 'Pakistan’s next big founder may not look like a founder—yet.')}
+                {t('founderFlightpathPage.closingLine', 'Pakistan’s next big founder may not look like a founder yet.')}
               </blockquote>
             </div>
 

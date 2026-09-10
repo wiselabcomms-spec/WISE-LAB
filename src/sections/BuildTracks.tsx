@@ -36,9 +36,9 @@ function getCards(t: TFunction): TrackCard[] {
       ),
       body: t(
         'buildTracks.founder.body',
-        'From an early idea to an investment-ready enterprise — with business-model refinement, product validation, real-time mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.'
+        'From an early idea to an investment-ready enterprise with business-model refinement, product validation, real-time mentorship, pitch development, investor readiness, legal & financial guidance, market access, and ecosystem linkages.'
       ),
-      motto: t('buildTracks.founder.motto', 'From idea to investor-ready — unseen to undeniable.'),
+      motto: t('buildTracks.founder.motto', 'From idea to investor-ready unseen to undeniable.'),
       cta: t('buildTracks.founder.cta', 'Take Flight'),
       readMoreHref: '/founder-flightpath',
       primary: '#2E8C8A',
@@ -57,9 +57,9 @@ function getCards(t: TFunction): TrackCard[] {
       ),
       body: t(
         'buildTracks.enterprise.body',
-        'Turning skills, home-based work, and small businesses into sustainable enterprises — with business planning, financial literacy, digital tools, branding, pricing, customer management, and market access.'
+        'Turning skills, home-based work, and small businesses into sustainable enterprises with business planning, financial literacy, digital tools, branding, pricing, customer management, and market access.'
       ),
-      motto: t('buildTracks.enterprise.motto', 'From skill to income — cocoon to flight.'),
+      motto: t('buildTracks.enterprise.motto', 'From skill to income cocoon to flight.'),
       cta: t('buildTracks.enterprise.cta', 'Grow Your Enterprise'),
       readMoreHref: '/enterprise-flightpath',
       primary: '#FF8A65',
@@ -92,7 +92,7 @@ export function BuildTracks() {
           <p className="mt-3 text-sm text-plum/50">
             {t(
               'buildTracks.hint',
-              'Select a track to preview it in the scene above — the whole page responds to your choice.'
+              'Select a track to preview it in the scene above the whole page responds to your choice.'
             )}
           </p>
         </Reveal>

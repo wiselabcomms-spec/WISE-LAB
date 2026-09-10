@@ -369,7 +369,7 @@ export function FAQPage() {
   useDocumentMeta({
     title: 'FAQs – Frequently Asked Questions',
     description:
-      'Answers to common questions about WISE Lab — eligibility, programme support, grants, applications, and more.',
+      'Answers to common questions about WISE Lab eligibility, programme support, grants, applications, and more.',
     path: '/faqs',
     structuredData: breadcrumbSchema([
       { name: 'Home', path: '/' },

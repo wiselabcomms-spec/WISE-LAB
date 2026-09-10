@@ -82,7 +82,7 @@ export function EnterTheLab() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-teal" />
             </span>
-            {t('enterTheLab.cohortAnnouncement', 'Cohort 1 applications are open — apply now')}
+            {t('enterTheLab.cohortAnnouncement', 'Cohort 1 applications are open apply now')}
           </Link>
         </Reveal>
         <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-end">
@@ -98,7 +98,7 @@ export function EnterTheLab() {
             <p className="text-pretty leading-relaxed text-plum/70">
               {t(
                 'enterTheLab.intro',
-                'Building a startup, growing a small business, mentoring founders, or partnering for impact — your WISE journey starts here. If your idea has felt too early, too quiet, too small, or too unseen, this is your invitation to bring it into the room.'
+                'Building a startup, growing a small business, mentoring founders, or partnering for impact your WISE journey starts here. If your idea has felt too early, too quiet, too small, or too unseen, this is your invitation to bring it into the room.'
               )}
             </p>
           </Reveal>
