@@ -1,7 +1,4 @@
 {
-  "cohortBar": {
-    "text": "Cohort 1 – Startup Incubation Applications are now open Apply to Founder Flightpath"
-  },
   "nav": {
     "links": {
       "wise-journey": "Journey",
@@ -641,7 +638,11 @@
   "applyNow": {
     "cta": "Apply Now",
     "close": "Close",
-    "chooseTrack": "Choose your track"
+    "chooseTrack": "Choose your track",
+    "closedBadge": "Applications Closed",
+    "closedTitle": "Applications are Closed",
+    "closedMessage": "Applications for WISE Lab Cohort 1 are currently closed. Thank you for your interest! Stay connected with us to be the first to know when admissions open for upcoming cohorts and initiatives.",
+    "stayUpdated": "Stay Updated"
   },
   "admin": {
     "nav": {

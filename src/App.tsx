@@ -3,9 +3,7 @@ import { TrackProvider } from '@/lib/useTrackState'
 import { HappeningsSectionsProvider } from '@/lib/happenings/useSectionPosts'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { Nav } from '@/components/Nav'
-import { CohortAnnouncementBar } from '@/components/CohortAnnouncementBar'
 import { PMBanner } from '@/components/PMBanner'
-import { CohortPopup } from '@/components/CohortPopup'
 import { Hero } from '@/sections/Hero'
 import { WiseJourney } from '@/sections/WiseJourney'
 import { BuildTracks } from '@/sections/BuildTracks'
@@ -29,10 +27,8 @@ function App() {
           <SmoothScroll>
             <div className="sticky top-0 z-50">
               <Nav />
-              <CohortAnnouncementBar />
             </div>
             <PMBanner />
-            <CohortPopup />
             <main>
               <Hero />
               <WiseJourney />

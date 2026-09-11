@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import App from './App'
 import { ApplyNowButton } from '@/components/ApplyNowButton'
-import { FloatingTimer } from '@/components/FloatingTimer'
 
 /**
  * Everything except the landing page ("/") is lazy-loaded: most visits land
@@ -58,13 +57,8 @@ function RouteFallback() {
  */
 function GlobalChrome() {
   const { pathname } = useLocation()
-  if (pathname.startsWith('/admin')) return null
-  return (
-    <>
-      {!pathname.startsWith('/apply') && <ApplyNowButton />}
-      <FloatingTimer />
-    </>
-  )
+  if (pathname.startsWith('/admin') || pathname.startsWith('/apply')) return null
+  return <ApplyNowButton />
 }
 
 /**
